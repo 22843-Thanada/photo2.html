@@ -6,7 +6,529 @@
 
 <title>Dr. Stone • Science Galaxy</title>
 
-<style>
+/* =========================================================
+   NEW EFFECTS — SCIENCE MOUSE TRAIL
+========================================================= */
+
+.science-mouse-item{
+    position:fixed;
+    left:0;
+    top:0;
+
+    width:32px;
+    height:32px;
+
+    pointer-events:none;
+    z-index:10001;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:25px;
+
+    filter:
+        drop-shadow(0 0 7px #00ffff)
+        drop-shadow(0 0 16px rgba(0,255,180,.8));
+
+    transform:translate(-50%,-50%);
+
+    animation:
+        scienceItemFloat 1.8s ease-in-out infinite,
+        scienceItemFade 2.8s ease-out forwards;
+}
+
+@keyframes scienceItemFloat{
+
+    0%,100%{
+        margin-top:0;
+        rotate:-8deg;
+    }
+
+    50%{
+        margin-top:-10px;
+        rotate:8deg;
+    }
+
+}
+
+@keyframes scienceItemFade{
+
+    0%{
+        opacity:0;
+        scale:.3;
+    }
+
+    15%{
+        opacity:1;
+        scale:1;
+    }
+
+    70%{
+        opacity:.9;
+    }
+
+    100%{
+        opacity:0;
+        scale:.65;
+    }
+
+}
+
+
+/* =========================================================
+   CLICK SCIENCE EXPLOSION
+========================================================= */
+
+.science-click-item{
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    width:35px;
+    height:35px;
+
+    pointer-events:none;
+
+    z-index:10002;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.3);
+
+    filter:
+        drop-shadow(0 0 8px #00ffff)
+        drop-shadow(0 0 20px rgba(0,255,180,.8));
+}
+
+
+/* =========================================================
+   FALLING STARS — RIGHT TO LEFT
+========================================================= */
+
+.shooting-star{
+
+    position:fixed;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:9998;
+
+    background:#ffffff;
+
+    box-shadow:
+        0 0 7px #ffffff,
+        0 0 15px #00ffff,
+        0 0 30px rgba(0,255,200,.9);
+
+    transform:rotate(-25deg);
+
+    animation:shootingStarMove var(--star-duration) linear forwards;
+
+}
+
+.shooting-star::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:3px;
+    top:50%;
+
+    width:var(--star-tail);
+
+    height:2px;
+
+    transform:
+        translateY(-50%)
+        rotate(0deg);
+
+    transform-origin:right center;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,255,255,.15),
+            #00ffff,
+            #ffffff
+        );
+
+    box-shadow:
+        0 0 10px #00ffff;
+
+}
+
+@keyframes shootingStarMove{
+
+    0%{
+
+        transform:
+            translate3d(0,0,0)
+            rotate(-25deg)
+            scale(.5);
+
+        opacity:0;
+
+    }
+
+    8%{
+
+        opacity:1;
+
+    }
+
+    85%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+            translate3d(
+                calc(-100vw - 300px),
+                calc(100vh + 300px),
+                0
+            )
+            rotate(-25deg)
+            scale(1.15);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================================================
+   DATA BOX — FLOATING STARS
+========================================================= */
+
+.info-box{
+
+    overflow:hidden;
+
+}
+
+
+/* ดาวเล็ก ๆ ที่ลอยรอบกรอบข้อมูล */
+
+.data-star{
+
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    pointer-events:none;
+
+    box-shadow:
+        0 0 5px #ffffff,
+        0 0 10px #00ffff,
+        0 0 18px rgba(0,255,180,.9);
+
+    animation:
+        dataStarFloat var(--star-time) ease-in-out infinite;
+
+    opacity:0;
+
+}
+
+@keyframes dataStarFloat{
+
+    0%{
+
+        transform:
+            translate3d(0,0,0)
+            scale(.4);
+
+        opacity:0;
+
+    }
+
+    25%{
+
+        opacity:.9;
+
+    }
+
+    50%{
+
+        transform:
+            translate3d(
+                var(--move-x),
+                var(--move-y),
+                0
+            )
+            scale(1.2);
+
+        opacity:1;
+
+    }
+
+    75%{
+
+        opacity:.6;
+
+    }
+
+    100%{
+
+        transform:
+            translate3d(
+                calc(var(--move-x) * -1),
+                calc(var(--move-y) * -1),
+                0
+            )
+            scale:.3;
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================================================
+   GREEN SCIENCE HEADINGS
+========================================================= */
+
+header h1{
+
+    position:relative;
+
+    text-shadow:
+        0 0 12px rgba(0,255,180,.55),
+        0 0 25px rgba(0,255,180,.45),
+        0 0 50px rgba(0,255,100,.25);
+
+    animation:
+        titleGlow 4s ease-in-out infinite,
+        greenTitlePulse 5s ease-in-out infinite;
+
+}
+
+
+/* แสงสีเขียวด้านหลังหัวข้อ */
+
+header h1::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:80%;
+    height:100%;
+
+    transform:
+        translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0,255,150,.18),
+            transparent 65%
+        );
+
+    filter:blur(20px);
+
+    z-index:-1;
+
+    pointer-events:none;
+
+}
+
+@keyframes greenTitlePulse{
+
+    0%,100%{
+
+        filter:
+            brightness(1)
+            drop-shadow(0 0 0 rgba(0,255,150,0));
+
+    }
+
+    45%{
+
+        filter:
+            brightness(1.08)
+            drop-shadow(
+                0 0 12px
+                rgba(0,255,150,.25)
+            );
+
+    }
+
+    55%{
+
+        filter:
+            brightness(1.22)
+            drop-shadow(
+                0 0 28px
+                rgba(0,255,150,.65)
+            );
+
+    }
+
+    65%{
+
+        filter:
+            brightness(1.08)
+            drop-shadow(
+                0 0 12px
+                rgba(0,255,150,.25)
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   GREEN GLOW FOR SUBTITLE
+========================================================= */
+
+.subtitle{
+
+    text-shadow:
+        0 0 8px rgba(0,255,170,.5),
+        0 0 20px rgba(0,255,150,.25);
+
+    animation:
+        subtitleGreenGlow 4.5s ease-in-out infinite;
+
+}
+
+@keyframes subtitleGreenGlow{
+
+    0%,100%{
+        opacity:.75;
+        text-shadow:
+            0 0 6px rgba(0,255,170,.3);
+    }
+
+    50%{
+        opacity:1;
+        text-shadow:
+            0 0 10px rgba(0,255,170,.8),
+            0 0 28px rgba(0,255,120,.5);
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA GREEN GLOW AROUND CHARACTER TITLES
+========================================================= */
+
+.content h2{
+
+    text-shadow:
+        0 0 10px rgba(0,255,180,.35),
+        0 0 24px rgba(0,255,150,.18);
+
+    animation:
+        characterTitleGlow 5.5s ease-in-out infinite;
+
+}
+
+@keyframes characterTitleGlow{
+
+    0%,100%{
+
+        text-shadow:
+            0 0 8px rgba(0,255,180,.25),
+            0 0 18px rgba(0,255,150,.12);
+
+    }
+
+    50%{
+
+        text-shadow:
+            0 0 12px rgba(0,255,180,.65),
+            0 0 30px rgba(0,255,150,.35),
+            0 0 50px rgba(0,255,100,.15);
+
+    }
+
+}
+
+
+/* =========================================================
+   GREEN DATA BOX BORDER PULSE
+========================================================= */
+
+.info-box{
+
+    animation:
+        infoGreenPulse 6s ease-in-out infinite;
+
+}
+
+@keyframes infoGreenPulse{
+
+    0%,100%{
+
+        border-color:
+            rgba(120,220,255,.14);
+
+    }
+
+    50%{
+
+        border-color:
+            rgba(0,255,180,.38);
+
+        box-shadow:
+            inset 0 0 25px rgba(0,255,150,.035),
+            0 0 18px rgba(0,255,150,.10);
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCE EFFECTS FOR USERS WHO PREFER LESS MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    .shooting-star,
+    .science-mouse-item,
+    .science-click-item,
+    .data-star{
+
+        animation:none !important;
+
+    }
+
+}
+    <style>
 
 *{
     margin:0;
@@ -2416,6 +2938,389 @@ document.addEventListener(
     }
 );
 
+   /* =========================================================
+   SCIENCE EQUIPMENT MOUSE TRAIL
+========================================================= */
+
+const scienceEquipment = [
+    "🧪",
+    "⚗️",
+    "🔬",
+    "🧬",
+    "⚛️",
+    "🧫",
+    "🧠",
+    "⚙️",
+    "💡"
+];
+
+let lastScienceItem = 0;
+
+document.addEventListener("mousemove", (e) => {
+
+    if(window.innerWidth <= 600){
+        return;
+    }
+
+    const now = performance.now();
+
+    /* สร้างอุปกรณ์ทุก ๆ 120ms */
+    if(now - lastScienceItem < 120){
+        return;
+    }
+
+    lastScienceItem = now;
+
+    const item =
+        document.createElement("span");
+
+    item.className =
+        "science-mouse-item";
+
+    item.textContent =
+        scienceEquipment[
+            Math.floor(
+                Math.random() *
+                scienceEquipment.length
+            )
+        ];
+
+    /* ให้ลอยเยื้องจากเมาส์เล็กน้อย */
+
+    const offsetX =
+        (Math.random() - .5) * 30;
+
+    const offsetY =
+        (Math.random() - .5) * 30;
+
+    item.style.left =
+        (e.clientX + offsetX) + "px";
+
+    item.style.top =
+        (e.clientY + offsetY) + "px";
+
+    item.style.fontSize =
+        (18 + Math.random() * 12) + "px";
+
+    document.body.appendChild(item);
+
+    setTimeout(() => {
+
+        item.remove();
+
+    }, 2800);
+
+});
+
+
+/* =========================================================
+   CLICK — SCIENCE EQUIPMENT EXPLOSION
+========================================================= */
+
+document.addEventListener("click", (e) => {
+
+    if(window.innerWidth <= 600){
+        return;
+    }
+
+    const amount = 8;
+
+    for(let i = 0; i < amount; i++){
+
+        const item =
+            document.createElement("span");
+
+        item.className =
+            "science-click-item";
+
+        item.textContent =
+            scienceEquipment[
+                Math.floor(
+                    Math.random() *
+                    scienceEquipment.length
+                )
+            ];
+
+        item.style.left =
+            e.clientX + "px";
+
+        item.style.top =
+            e.clientY + "px";
+
+
+        const angle =
+            (Math.PI * 2 / amount) * i +
+            (Math.random() - .5) * .4;
+
+        const distance =
+            80 + Math.random() * 150;
+
+        const endX =
+            Math.cos(angle) * distance;
+
+        const endY =
+            Math.sin(angle) * distance;
+
+
+        const rotation =
+            (Math.random() - .5) * 360;
+
+
+        item.animate(
+            [
+
+                {
+                    transform:
+                        "translate(-50%,-50%) scale(.25) rotate(0deg)",
+
+                    opacity:0
+
+                },
+
+                {
+
+                    transform:
+                        "translate(-50%,-50%) scale(1.15) rotate(" +
+                        rotation / 2 +
+                        "deg)",
+
+                    opacity:1
+
+                },
+
+                {
+
+                    transform:
+                        "translate(calc(-50% + " +
+                        endX +
+                        "px), calc(-50% + " +
+                        endY +
+                        "px)) scale(.5) rotate(" +
+                        rotation +
+                        "deg)",
+
+                    opacity:0
+
+                }
+
+            ],
+
+            {
+
+                duration:
+                    900 + Math.random() * 500,
+
+                easing:
+                    "cubic-bezier(.16,1,.3,1)",
+
+                fill:"forwards"
+
+            }
+
+        );
+
+
+        document.body.appendChild(item);
+
+        setTimeout(() => {
+
+            item.remove();
+
+        }, 1500);
+
+    }
+
+});
+
+
+/* =========================================================
+   SHOOTING STARS — RIGHT → LEFT
+========================================================= */
+
+function createShootingStar(){
+
+    if(window.innerWidth <= 600){
+        return;
+    }
+
+    const star =
+        document.createElement("div");
+
+    star.className =
+        "shooting-star";
+
+
+    /* เริ่มจากด้านขวาของหน้าจอ */
+
+    const startX =
+        window.innerWidth +
+        50 +
+        Math.random() * 250;
+
+    const startY =
+        Math.random() *
+        window.innerHeight *
+        .85;
+
+
+    star.style.left =
+        startX + "px";
+
+    star.style.top =
+        startY + "px";
+
+
+    /* ความเร็วสุ่ม */
+
+    const duration =
+        1800 +
+        Math.random() * 2600;
+
+    star.style.setProperty(
+        "--star-duration",
+        duration + "ms"
+    );
+
+
+    star.style.setProperty(
+        "--star-tail",
+        (70 + Math.random() * 140) + "px"
+    );
+
+
+    const size =
+        2 + Math.random() * 3;
+
+    star.style.width =
+        size + "px";
+
+    star.style.height =
+        size + "px";
+
+
+    document.body.appendChild(star);
+
+
+    setTimeout(() => {
+
+        star.remove();
+
+    }, duration + 200);
+
+}
+
+
+/* ดาวตกแบบสุ่ม */
+
+function randomShootingStar(){
+
+    createShootingStar();
+
+
+    const nextTime =
+        1800 +
+        Math.random() * 4500;
+
+
+    setTimeout(
+        randomShootingStar,
+        nextTime
+    );
+
+}
+
+
+/* เริ่มดาวตก */
+
+setTimeout(
+    randomShootingStar,
+    1200
+);
+
+
+/* =========================================================
+   FLOATING STARS AROUND ALL INFO BOXES
+========================================================= */
+
+const infoBoxes =
+    document.querySelectorAll(".info-box");
+
+
+infoBoxes.forEach((box) => {
+
+    const starCount = 16;
+
+
+    for(let i = 0; i < starCount; i++){
+
+        const star =
+            document.createElement("span");
+
+        star.className =
+            "data-star";
+
+
+        /*
+         * กระจายดาวรอบ ๆ พื้นที่ภายในกล่อง
+         */
+
+        const x =
+            Math.random() * 100;
+
+        const y =
+            Math.random() * 100;
+
+
+        star.style.left =
+            x + "%";
+
+        star.style.top =
+            y + "%";
+
+
+        star.style.setProperty(
+            "--move-x",
+            (-20 + Math.random() * 40) + "px"
+        );
+
+        star.style.setProperty(
+            "--move-y",
+            (-25 + Math.random() * 50) + "px"
+        );
+
+
+        star.style.setProperty(
+            "--star-time",
+            (3 + Math.random() * 5) + "s"
+        );
+
+
+        star.style.animationDelay =
+            (-Math.random() * 6) + "s";
+
+
+        star.style.opacity =
+            .3 + Math.random() * .7;
+
+
+        box.appendChild(star);
+
+    }
+
+});
+
+
+/* =========================================================
+   EXTRA SCIENCE HUD TEXT
+========================================================= */
+
+infoBoxes.forEach((box, index) => {
+
+    box.dataset.system =
+        "DATA NODE " +
+        String(index + 1).padStart(2,"0");
+
+}); 
 </script>
 
 
