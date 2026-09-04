@@ -29,7 +29,6 @@ body{
     min-height:100vh;
     overflow-x:hidden;
 
-    /* เว้นพื้นที่ให้แถบชื่อด้านบนและด้านล่าง */
     padding-top:34px;
     padding-bottom:34px;
 
@@ -42,13 +41,12 @@ body{
 
 
 /* =========================================================
-   SCIENCE LOADING SCREEN
+   EPIC SCIENCE LOADING SCREEN
 ========================================================= */
 
 #scienceLoader{
     position:fixed;
     inset:0;
-
     z-index:20000;
 
     display:flex;
@@ -58,30 +56,24 @@ body{
     overflow:hidden;
 
     background:
-        radial-gradient(
-            circle at center,
-            rgba(0,255,200,.10),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(0,255,255,.10),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(100,70,255,.12),
-            transparent 32%
-        ),
-        #02040d;
+        radial-gradient(circle at 50% 50%,
+            rgba(0,255,210,.14),
+            transparent 18%),
+        radial-gradient(circle at 15% 20%,
+            rgba(0,255,255,.12),
+            transparent 30%),
+        radial-gradient(circle at 85% 75%,
+            rgba(90,60,255,.16),
+            transparent 32%),
+        radial-gradient(circle at 50% 100%,
+            rgba(0,255,150,.08),
+            transparent 35%),
+        #01030a;
 
     transition:
-        opacity 1s ease,
-        visibility 1s ease;
+        opacity 1.15s ease,
+        visibility 1.15s ease;
 }
-
-
-/* หน้าโหลดหายไป */
 
 #scienceLoader.loader-hidden{
     opacity:0;
@@ -90,77 +82,140 @@ body{
 }
 
 
-/* Grid หน้าโหลด */
+/* =========================================================
+   LOADER GRID
+========================================================= */
 
 .loader-grid{
     position:absolute;
-    inset:0;
+    inset:-20%;
 
     background-image:
         linear-gradient(
-            rgba(0,255,255,.07) 1px,
+            rgba(0,255,255,.075) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(0,255,255,.07) 1px,
+            rgba(0,255,255,.075) 1px,
             transparent 1px
         );
 
     background-size:45px 45px;
 
+    -webkit-mask-image:
+        radial-gradient(
+            circle,
+            #000 10%,
+            transparent 75%
+        );
+
     mask-image:
         radial-gradient(
             circle,
-            #000 20%,
+            #000 10%,
             transparent 75%
         );
 
     animation:
-        loaderGridMove 10s linear infinite;
+        loaderGridMove
+        8s
+        linear
+        infinite;
 }
 
 @keyframes loaderGridMove{
 
-    from{
+    0%{
         transform:
             scale(1)
-            rotate(0deg);
+            rotate(0deg)
+            translate(0,0);
     }
 
-    to{
+    50%{
         transform:
-            scale(1.15)
-            rotate(3deg);
+            scale(1.08)
+            rotate(1deg)
+            translate(-15px,10px);
+    }
+
+    100%{
+        transform:
+            scale(1.18)
+            rotate(3deg)
+            translate(-30px,20px);
     }
 
 }
 
 
-/* แกนกลางหน้าโหลด */
+/* =========================================================
+   CENTRAL ENERGY
+========================================================= */
 
-.loader-core{
-    position:relative;
+.loader-energy{
 
-    z-index:2;
+    position:absolute;
 
-    width:min(700px,90%);
+    width:600px;
+    height:600px;
 
-    text-align:center;
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,255,190,.12) 0%,
+            rgba(0,255,255,.06) 22%,
+            transparent 65%
+        );
+
+    filter:blur(2px);
+
+    animation:
+        energyPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes energyPulse{
+
+    0%,100%{
+        transform:
+            translate(-50%,-50%)
+            scale(.8);
+
+        opacity:.45;
+    }
+
+    50%{
+        transform:
+            translate(-50%,-50%)
+            scale(1.15);
+
+        opacity:1;
+    }
+
 }
 
 
-/* วงแหวน */
+/* =========================================================
+   MASSIVE ENERGY RINGS
+========================================================= */
 
 .loader-ring{
     position:absolute;
 
     left:50%;
     top:50%;
-
-    border:
-        1px solid
-        rgba(0,255,255,.2);
 
     border-radius:50%;
 
@@ -171,36 +226,101 @@ body{
 }
 
 .ring1{
-    width:260px;
-    height:260px;
+
+    width:250px;
+    height:250px;
+
+    border:
+        2px solid
+        rgba(0,255,255,.18);
 
     border-top-color:#00ffff;
+    border-left-color:#00ffff;
+
+    box-shadow:
+        0 0 20px rgba(0,255,255,.25),
+        inset 0 0 20px rgba(0,255,255,.12);
 
     animation:
         loaderRingSpin
-        5s linear infinite;
+        3.5s
+        linear
+        infinite;
 }
 
 .ring2{
-    width:390px;
-    height:390px;
 
-    border-right-color:#00ff9d;
+    width:340px;
+    height:340px;
+
+    border:
+        1px solid
+        rgba(0,255,170,.25);
+
+    border-right:
+        3px solid #00ff9d;
+
+    box-shadow:
+        0 0 30px rgba(0,255,150,.15);
 
     animation:
         loaderRingSpin
-        8s linear infinite reverse;
+        5s
+        linear
+        infinite reverse;
 }
 
 .ring3{
-    width:540px;
-    height:540px;
 
-    border-bottom-color:#8e6cff;
+    width:450px;
+    height:450px;
+
+    border:
+        1px solid
+        rgba(100,80,255,.22);
+
+    border-bottom:
+        3px solid #8e6cff;
 
     animation:
         loaderRingSpin
-        12s linear infinite;
+        7s
+        linear
+        infinite;
+}
+
+.ring4{
+
+    width:580px;
+    height:580px;
+
+    border:
+        1px dashed
+        rgba(0,255,255,.13);
+
+    border-right-color:#00ffff;
+
+    animation:
+        loaderRingSpin
+        11s
+        linear
+        infinite reverse;
+}
+
+.ring5{
+
+    width:720px;
+    height:720px;
+
+    border:
+        1px dotted
+        rgba(0,255,180,.09);
+
+    animation:
+        loaderRingSpin
+        16s
+        linear
+        infinite;
 }
 
 @keyframes loaderRingSpin{
@@ -214,178 +334,604 @@ body{
 }
 
 
-/* หัวข้อ DR.STONE */
+/* =========================================================
+   RING TICKS
+========================================================= */
+
+.loader-ring::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-8px;
+
+    border-radius:50%;
+
+    background:
+        repeating-conic-gradient(
+            from 0deg,
+            rgba(0,255,255,.7) 0deg 2deg,
+            transparent 2deg 14deg
+        );
+
+    -webkit-mask:
+        radial-gradient(
+            transparent 0 94%,
+            #000 95% 100%
+        );
+
+    mask:
+        radial-gradient(
+            transparent 0 94%,
+            #000 95% 100%
+        );
+
+    opacity:.45;
+}
+
+
+/* =========================================================
+   LOADER CORE
+========================================================= */
+
+.loader-core{
+
+    position:relative;
+
+    z-index:10;
+
+    width:min(850px,94%);
+
+    text-align:center;
+}
+
+
+/* =========================================================
+   SCIENCE HUD
+========================================================= */
+
+.loader-hud{
+
+    position:absolute;
+
+    width:100%;
+
+    top:-105px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:0 20px;
+
+    color:rgba(115,255,240,.45);
+
+    font:
+        9px
+        "Courier New",
+        monospace;
+
+    letter-spacing:2px;
+
+    text-shadow:
+        0 0 8px
+        rgba(0,255,255,.7);
+}
+
+.loader-hud-left,
+.loader-hud-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+    text-align:left;
+}
+
+.loader-hud-right{
+
+    text-align:right;
+}
+
+
+/* =========================================================
+   DR.STONE TITLE
+========================================================= */
 
 .loader-title-wrap{
+
     position:relative;
 
     display:inline-block;
+
+    isolation:isolate;
 }
 
 .loader-title{
 
     position:relative;
 
+    z-index:3;
+
     font-size:
-        clamp(55px,10vw,110px);
+        clamp(58px,11vw,125px);
 
-    font-weight:900;
+    font-weight:1000;
 
-    letter-spacing:6px;
+    letter-spacing:8px;
 
     color:#ffffff;
 
     text-shadow:
-        0 0 10px #00ffff,
-        0 0 30px rgba(0,255,180,.8),
-        0 0 70px rgba(0,255,120,.35);
+        0 0 8px #ffffff,
+        0 0 20px #00ffff,
+        0 0 45px #00ffff,
+        0 0 85px rgba(0,255,180,.8),
+        0 0 130px rgba(0,255,150,.4);
 
     animation:
         loaderTitlePulse
-        1.5s ease-in-out infinite;
+        1.4s
+        ease-in-out
+        infinite;
 }
 
 @keyframes loaderTitlePulse{
 
     0%,100%{
-        filter:brightness(1);
+        filter:
+            brightness(1)
+            saturate(1);
     }
 
     50%{
-        filter:brightness(1.35);
+        filter:
+            brightness(1.5)
+            saturate(1.4);
     }
 
 }
 
 
-/* เอฟเฟกต์ฟัน */
+/* =========================================================
+   TITLE ENERGY AURA
+========================================================= */
 
-.loader-slash{
+.loader-title-wrap::before{
+
+    content:"";
 
     position:absolute;
 
-    left:-12%;
+    left:50%;
     top:50%;
 
-    width:124%;
-    height:7px;
+    width:150%;
+    height:170%;
 
     transform:
-        translateY(-50%)
-        scaleX(0);
+        translate(-50%,-50%);
 
-    transform-origin:left center;
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0,255,200,.28),
+            rgba(0,255,255,.09) 30%,
+            transparent 70%
+        );
+
+    filter:blur(25px);
+
+    z-index:-1;
+
+    animation:
+        titleAura
+        2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes titleAura{
+
+    0%,100%{
+        opacity:.45;
+        transform:
+            translate(-50%,-50%)
+            scale(.85);
+    }
+
+    50%{
+        opacity:1;
+        transform:
+            translate(-50%,-50%)
+            scale(1.12);
+    }
+
+}
+
+
+/* =========================================================
+   POWER LINES BEHIND TITLE
+========================================================= */
+
+.loader-power-line{
+
+    position:absolute;
+
+    left:50%;
+
+    width:100vw;
+
+    height:1px;
+
+    transform:
+        translateX(-50%);
 
     background:
         linear-gradient(
             90deg,
             transparent,
+            rgba(0,255,255,.05),
+            #00ffff,
             #ffffff,
             #00ffff,
-            #00ff9d,
+            rgba(0,255,255,.05),
             transparent
         );
 
     box-shadow:
-        0 0 10px #ffffff,
-        0 0 25px #00ffff,
-        0 0 50px #00ff9d;
+        0 0 15px #00ffff;
 
-    opacity:0;
+    opacity:.35;
+
+    pointer-events:none;
+}
+
+.power-line-1{
+    top:34%;
+}
+
+.power-line-2{
+    top:66%;
 }
 
 
-/* เมื่อโหลดเสร็จให้ฟัน */
+/* =========================================================
+   EPIC SLASH
+========================================================= */
+
+.loader-slash{
+
+    position:absolute;
+
+    z-index:20;
+
+    left:-65vw;
+
+    top:50%;
+
+    width:130vw;
+
+    height:12px;
+
+    transform:
+        translateY(-50%)
+        translateX(-110%)
+        rotate(-7deg)
+        scaleX(.15);
+
+    transform-origin:center;
+
+    opacity:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            transparent 8%,
+            rgba(0,255,255,.3) 18%,
+            #00ffff 30%,
+            #ffffff 47%,
+            #ffffff 53%,
+            #00ffb3 68%,
+            #00ffff 82%,
+            rgba(0,255,255,.25) 92%,
+            transparent 100%
+        );
+
+    box-shadow:
+        0 0 8px #ffffff,
+        0 0 20px #00ffff,
+        0 0 45px #00ffff,
+        0 0 90px #00ff9d,
+        0 0 150px rgba(0,255,180,.8);
+}
+
+
+/* หลายชั้นของดาบพลังงาน */
+
+.loader-slash::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:50%;
+
+    width:100%;
+    height:34px;
+
+    transform:
+        translateY(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,255,255,.08),
+            rgba(0,255,255,.45),
+            rgba(255,255,255,.9),
+            rgba(0,255,180,.45),
+            rgba(0,255,255,.08),
+            transparent
+        );
+
+    filter:blur(12px);
+}
+
+
+/* แสงคมกลาง */
+
+.loader-slash::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:50%;
+
+    width:100%;
+    height:3px;
+
+    transform:
+        translateY(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ffffff 20%,
+            #ffffff 80%,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px #ffffff,
+        0 0 30px #00ffff;
+}
+
+
+/* ฟัน */
 
 .loader-slash.cut{
 
     animation:
-        loaderSlashCut
-        .75s
-        cubic-bezier(.16,1,.3,1)
+        epicSlash
+        1.15s
+        cubic-bezier(.12,.85,.16,1)
         forwards;
 }
 
-@keyframes loaderSlashCut{
+@keyframes epicSlash{
 
     0%{
+
         transform:
             translateY(-50%)
-            scaleX(0)
-            rotate(-5deg);
+            translateX(-105%)
+            rotate(-7deg)
+            scaleX(.05);
 
         opacity:0;
+    }
+
+    8%{
+
+        opacity:1;
+    }
+
+    18%{
+
+        transform:
+            translateY(-50%)
+            translateX(-55%)
+            rotate(-7deg)
+            scaleX(.45);
+
+        opacity:1;
+    }
+
+    48%{
+
+        transform:
+            translateY(-50%)
+            translateX(0%)
+            rotate(-7deg)
+            scaleX(1);
+
+        opacity:1;
+    }
+
+    72%{
+
+        transform:
+            translateY(-50%)
+            translateX(55%)
+            rotate(-7deg)
+            scaleX(1.08);
+
+        opacity:1;
+    }
+
+    90%{
+
+        transform:
+            translateY(-50%)
+            translateX(105%)
+            rotate(-7deg)
+            scaleX(1.15);
+
+        opacity:.7;
+    }
+
+    100%{
+
+        transform:
+            translateY(-50%)
+            translateX(135%)
+            rotate(-7deg)
+            scaleX(1.2);
+
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   SLASH PARTICLES
+========================================================= */
+
+.slash-particle{
+
+    position:absolute;
+
+    z-index:25;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    box-shadow:
+        0 0 8px #ffffff,
+        0 0 18px #00ffff,
+        0 0 35px #00ff9d;
+
+    opacity:0;
+}
+
+.slash-particle.cut{
+
+    animation:
+        slashParticleFly
+        1s
+        ease-out
+        forwards;
+}
+
+@keyframes slashParticleFly{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translate(0,0)
+            scale(.2);
     }
 
     15%{
         opacity:1;
     }
 
-    55%{
-        transform:
-            translateY(-50%)
-            scaleX(1.15)
-            rotate(-5deg);
-
-        opacity:1;
-    }
-
     100%{
-        transform:
-            translateY(-50%)
-            scaleX(1.25)
-            rotate(-5deg);
-
         opacity:0;
-    }
 
+        transform:
+            translate(
+                var(--px),
+                var(--py)
+            )
+            scale(
+                var(--ps)
+            );
+    }
 }
 
 
-/* คำอธิบายใต้หัวข้อ */
+/* =========================================================
+   SUBTITLE
+========================================================= */
 
 .loader-subtitle{
 
-    margin-top:12px;
+    margin-top:15px;
 
-    color:#65ffd0;
+    color:#72ffe0;
 
     font:
         12px
         "Courier New",
         monospace;
 
-    letter-spacing:4px;
+    letter-spacing:5px;
 
     text-shadow:
-        0 0 15px
-        rgba(0,255,180,.7);
+        0 0 10px #00ffff,
+        0 0 25px rgba(0,255,180,.7);
+
+    animation:
+        subtitlePulse
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+@keyframes subtitlePulse{
+
+    0%,100%{
+        opacity:.55;
+    }
+
+    50%{
+        opacity:1;
+    }
 }
 
 
-/* Progress Bar */
+/* =========================================================
+   LOADING BAR
+========================================================= */
 
 .loader-progress{
 
-    width:min(430px,80%);
+    width:min(550px,82%);
 
-    height:4px;
+    height:6px;
 
     margin:
-        30px auto 12px;
+        34px auto 14px;
 
     border:
         1px solid
-        rgba(0,255,255,.35);
+        rgba(0,255,255,.45);
 
     background:
-        rgba(0,255,255,.04);
+        rgba(0,255,255,.025);
 
     overflow:hidden;
 
     box-shadow:
-        0 0 18px
-        rgba(0,255,255,.12);
+        0 0 15px rgba(0,255,255,.15),
+        inset 0 0 10px rgba(0,255,255,.08);
+
+    position:relative;
 }
 
 #loaderProgressBar{
@@ -401,26 +947,79 @@ body{
             90deg,
             #00ffff,
             #00ff9d,
-            #a6ffef
+            #ffffff,
+            #00ffff
         );
 
     box-shadow:
-        0 0 15px #00ffff;
+        0 0 12px #00ffff,
+        0 0 30px #00ff9d;
 
     transition:
         width .12s linear;
+
+    position:relative;
+}
+
+#loaderProgressBar::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+
+    top:-5px;
+
+    width:20px;
+
+    height:16px;
+
+    background:#ffffff;
+
+    filter:blur(7px);
+
+    box-shadow:
+        0 0 20px #00ffff,
+        0 0 40px #00ff9d;
 }
 
 
-/* ข้อความสถานะ */
+/* =========================================================
+   STATUS
+========================================================= */
 
 .loader-status{
 
     color:
-        rgba(170,245,255,.65);
+        rgba(170,255,245,.7);
 
     font:
         10px
+        "Courier New",
+        monospace;
+
+    letter-spacing:3px;
+
+    text-shadow:
+        0 0 8px
+        rgba(0,255,255,.5);
+}
+
+
+/* =========================================================
+   PERCENT
+========================================================= */
+
+.loader-percent{
+
+    margin-top:8px;
+
+    color:
+        rgba(110,255,235,.4);
+
+    font:
+        9px
         "Courier New",
         monospace;
 
@@ -428,59 +1027,64 @@ body{
 }
 
 
-/* อุปกรณ์วิทยาศาสตร์ลอย */
+/* =========================================================
+   SCIENCE FLOATING OBJECTS
+========================================================= */
 
 .loader-particle{
 
     position:absolute;
 
-    z-index:1;
+    z-index:4;
 
     font-size:28px;
 
-    opacity:.55;
+    opacity:.65;
 
     filter:
-        drop-shadow(0 0 10px #00ffff);
+        drop-shadow(0 0 8px #00ffff)
+        drop-shadow(0 0 18px rgba(0,255,180,.8));
 
     animation:
         loaderParticleFloat
-        4s ease-in-out infinite;
+        4s
+        ease-in-out
+        infinite;
 }
 
 .lp1{
-    left:12%;
-    top:20%;
+    left:8%;
+    top:17%;
     animation-delay:-1s;
 }
 
 .lp2{
-    left:22%;
-    bottom:18%;
+    left:19%;
+    bottom:16%;
     animation-delay:-2s;
 }
 
 .lp3{
-    right:16%;
-    top:18%;
+    right:12%;
+    top:17%;
     animation-delay:-3s;
 }
 
 .lp4{
-    right:25%;
-    bottom:20%;
+    right:21%;
+    bottom:18%;
     animation-delay:-1.5s;
 }
 
 .lp5{
-    left:8%;
+    left:5%;
     top:55%;
     animation-delay:-2.5s;
 }
 
 .lp6{
-    right:8%;
-    top:55%;
+    right:6%;
+    top:54%;
     animation-delay:-3.5s;
 }
 
@@ -490,16 +1094,60 @@ body{
         transform:
             translateY(0)
             rotate(0deg)
-            scale(.8);
+            scale(.75);
+
+        opacity:.4;
     }
 
     50%{
         transform:
-            translateY(-22px)
-            rotate(20deg)
-            scale(1.15);
+            translateY(-30px)
+            rotate(25deg)
+            scale(1.2);
+
+        opacity:.9;
+    }
+}
+
+
+/* =========================================================
+   SCIENCE PARTICLE FIELD
+========================================================= */
+
+.loader-star{
+
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    box-shadow:
+        0 0 7px #ffffff,
+        0 0 16px #00ffff,
+        0 0 30px #00ff9d;
+
+    animation:
+        loaderStarPulse
+        var(--star-speed)
+        ease-in-out
+        infinite;
+}
+
+@keyframes loaderStarPulse{
+
+    0%,100%{
+        opacity:.15;
+        transform:scale(.5);
     }
 
+    50%{
+        opacity:1;
+        transform:scale(1.8);
+    }
 }
 
 
@@ -542,22 +1190,13 @@ body{
         rgba(0,255,255,.08);
 }
 
-
-/* แถบบน */
-
 .character-strip-top{
     top:0;
 }
 
-
-/* แถบล่าง */
-
 .character-strip-bottom{
     bottom:0;
 }
-
-
-/* Track */
 
 .strip-track{
 
@@ -598,9 +1237,6 @@ body{
         infinite;
 }
 
-
-/* ดาวคั่น */
-
 .strip-track b{
 
     color:#00ffff;
@@ -608,9 +1244,6 @@ body{
     text-shadow:
         0 0 10px #00ffff;
 }
-
-
-/* Track ล่าง */
 
 .strip-track.reverse{
 
@@ -620,9 +1253,6 @@ body{
         linear
         infinite;
 }
-
-
-/* ซ้าย → ขวา */
 
 @keyframes stripLeftToRight{
 
@@ -635,11 +1265,7 @@ body{
         transform:
             translateX(0);
     }
-
 }
-
-
-/* ขวา → ซ้าย */
 
 @keyframes stripRightToLeft{
 
@@ -652,7 +1278,6 @@ body{
         transform:
             translateX(-45%);
     }
-
 }
 
 
@@ -721,7 +1346,6 @@ body::before{
         transform:
             translateY(90px);
     }
-
 }
 
 
@@ -830,13 +1454,11 @@ body::after{
 .orb1{
 
     width:260px;
-
     height:260px;
 
     background:#00eaff;
 
     top:10%;
-
     left:-100px;
 
     animation:
@@ -849,13 +1471,11 @@ body::after{
 .orb2{
 
     width:300px;
-
     height:300px;
 
     background:#754cff;
 
     right:-120px;
-
     top:40%;
 
     animation:
@@ -868,13 +1488,11 @@ body::after{
 .orb3{
 
     width:220px;
-
     height:220px;
 
     background:#00ffa6;
 
     bottom:-80px;
-
     left:35%;
 
     animation:
@@ -897,7 +1515,6 @@ body::after{
             translateY(-40px)
             scale(1.08);
     }
-
 }
 
 
@@ -910,7 +1527,6 @@ body::after{
     position:fixed;
 
     width:4px;
-
     height:4px;
 
     border-radius:50%;
@@ -932,65 +1548,16 @@ body::after{
         infinite;
 }
 
-.p1{
-    left:8%;
-    top:30%;
-    animation-delay:-1s;
-}
-
-.p2{
-    left:19%;
-    top:82%;
-    animation-delay:-4s;
-}
-
-.p3{
-    left:34%;
-    top:24%;
-    animation-delay:-6s;
-}
-
-.p4{
-    left:51%;
-    top:70%;
-    animation-delay:-2s;
-}
-
-.p5{
-    left:68%;
-    top:31%;
-    animation-delay:-7s;
-}
-
-.p6{
-    left:82%;
-    top:88%;
-    animation-delay:-3s;
-}
-
-.p7{
-    left:91%;
-    top:48%;
-    animation-delay:-5s;
-}
-
-.p8{
-    left:44%;
-    top:7%;
-    animation-delay:-1.5s;
-}
-
-.p9{
-    left:75%;
-    top:12%;
-    animation-delay:-6.5s;
-}
-
-.p10{
-    left:27%;
-    top:53%;
-    animation-delay:-3.5s;
-}
+.p1{left:8%;top:30%;animation-delay:-1s;}
+.p2{left:19%;top:82%;animation-delay:-4s;}
+.p3{left:34%;top:24%;animation-delay:-6s;}
+.p4{left:51%;top:70%;animation-delay:-2s;}
+.p5{left:68%;top:31%;animation-delay:-7s;}
+.p6{left:82%;top:88%;animation-delay:-3s;}
+.p7{left:91%;top:48%;animation-delay:-5s;}
+.p8{left:44%;top:7%;animation-delay:-1.5s;}
+.p9{left:75%;top:12%;animation-delay:-6.5s;}
+.p10{left:27%;top:53%;animation-delay:-3.5s;}
 
 @keyframes particleDrift{
 
@@ -1009,7 +1576,6 @@ body::after{
 
         opacity:1;
     }
-
 }
 
 
@@ -1022,7 +1588,6 @@ body::after{
     position:fixed;
 
     width:62px;
-
     height:62px;
 
     border:
@@ -1056,7 +1621,6 @@ body::after{
     position:absolute;
 
     width:10px;
-
     height:10px;
 
     border-radius:50%;
@@ -1068,16 +1632,12 @@ body::after{
 }
 
 .molecule::before{
-
     left:5px;
-
     top:22px;
 }
 
 .molecule::after{
-
     right:5px;
-
     bottom:12px;
 }
 
@@ -1086,13 +1646,11 @@ body::after{
     position:absolute;
 
     width:9px;
-
     height:9px;
 
     border-radius:50%;
 
     left:25px;
-
     top:7px;
 
     background:#a88cff;
@@ -1102,31 +1660,21 @@ body::after{
 }
 
 .molecule1{
-
     left:2%;
-
     top:9%;
 }
 
 .molecule2{
-
     right:3%;
-
     top:55%;
-
     animation-delay:-4s;
-
     transform:scale(.8);
 }
 
 .molecule3{
-
     left:47%;
-
     bottom:5%;
-
     animation-delay:-7s;
-
     transform:scale(.65);
 }
 
@@ -1143,7 +1691,6 @@ body::after{
             translateY(-28px)
             rotate(20deg);
     }
-
 }
 
 
@@ -1183,65 +1730,16 @@ body::after{
         infinite;
 }
 
-.s1{
-    left:5%;
-    top:18%;
-    animation-delay:0s;
-}
-
-.s2{
-    left:14%;
-    top:65%;
-    animation-delay:2s;
-}
-
-.s3{
-    left:28%;
-    top:10%;
-    animation-delay:4s;
-}
-
-.s4{
-    left:43%;
-    top:80%;
-    animation-delay:1s;
-}
-
-.s5{
-    left:58%;
-    top:15%;
-    animation-delay:3s;
-}
-
-.s6{
-    left:73%;
-    top:68%;
-    animation-delay:5s;
-}
-
-.s7{
-    left:88%;
-    top:23%;
-    animation-delay:2.5s;
-}
-
-.s8{
-    left:93%;
-    top:78%;
-    animation-delay:4.5s;
-}
-
-.s9{
-    left:35%;
-    top:45%;
-    animation-delay:1.5s;
-}
-
-.s10{
-    left:65%;
-    top:42%;
-    animation-delay:3.5s;
-}
+.s1{left:5%;top:18%;animation-delay:0s;}
+.s2{left:14%;top:65%;animation-delay:2s;}
+.s3{left:28%;top:10%;animation-delay:4s;}
+.s4{left:43%;top:80%;animation-delay:1s;}
+.s5{left:58%;top:15%;animation-delay:3s;}
+.s6{left:73%;top:68%;animation-delay:5s;}
+.s7{left:88%;top:23%;animation-delay:2.5s;}
+.s8{left:93%;top:78%;animation-delay:4.5s;}
+.s9{left:35%;top:45%;animation-delay:1.5s;}
+.s10{left:65%;top:42%;animation-delay:3.5s;}
 
 @keyframes floatScience{
 
@@ -1256,7 +1754,6 @@ body::after{
             translateY(-30px)
             translateX(18px);
     }
-
 }
 
 @keyframes rotateScience{
@@ -1268,7 +1765,6 @@ body::after{
     100%{
         rotate:360deg;
     }
-
 }
 
 
@@ -1307,63 +1803,23 @@ body::after{
         infinite;
 }
 
-.f1{
-
-    top:13%;
-    left:3%;
-    font-size:20px;
-}
-
-.f2{
-
-    top:32%;
-    right:4%;
-    font-size:18px;
-    animation-delay:2s;
-}
-
-.f3{
-
-    top:58%;
-    left:4%;
-    font-size:16px;
-    animation-delay:4s;
-}
-
-.f4{
-
-    bottom:15%;
-    right:6%;
-    font-size:20px;
-    animation-delay:1s;
-}
-
-.f5{
-
-    top:75%;
-    left:46%;
-    font-size:15px;
-    animation-delay:3s;
-}
+.f1{top:13%;left:3%;font-size:20px;}
+.f2{top:32%;right:4%;font-size:18px;animation-delay:2s;}
+.f3{top:58%;left:4%;font-size:16px;animation-delay:4s;}
+.f4{bottom:15%;right:6%;font-size:20px;animation-delay:1s;}
+.f5{top:75%;left:46%;font-size:15px;animation-delay:3s;}
 
 @keyframes formulaFloat{
 
     0%,100%{
-
-        transform:
-            translateY(0);
-
+        transform:translateY(0);
         opacity:.10;
     }
 
     50%{
-
-        transform:
-            translateY(-22px);
-
+        transform:translateY(-22px);
         opacity:.25;
     }
-
 }
 
 
@@ -1376,7 +1832,6 @@ body::after{
     position:fixed;
 
     width:110px;
-
     height:110px;
 
     border:
@@ -1407,19 +1862,13 @@ body::after{
 }
 
 .atom::after{
-
-    transform:
-        rotate(60deg);
+    transform:rotate(60deg);
 }
 
 .atom1{
-
     left:-25px;
-
     top:42%;
-
-    transform:
-        rotate(25deg);
+    transform:rotate(25deg);
 
     animation:
         atomSpin
@@ -1429,13 +1878,9 @@ body::after{
 }
 
 .atom2{
-
     right:-25px;
-
     top:70%;
-
-    transform:
-        rotate(-25deg);
+    transform:rotate(-25deg);
 
     animation:
         atomSpin
@@ -1453,7 +1898,6 @@ body::after{
     to{
         rotate:360deg;
     }
-
 }
 
 
@@ -1567,9 +2011,6 @@ header h1{
         5s ease-in-out infinite;
 }
 
-
-/* แสงสีเขียวด้านหลังหัวข้อ */
-
 header h1::after{
 
     content:"";
@@ -1608,13 +2049,11 @@ header h1::after{
     50%{
         filter:brightness(1.25);
     }
-
 }
 
 @keyframes greenTitlePulse{
 
     0%,100%{
-
         filter:
             brightness(1)
             drop-shadow(
@@ -1624,7 +2063,6 @@ header h1::after{
     }
 
     45%{
-
         filter:
             brightness(1.08)
             drop-shadow(
@@ -1634,7 +2072,6 @@ header h1::after{
     }
 
     55%{
-
         filter:
             brightness(1.22)
             drop-shadow(
@@ -1644,7 +2081,6 @@ header h1::after{
     }
 
     65%{
-
         filter:
             brightness(1.08)
             drop-shadow(
@@ -1652,7 +2088,6 @@ header h1::after{
                 rgba(0,255,150,.25)
             );
     }
-
 }
 
 header p{
@@ -1691,7 +2126,6 @@ header p{
 @keyframes subtitleGreenGlow{
 
     0%,100%{
-
         opacity:.75;
 
         text-shadow:
@@ -1700,7 +2134,6 @@ header p{
     }
 
     50%{
-
         opacity:1;
 
         text-shadow:
@@ -1710,7 +2143,6 @@ header p{
             0 0 28px
             rgba(0,255,120,.5);
     }
-
 }
 
 
@@ -1783,9 +2215,6 @@ header p{
         box-shadow .5s ease;
 }
 
-
-/* Animated border */
-
 .card::before{
 
     content:"";
@@ -1835,11 +2264,7 @@ header p{
     to{
         --card-angle:360deg;
     }
-
 }
-
-
-/* Card label */
 
 .card::after{
 
@@ -1889,15 +2314,12 @@ header p{
 @keyframes cardFloat{
 
     0%,100%{
-        transform:
-            translateY(0);
+        transform:translateY(0);
     }
 
     50%{
-        transform:
-            translateY(-13px);
+        transform:translateY(-13px);
     }
-
 }
 
 .card:hover{
@@ -2066,7 +2488,6 @@ header p{
             0 0 35px
             rgba(0,255,255,.20);
     }
-
 }
 
 
@@ -2077,7 +2498,6 @@ header p{
 .character-image{
 
     width:100%;
-
     height:100%;
 
     display:block;
@@ -2113,7 +2533,6 @@ header p{
     position:absolute;
 
     left:0;
-
     right:0;
 
     height:2px;
@@ -2151,7 +2570,6 @@ header p{
     100%{
         top:105%;
     }
-
 }
 
 
@@ -2178,7 +2596,6 @@ header p{
     position:absolute;
 
     width:25px;
-
     height:25px;
 
     border-color:#63f8ff;
@@ -2189,22 +2606,18 @@ header p{
 .image-hud::before{
 
     top:0;
-
     left:0;
 
     border-top:2px solid;
-
     border-left:2px solid;
 }
 
 .image-hud::after{
 
     right:0;
-
     bottom:0;
 
     border-right:2px solid;
-
     border-bottom:2px solid;
 }
 
@@ -2213,7 +2626,6 @@ header p{
     position:absolute;
 
     left:8px;
-
     bottom:6px;
 
     color:
@@ -2373,7 +2785,6 @@ header p{
             0 0 50px
             rgba(0,255,100,.15);
     }
-
 }
 
 
@@ -2425,9 +2836,6 @@ header p{
         infinite;
 }
 
-
-/* แสงวิ่งในกล่อง */
-
 .info-box::after{
 
     content:"";
@@ -2435,11 +2843,9 @@ header p{
     position:absolute;
 
     width:180px;
-
     height:180px;
 
     left:-120px;
-
     top:-120px;
 
     border-radius:50%;
@@ -2467,21 +2873,14 @@ header p{
 @keyframes dataGlow{
 
     0%,100%{
-
-        transform:
-            translate(0,0);
-
+        transform:translate(0,0);
         opacity:.35;
     }
 
     50%{
-
-        transform:
-            translate(280px,180px);
-
+        transform:translate(280px,180px);
         opacity:.8;
     }
-
 }
 
 .info-box:hover{
@@ -2543,7 +2942,6 @@ header p{
     position:absolute;
 
     right:12px;
-
     top:8px;
 
     font-family:
@@ -2578,18 +2976,18 @@ header p{
             0 0 18px
             rgba(0,255,150,.10);
     }
-
 }
 
 
-/* ดาวเล็ก ๆ */
+/* =========================================================
+   DATA STARS
+========================================================= */
 
 .data-star{
 
     position:absolute;
 
     width:3px;
-
     height:3px;
 
     border-radius:50%;
@@ -2601,8 +2999,7 @@ header p{
     box-shadow:
         0 0 5px #ffffff,
         0 0 10px #00ffff,
-        0 0 18px
-        rgba(0,255,180,.9);
+        0 0 18px rgba(0,255,180,.9);
 
     animation:
         dataStarFloat
@@ -2616,7 +3013,6 @@ header p{
 @keyframes dataStarFloat{
 
     0%{
-
         transform:
             translate3d(0,0,0)
             scale(.4);
@@ -2625,7 +3021,6 @@ header p{
     }
 
     25%{
-
         opacity:.9;
     }
 
@@ -2643,7 +3038,6 @@ header p{
     }
 
     75%{
-
         opacity:.6;
     }
 
@@ -2659,7 +3053,6 @@ header p{
 
         opacity:0;
     }
-
 }
 
 
@@ -2724,7 +3117,6 @@ header p{
     50%{
         opacity:1;
     }
-
 }
 
 .relationship-label{
@@ -2789,7 +3181,6 @@ header p{
     50%{
         transform:scale(1.25);
     }
-
 }
 
 
@@ -2909,7 +3300,6 @@ footer .copyright{
     position:fixed;
 
     width:7px;
-
     height:7px;
 
     border-radius:50%;
@@ -2940,7 +3330,6 @@ footer .copyright{
 
         opacity:0;
     }
-
 }
 
 
@@ -2953,11 +3342,9 @@ footer .copyright{
     position:fixed;
 
     left:0;
-
     top:0;
 
     width:32px;
-
     height:32px;
 
     pointer-events:none;
@@ -2967,7 +3354,6 @@ footer .copyright{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     font-size:25px;
@@ -3000,49 +3386,36 @@ footer .copyright{
 @keyframes scienceItemFloat{
 
     0%,100%{
-
         margin-top:0;
-
         rotate:-8deg;
     }
 
     50%{
-
         margin-top:-10px;
-
         rotate:8deg;
     }
-
 }
 
 @keyframes scienceItemFade{
 
     0%{
-
         opacity:0;
-
         scale:.3;
     }
 
     15%{
-
         opacity:1;
-
         scale:1;
     }
 
     70%{
-
         opacity:.9;
     }
 
     100%{
-
         opacity:0;
-
         scale:.65;
     }
-
 }
 
 
@@ -3055,11 +3428,9 @@ footer .copyright{
     position:fixed;
 
     left:0;
-
     top:0;
 
     width:35px;
-
     height:35px;
 
     pointer-events:none;
@@ -3069,7 +3440,6 @@ footer .copyright{
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
     font-size:28px;
@@ -3099,7 +3469,6 @@ footer .copyright{
     position:fixed;
 
     width:4px;
-
     height:4px;
 
     border-radius:50%;
@@ -3113,8 +3482,7 @@ footer .copyright{
     box-shadow:
         0 0 7px #ffffff,
         0 0 15px #00ffff,
-        0 0 30px
-        rgba(0,255,200,.9);
+        0 0 30px rgba(0,255,200,.9);
 
     transform:
         rotate(-25deg);
@@ -3133,7 +3501,6 @@ footer .copyright{
     position:absolute;
 
     right:3px;
-
     top:50%;
 
     width:var(--star-tail);
@@ -3192,7 +3559,6 @@ footer .copyright{
 
         opacity:0;
     }
-
 }
 
 
@@ -3209,7 +3575,6 @@ footer .copyright{
         width:min(760px,94%);
 
         margin-left:auto;
-
         margin-right:auto;
     }
 
@@ -3223,11 +3588,9 @@ footer .copyright{
     .relationship-line{
 
         width:3px;
-
         height:75px;
 
         left:50%;
-
         top:-40px;
 
         background:
@@ -3248,7 +3611,6 @@ footer .copyright{
     }
 
     .image-frame{
-
         height:500px;
     }
 }
@@ -3259,7 +3621,6 @@ footer .copyright{
     body{
 
         padding-top:28px;
-
         padding-bottom:28px;
     }
 
@@ -3270,12 +3631,10 @@ footer .copyright{
     }
 
     header h1{
-
         font-size:38px;
     }
 
     header p{
-
         font-size:15px;
     }
 
@@ -3287,12 +3646,10 @@ footer .copyright{
     }
 
     .card{
-
         border-radius:22px;
     }
 
     .card-inner{
-
         border-radius:20px;
     }
 
@@ -3306,13 +3663,11 @@ footer .copyright{
     }
 
     .content{
-
         padding:
             8px 18px 24px;
     }
 
     .content h2{
-
         font-size:23px;
     }
 
@@ -3332,27 +3687,22 @@ footer .copyright{
     }
 
     .formula{
-
         display:none;
     }
 
     .atom{
-
         opacity:.5;
     }
 
     #mouseGlow{
-
         display:none;
     }
 
     .cursor-dot{
-
         display:none;
     }
 
     .molecule{
-
         opacity:.14;
     }
 
@@ -3367,7 +3717,6 @@ footer .copyright{
     /* แถบชื่อบนมือถือ */
 
     .character-strip{
-
         height:28px;
     }
 
@@ -3381,28 +3730,7 @@ footer .copyright{
     }
 
 
-    /* วงแหวนหน้าโหลดบนมือถือ */
-
-    .ring1{
-
-        width:190px;
-
-        height:190px;
-    }
-
-    .ring2{
-
-        width:280px;
-
-        height:280px;
-    }
-
-    .ring3{
-
-        width:390px;
-
-        height:390px;
-    }
+    /* Loader Mobile */
 
     .loader-title{
 
@@ -3423,6 +3751,51 @@ footer .copyright{
         font-size:21px;
     }
 
+    .loader-hud{
+
+        display:none;
+    }
+
+    .ring1{
+        width:170px;
+        height:170px;
+    }
+
+    .ring2{
+        width:240px;
+        height:240px;
+    }
+
+    .ring3{
+        width:320px;
+        height:320px;
+    }
+
+    .ring4{
+        width:410px;
+        height:410px;
+    }
+
+    .ring5{
+        width:500px;
+        height:500px;
+    }
+
+    .loader-slash{
+
+        height:8px;
+
+        left:-55vw;
+
+        width:110vw;
+    }
+
+    .loader-progress{
+
+        height:5px;
+
+        margin-top:28px;
+    }
 }
 
 
@@ -3450,54 +3823,94 @@ footer .copyright{
 
 
 <!-- =========================================================
-     SCIENCE LOADING SCREEN
+     EPIC SCIENCE LOADING SCREEN
 ========================================================= -->
 
 <div id="scienceLoader">
 
     <div class="loader-grid"></div>
 
+    <div class="loader-energy"></div>
 
-    <!-- อุปกรณ์วิทยาศาสตร์ -->
+
+    <!-- SCIENCE OBJECTS -->
 
     <div class="loader-particle lp1">⚛️</div>
-
     <div class="loader-particle lp2">🧪</div>
-
     <div class="loader-particle lp3">🔬</div>
-
     <div class="loader-particle lp4">🧬</div>
-
     <div class="loader-particle lp5">⚗️</div>
-
     <div class="loader-particle lp6">⚙️</div>
+
+
+    <!-- RINGS -->
+
+    <div class="loader-ring ring1"></div>
+    <div class="loader-ring ring2"></div>
+    <div class="loader-ring ring3"></div>
+    <div class="loader-ring ring4"></div>
+    <div class="loader-ring ring5"></div>
+
+
+    <!-- RANDOM ENERGY STARS -->
+
+    <div class="loader-star" style="left:8%;top:12%;--star-speed:2s;"></div>
+    <div class="loader-star" style="left:18%;top:30%;--star-speed:3s;"></div>
+    <div class="loader-star" style="left:28%;top:18%;--star-speed:2.5s;"></div>
+    <div class="loader-star" style="left:37%;top:76%;--star-speed:3.2s;"></div>
+    <div class="loader-star" style="left:47%;top:11%;--star-speed:1.8s;"></div>
+    <div class="loader-star" style="left:58%;top:84%;--star-speed:2.7s;"></div>
+    <div class="loader-star" style="left:69%;top:23%;--star-speed:2.2s;"></div>
+    <div class="loader-star" style="left:77%;top:68%;--star-speed:3.5s;"></div>
+    <div class="loader-star" style="left:88%;top:35%;--star-speed:2.4s;"></div>
+    <div class="loader-star" style="left:94%;top:82%;--star-speed:3s;"></div>
+
+
+    <!-- POWER LINES -->
+
+    <div class="loader-power-line power-line-1"></div>
+    <div class="loader-power-line power-line-2"></div>
 
 
     <div class="loader-core">
 
 
-        <!-- วงแหวน -->
+        <!-- HUD -->
 
-        <div class="loader-ring ring1"></div>
+        <div class="loader-hud">
 
-        <div class="loader-ring ring2"></div>
+            <div class="loader-hud-left">
 
-        <div class="loader-ring ring3"></div>
+                <span>SCIENCE SYSTEM // ONLINE</span>
+                <span>CORE: ISHIGAMI</span>
+                <span>ENERGY: STABLE</span>
 
-
-        <!-- หัวข้อ -->
-
-        <div class="loader-title-wrap">
-
-            <div
-                class="loader-title"
-                id="loaderTitle"
-            >
-                DR.STONE
             </div>
 
 
-            <!-- เส้นฟัน -->
+            <div class="loader-hud-right">
+
+                <span>PROJECT: STONE WORLD</span>
+                <span>DATABASE: 3700+ YEARS</span>
+                <span>STATUS: REBUILDING</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- TITLE -->
+
+        <div class="loader-title-wrap">
+
+            <div class="loader-title" id="loaderTitle">
+
+                DR.STONE
+
+            </div>
+
+
+            <!-- EPIC SLASH -->
 
             <div
                 class="loader-slash"
@@ -3514,7 +3927,7 @@ footer .copyright{
         </div>
 
 
-        <!-- Loading -->
+        <!-- PROGRESS -->
 
         <div class="loader-progress">
 
@@ -3529,7 +3942,19 @@ footer .copyright{
             class="loader-status"
             id="loaderStatus"
         >
+
             INITIALIZING SCIENCE SYSTEM...
+
+        </div>
+
+
+        <div
+            class="loader-percent"
+            id="loaderPercent"
+        >
+
+            SYSTEM LOAD 0%
+
         </div>
 
     </div>
@@ -3549,35 +3974,27 @@ footer .copyright{
     <div class="strip-track">
 
         <span>SENKU</span>
-
         <b>✦</b>
 
         <span>XENO</span>
-
         <b>✦</b>
 
         <span>STANLEY</span>
-
         <b>✦</b>
 
         <span>SENKU</span>
-
         <b>✦</b>
 
         <span>XENO</span>
-
         <b>✦</b>
 
         <span>STANLEY</span>
-
         <b>✦</b>
 
         <span>SENKU</span>
-
         <b>✦</b>
 
         <span>XENO</span>
-
         <b>✦</b>
 
         <span>STANLEY</span>
@@ -3601,35 +4018,27 @@ footer .copyright{
     >
 
         <span>SENKU</span>
-
         <b>✦</b>
 
         <span>XENO</span>
-
         <b>✦</b>
 
         <span>STANLEY</span>
-
         <b>✦</b>
 
         <span>SENKU</span>
-
         <b>✦</b>
 
         <span>XENO</span>
-
         <b>✦</b>
 
         <span>STANLEY</span>
-
         <b>✦</b>
 
         <span>SENKU</span>
-
         <b>✦</b>
 
         <span>XENO</span>
-
         <b>✦</b>
 
         <span>STANLEY</span>
@@ -3721,7 +4130,6 @@ footer .copyright{
 
 
 <div class="atom atom1"></div>
-
 <div class="atom atom2"></div>
 
 
@@ -3731,9 +4139,7 @@ footer .copyright{
 ========================================================= -->
 
 <div class="orb orb1"></div>
-
 <div class="orb orb2"></div>
-
 <div class="orb orb3"></div>
 
 
@@ -3782,7 +4188,6 @@ footer .copyright{
 <section class="gallery">
 
 
-
 <!-- =========================================================
      CHARACTER 1
 ========================================================= -->
@@ -3799,7 +4204,6 @@ footer .copyright{
                 alt="อิชิกามิ เซ็นคู"
                 src="https://i.pinimg.com/736x/a7/09/bd/a709bde710c33ff8ce20f79aa475f945.jpg"
             >
-
 
             <div class="image-hud">
 
@@ -3854,7 +4258,6 @@ footer .copyright{
                 3,700 ปี และตั้งเป้าหมายสร้างอารยธรรมขึ้นมาใหม่ด้วยพลังของวิทยาศาสตร์
 
             </p>
-
 
 
             <div class="info-box">
@@ -3921,9 +4324,7 @@ footer .copyright{
         ศิษย์อาจารย์
 
         <span class="heart">
-
             ♥️
-
         </span>
 
     </div>
@@ -3948,7 +4349,6 @@ footer .copyright{
                 alt="ดร. เซโน ฮูสตัน วิงฟิลด์"
                 src="https://i.pinimg.com/1200x/d3/b3/95/d3b395d2148f3202850d0ba4e34d31c5.jpg"
             >
-
 
             <div class="image-hud">
 
@@ -4001,7 +4401,6 @@ footer .copyright{
                 และเป็นผู้นำของกลุ่มคนในฝั่งอเมริกาหลังจากตื่นขึ้นจากการเป็นหิน
 
             </p>
-
 
 
             <div class="info-box">
@@ -4082,9 +4481,7 @@ footer .copyright{
         คู่หูที่เชื่อใจที่สุด
 
         <span class="heart">
-
             ♥️
-
         </span>
 
     </div>
@@ -4109,7 +4506,6 @@ footer .copyright{
                 alt="สแตนลีย์ สไนเดอร์"
                 src="https://i.pinimg.com/1200x/57/ba/9f/57ba9f43f8d8970fcc6b8c7f16a704d2.jpg"
             >
-
 
             <div class="image-hud">
 
@@ -4162,7 +4558,6 @@ footer .copyright{
                 และเป็นหนึ่งในตัวร้ายที่อันตรายที่สุดในเรื่องด้วยทักษะการรบและการใช้อาวุธที่ไร้เทียมทาน
 
             </p>
-
 
 
             <div class="info-box">
@@ -4272,7 +4667,7 @@ footer .copyright{
 
 
 /* =========================================================
-   SCIENCE LOADING SCREEN
+   EPIC SCIENCE LOADING ENGINE
 ========================================================= */
 
 window.addEventListener(
@@ -4304,6 +4699,11 @@ window.addEventListener(
                 "loaderStatus"
             );
 
+        const percent =
+            document.getElementById(
+                "loaderPercent"
+            );
+
 
         if(!loader){
             return;
@@ -4317,6 +4717,8 @@ window.addEventListener(
             "CALIBRATING CHEMISTRY...",
 
             "LOADING DNA DATABASE...",
+
+            "ANALYZING STONE WORLD...",
 
             "ACTIVATING SCIENCE KINGDOM...",
 
@@ -4333,8 +4735,21 @@ window.addEventListener(
                 () => {
 
 
-                    value +=
-                        Math.random() * 9 + 3;
+                    /*
+                     * โหลดแบบเร็วขึ้นตอนใกล้เต็ม
+                     */
+
+                    if(value < 70){
+
+                        value +=
+                            Math.random() * 7 + 2;
+
+                    }else{
+
+                        value +=
+                            Math.random() * 4 + 1;
+
+                    }
 
 
                     if(value >= 100){
@@ -4349,28 +4764,110 @@ window.addEventListener(
                         progress.style.width =
                             "100%";
 
-                        status.textContent =
-                            messages[
-                                messages.length - 1
-                            ];
 
+                        if(percent){
+
+                            percent.textContent =
+                                "SYSTEM LOAD 100%";
+
+                        }
+
+
+                        status.textContent =
+                            "SCIENCE SYSTEM READY";
+
+
+                        /*
+                         * รอให้ผู้ใช้เห็น 100%
+                         */
 
                         setTimeout(
                             () => {
 
 
-                                /* =================================
-                                   เอฟเฟกต์ฟันผ่าน DR.STONE
-                                ================================= */
+                                /*
+                                 * สร้างอนุภาคฟัน
+                                 */
+
+                                createSlashParticles();
+
+
+                                /*
+                                 * เพิ่ม class ฟัน
+                                 */
 
                                 slash.classList.add(
                                     "cut"
                                 );
 
 
-                                /* =================================
-                                   หัวข้อสว่างวาบ
-                                ================================= */
+                                /*
+                                 * Flash หน้าจอ
+                                 */
+
+                                const flash =
+                                    document.createElement(
+                                        "div"
+                                    );
+
+
+                                flash.style.position =
+                                    "fixed";
+
+                                flash.style.inset =
+                                    "0";
+
+                                flash.style.zIndex =
+                                    "19999";
+
+                                flash.style.pointerEvents =
+                                    "none";
+
+                                flash.style.background =
+                                    "radial-gradient(circle, rgba(255,255,255,.95), rgba(0,255,255,.35) 20%, transparent 65%)";
+
+                                flash.style.opacity =
+                                    "0";
+
+
+                                document.body.appendChild(
+                                    flash
+                                );
+
+
+                                flash.animate(
+
+                                    [
+
+                                        {
+                                            opacity:0
+                                        },
+
+                                        {
+                                            opacity:1
+                                        },
+
+                                        {
+                                            opacity:0
+                                        }
+
+                                    ],
+
+                                    {
+
+                                        duration:650,
+
+                                        easing:
+                                            "cubic-bezier(.16,1,.3,1)"
+
+                                    }
+
+                                );
+
+
+                                /*
+                                 * ทำให้ DR.STONE กระแทกตอนฟัน
+                                 */
 
                                 if(title){
 
@@ -4379,37 +4876,46 @@ window.addEventListener(
                                         [
 
                                             {
-                                                filter:
-                                                    "brightness(1)",
-
                                                 transform:
-                                                    "scale(1)"
+                                                    "scale(1)",
+
+                                                filter:
+                                                    "brightness(1)"
                                             },
 
                                             {
-                                                filter:
-                                                    "brightness(2.4)",
-
                                                 transform:
-                                                    "scale(1.08)"
+                                                    "scale(1.13)",
+
+                                                filter:
+                                                    "brightness(2.5) saturate(1.5)"
                                             },
 
                                             {
-                                                filter:
-                                                    "brightness(1)",
-
                                                 transform:
-                                                    "scale(1)"
+                                                    "scale(.98)",
+
+                                                filter:
+                                                    "brightness(1.2)"
+                                            },
+
+                                            {
+                                                transform:
+                                                    "scale(1)",
+
+                                                filter:
+                                                    "brightness(1)"
                                             }
 
                                         ],
 
                                         {
 
-                                            duration:750,
+                                            duration:1050,
 
                                             easing:
                                                 "cubic-bezier(.16,1,.3,1)"
+
                                         }
 
                                     );
@@ -4417,9 +4923,9 @@ window.addEventListener(
                                 }
 
 
-                                /* =================================
-                                   เปิดหน้าเว็บ
-                                ================================= */
+                                /*
+                                 * เปิดหน้าเว็บหลังฟัน
+                                 */
 
                                 setTimeout(
                                     () => {
@@ -4434,20 +4940,22 @@ window.addEventListener(
 
                                                 loader.remove();
 
+                                                flash.remove();
+
                                             },
 
-                                            1100
+                                            1200
                                         );
 
                                     },
 
-                                    650
+                                    850
                                 );
 
 
                             },
 
-                            350
+                            500
                         );
 
 
@@ -4460,12 +4968,25 @@ window.addEventListener(
                         value + "%";
 
 
+                    if(percent){
+
+                        percent.textContent =
+                            "SYSTEM LOAD " +
+                            Math.floor(value) +
+                            "%";
+
+                    }
+
+
                     const messageIndex =
                         Math.min(
+
                             messages.length - 2,
+
                             Math.floor(
-                                value / 25
+                                value / 20
                             )
+
                         );
 
 
@@ -4477,11 +4998,138 @@ window.addEventListener(
 
                 },
 
-                120
+                110
             );
 
     }
 );
+
+
+
+/* =========================================================
+   CREATE SLASH PARTICLES
+========================================================= */
+
+function createSlashParticles(){
+
+    const loader =
+        document.getElementById(
+            "scienceLoader"
+        );
+
+    if(!loader){
+        return;
+    }
+
+
+    /*
+     * สร้างอนุภาคจำนวนมาก
+     */
+
+    for(
+        let i = 0;
+        i < 55;
+        i++
+    ){
+
+        const particle =
+            document.createElement(
+                "span"
+            );
+
+
+        particle.className =
+            "slash-particle";
+
+
+        /*
+         * จุดเริ่มต้นบริเวณกลางจอ
+         */
+
+        particle.style.left =
+            (
+                35 +
+                Math.random() * 30
+            ) + "%";
+
+
+        particle.style.top =
+            (
+                43 +
+                Math.random() * 14
+            ) + "%";
+
+
+        /*
+         * ทิศทางกระจาย
+         */
+
+        particle.style.setProperty(
+            "--px",
+            (
+                (Math.random() - .5) *
+                700
+            ) + "px"
+        );
+
+
+        particle.style.setProperty(
+            "--py",
+            (
+                (Math.random() - .5) *
+                420
+            ) + "px"
+        );
+
+
+        particle.style.setProperty(
+            "--ps",
+            (
+                .4 +
+                Math.random() * 2
+            )
+        );
+
+
+        particle.style.animationDelay =
+            (
+                Math.random() * .25
+            ) + "s";
+
+
+        loader.appendChild(
+            particle
+        );
+
+
+        /*
+         * เริ่ม animation
+         */
+
+        requestAnimationFrame(
+            () => {
+
+                particle.classList.add(
+                    "cut"
+                );
+
+            }
+        );
+
+
+        setTimeout(
+            () => {
+
+                particle.remove();
+
+            },
+
+            1300
+        );
+
+    }
+
+}
 
 
 
@@ -4524,15 +5172,12 @@ document.addEventListener(
     "mousemove",
     (e) => {
 
-
         mouseX =
             e.clientX;
 
         mouseY =
             e.clientY;
 
-
-        /* Mouse Glow */
 
         if(mouseGlow){
 
@@ -4544,8 +5189,6 @@ document.addEventListener(
 
         }
 
-
-        /* Cursor Trail */
 
         const now =
             performance.now();
@@ -4634,7 +5277,6 @@ animateGlow();
 cards.forEach(
     (card) => {
 
-
         const inner =
             card.querySelector(
                 ".card-inner"
@@ -4657,13 +5299,10 @@ cards.forEach(
             "mousemove",
             (e) => {
 
-
                 if(
                     window.innerWidth <= 600
                 ){
-
                     return;
-
                 }
 
 
@@ -4693,8 +5332,6 @@ cards.forEach(
                      rotateY(${rotateY}deg)
                      translateZ(8px)`;
 
-
-                /* Border Light Direction */
 
                 const angle =
                     Math.atan2(
@@ -4729,7 +5366,6 @@ cards.forEach(
             "mouseleave",
             () => {
 
-
                 card.classList.remove(
                     "is-hovered"
                 );
@@ -4754,13 +5390,10 @@ document.addEventListener(
     "click",
     (e) => {
 
-
         if(
             window.innerWidth <= 600
         ){
-
             return;
-
         }
 
 
@@ -4815,21 +5448,17 @@ document.addEventListener(
             [
 
                 {
-
                     transform:
                         "translate(-50%,-50%) scale(.5)",
 
                     opacity:1
-
                 },
 
                 {
-
                     transform:
                         "translate(-50%,-50%) scale(8)",
 
                     opacity:0
-
                 }
 
             ],
@@ -4882,13 +5511,10 @@ document.addEventListener(
     "mousemove",
     (e) => {
 
-
         if(
             window.innerWidth <= 600
         ){
-
             return;
-
         }
 
 
@@ -4899,9 +5525,7 @@ document.addEventListener(
         if(
             now - lastScienceItem < 120
         ){
-
             return;
-
         }
 
 
@@ -4941,7 +5565,6 @@ document.addEventListener(
                 offsetX
             ) + "px";
 
-
         item.style.top =
             (
                 e.clientY +
@@ -4963,11 +5586,8 @@ document.addEventListener(
 
         setTimeout(
             () => {
-
                 item.remove();
-
             },
-
             2800
         );
 
@@ -4984,13 +5604,10 @@ document.addEventListener(
     "click",
     (e) => {
 
-
         if(
             window.innerWidth <= 600
         ){
-
             return;
-
         }
 
 
@@ -5025,7 +5642,6 @@ document.addEventListener(
             item.style.left =
                 e.clientX + "px";
 
-
             item.style.top =
                 e.clientY + "px";
 
@@ -5048,7 +5664,6 @@ document.addEventListener(
             const endX =
                 Math.cos(angle) *
                 distance;
-
 
             const endY =
                 Math.sin(angle) *
@@ -5125,11 +5740,8 @@ document.addEventListener(
 
             setTimeout(
                 () => {
-
                     item.remove();
-
                 },
-
                 1500
             );
 
@@ -5141,18 +5753,15 @@ document.addEventListener(
 
 
 /* =========================================================
-   SHOOTING STARS — RIGHT → LEFT
+   SHOOTING STARS
 ========================================================= */
 
 function createShootingStar(){
 
-
     if(
         window.innerWidth <= 600
     ){
-
         return;
-
     }
 
 
@@ -5180,7 +5789,6 @@ function createShootingStar(){
 
     star.style.left =
         startX + "px";
-
 
     star.style.top =
         startY + "px";
@@ -5214,7 +5822,6 @@ function createShootingStar(){
     star.style.width =
         size + "px";
 
-
     star.style.height =
         size + "px";
 
@@ -5226,16 +5833,12 @@ function createShootingStar(){
 
     setTimeout(
         () => {
-
             star.remove();
-
         },
-
         duration + 200
     );
 
 }
-
 
 
 function randomShootingStar(){
@@ -5264,7 +5867,7 @@ setTimeout(
 
 
 /* =========================================================
-   FLOATING STARS AROUND ALL INFO BOXES
+   FLOATING STARS AROUND INFO BOXES
 ========================================================= */
 
 const infoBoxes =
@@ -5275,7 +5878,6 @@ const infoBoxes =
 
 infoBoxes.forEach(
     (box) => {
-
 
         const starCount = 16;
 
@@ -5299,14 +5901,12 @@ infoBoxes.forEach(
             const x =
                 Math.random() * 100;
 
-
             const y =
                 Math.random() * 100;
 
 
             star.style.left =
                 x + "%";
-
 
             star.style.top =
                 y + "%";
