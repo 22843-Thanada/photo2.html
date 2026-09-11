@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dr. Stone • Science Galaxy</title>
+<title>DR. STONE • SCIENCE GALAXY</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -19,6489 +18,1173 @@ html{
 }
 
 body{
-    font-family:
-        "Segoe UI",
-        "Noto Sans Thai",
-        Tahoma,
-        sans-serif;
-
-    color:#eefcff;
+    font-family:"Segoe UI","Noto Sans Thai",Tahoma,sans-serif;
+    color:#eaffff;
     min-height:100vh;
     overflow-x:hidden;
-
-    padding-top:34px;
-    padding-bottom:34px;
-
     background:
-        radial-gradient(circle at 15% 20%, rgba(0,255,255,.13), transparent 25%),
-        radial-gradient(circle at 85% 15%, rgba(90,80,255,.16), transparent 28%),
-        radial-gradient(circle at 50% 90%, rgba(0,255,170,.10), transparent 30%),
-        linear-gradient(135deg,#02040d 0%,#061126 45%,#02030a 100%);
+        radial-gradient(circle at 15% 20%,rgba(0,255,255,.14),transparent 25%),
+        radial-gradient(circle at 85% 15%,rgba(100,70,255,.17),transparent 28%),
+        radial-gradient(circle at 50% 90%,rgba(0,255,170,.12),transparent 30%),
+        linear-gradient(135deg,#01030a,#061329 45%,#02030a);
 }
-
 
 /* =========================================================
-   EPIC SCIENCE LOADING SCREEN
-========================================================= */
-
-#scienceLoader{
-    position:fixed;
-    inset:0;
-    z-index:20000;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    overflow:hidden;
-
-    background:
-        radial-gradient(circle at 50% 50%,
-            rgba(0,255,210,.14),
-            transparent 18%),
-        radial-gradient(circle at 15% 20%,
-            rgba(0,255,255,.12),
-            transparent 30%),
-        radial-gradient(circle at 85% 75%,
-            rgba(90,60,255,.16),
-            transparent 32%),
-        radial-gradient(circle at 50% 100%,
-            rgba(0,255,150,.08),
-            transparent 35%),
-        #01030a;
-
-    transition:
-        opacity 1.15s ease,
-        visibility 1.15s ease;
-}
-
-#scienceLoader.loader-hidden{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-}
-
-
-/* =========================================================
-   LOADER GRID
-========================================================= */
-
-.loader-grid{
-    position:absolute;
-    inset:-20%;
-
-    background-image:
-        linear-gradient(
-            rgba(0,255,255,.075) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(0,255,255,.075) 1px,
-            transparent 1px
-        );
-
-    background-size:45px 45px;
-
-    -webkit-mask-image:
-        radial-gradient(
-            circle,
-            #000 10%,
-            transparent 75%
-        );
-
-    mask-image:
-        radial-gradient(
-            circle,
-            #000 10%,
-            transparent 75%
-        );
-
-    animation:
-        loaderGridMove
-        8s
-        linear
-        infinite;
-}
-
-@keyframes loaderGridMove{
-
-    0%{
-        transform:
-            scale(1)
-            rotate(0deg)
-            translate(0,0);
-    }
-
-    50%{
-        transform:
-            scale(1.08)
-            rotate(1deg)
-            translate(-15px,10px);
-    }
-
-    100%{
-        transform:
-            scale(1.18)
-            rotate(3deg)
-            translate(-30px,20px);
-    }
-
-}
-
-
-/* =========================================================
-   CENTRAL ENERGY
-========================================================= */
-
-.loader-energy{
-
-    position:absolute;
-
-    width:600px;
-    height:600px;
-
-    left:50%;
-    top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(0,255,190,.12) 0%,
-            rgba(0,255,255,.06) 22%,
-            transparent 65%
-        );
-
-    filter:blur(2px);
-
-    animation:
-        energyPulse
-        2s
-        ease-in-out
-        infinite;
-}
-
-@keyframes energyPulse{
-
-    0%,100%{
-        transform:
-            translate(-50%,-50%)
-            scale(.8);
-
-        opacity:.45;
-    }
-
-    50%{
-        transform:
-            translate(-50%,-50%)
-            scale(1.15);
-
-        opacity:1;
-    }
-
-}
-
-
-/* =========================================================
-   MASSIVE ENERGY RINGS
-========================================================= */
-
-.loader-ring{
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    border-radius:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    pointer-events:none;
-}
-
-.ring1{
-
-    width:250px;
-    height:250px;
-
-    border:
-        2px solid
-        rgba(0,255,255,.18);
-
-    border-top-color:#00ffff;
-    border-left-color:#00ffff;
-
-    box-shadow:
-        0 0 20px rgba(0,255,255,.25),
-        inset 0 0 20px rgba(0,255,255,.12);
-
-    animation:
-        loaderRingSpin
-        3.5s
-        linear
-        infinite;
-}
-
-.ring2{
-
-    width:340px;
-    height:340px;
-
-    border:
-        1px solid
-        rgba(0,255,170,.25);
-
-    border-right:
-        3px solid #00ff9d;
-
-    box-shadow:
-        0 0 30px rgba(0,255,150,.15);
-
-    animation:
-        loaderRingSpin
-        5s
-        linear
-        infinite reverse;
-}
-
-.ring3{
-
-    width:450px;
-    height:450px;
-
-    border:
-        1px solid
-        rgba(100,80,255,.22);
-
-    border-bottom:
-        3px solid #8e6cff;
-
-    animation:
-        loaderRingSpin
-        7s
-        linear
-        infinite;
-}
-
-.ring4{
-
-    width:580px;
-    height:580px;
-
-    border:
-        1px dashed
-        rgba(0,255,255,.13);
-
-    border-right-color:#00ffff;
-
-    animation:
-        loaderRingSpin
-        11s
-        linear
-        infinite reverse;
-}
-
-.ring5{
-
-    width:720px;
-    height:720px;
-
-    border:
-        1px dotted
-        rgba(0,255,180,.09);
-
-    animation:
-        loaderRingSpin
-        16s
-        linear
-        infinite;
-}
-
-@keyframes loaderRingSpin{
-
-    to{
-        transform:
-            translate(-50%,-50%)
-            rotate(360deg);
-    }
-
-}
-
-
-/* =========================================================
-   RING TICKS
-========================================================= */
-
-.loader-ring::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-8px;
-
-    border-radius:50%;
-
-    background:
-        repeating-conic-gradient(
-            from 0deg,
-            rgba(0,255,255,.7) 0deg 2deg,
-            transparent 2deg 14deg
-        );
-
-    -webkit-mask:
-        radial-gradient(
-            transparent 0 94%,
-            #000 95% 100%
-        );
-
-    mask:
-        radial-gradient(
-            transparent 0 94%,
-            #000 95% 100%
-        );
-
-    opacity:.45;
-}
-
-
-/* =========================================================
-   LOADER CORE
-========================================================= */
-
-.loader-core{
-
-    position:relative;
-
-    z-index:10;
-
-    width:min(850px,94%);
-
-    text-align:center;
-}
-
-
-/* =========================================================
-   SCIENCE HUD
-========================================================= */
-
-.loader-hud{
-
-    position:absolute;
-
-    width:100%;
-
-    top:-105px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    padding:0 20px;
-
-    color:rgba(115,255,240,.45);
-
-    font:
-        9px
-        "Courier New",
-        monospace;
-
-    letter-spacing:2px;
-
-    text-shadow:
-        0 0 8px
-        rgba(0,255,255,.7);
-}
-
-.loader-hud-left,
-.loader-hud-right{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:7px;
-
-    text-align:left;
-}
-
-.loader-hud-right{
-    text-align:right;
-}
-
-
-/* =========================================================
-   DR.STONE TITLE
-========================================================= */
-
-.loader-title-wrap{
-
-    position:relative;
-
-    display:inline-block;
-
-    isolation:isolate;
-}
-
-.loader-title{
-
-    position:relative;
-
-    z-index:3;
-
-    font-size:
-        clamp(58px,11vw,125px);
-
-    font-weight:1000;
-
-    letter-spacing:8px;
-
-    color:#ffffff;
-
-    text-shadow:
-        0 0 8px #ffffff,
-        0 0 20px #00ffff,
-        0 0 45px #00ffff,
-        0 0 85px rgba(0,255,180,.8),
-        0 0 130px rgba(0,255,150,.4);
-
-    animation:
-        loaderTitlePulse
-        1.4s
-        ease-in-out
-        infinite;
-
-    transform-origin:center;
-}
-
-@keyframes loaderTitlePulse{
-
-    0%,100%{
-        filter:
-            brightness(1)
-            saturate(1);
-    }
-
-    50%{
-        filter:
-            brightness(1.5)
-            saturate(1.4);
-    }
-
-}
-
-
-/* =========================================================
-   TITLE ENERGY AURA
-========================================================= */
-
-.loader-title-wrap::before{
-
-    content:"";
-
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    width:150%;
-    height:170%;
-
-    transform:
-        translate(-50%,-50%);
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(0,255,200,.28),
-            rgba(0,255,255,.09) 30%,
-            transparent 70%
-        );
-
-    filter:blur(25px);
-
-    z-index:-1;
-
-    animation:
-        titleAura
-        2s
-        ease-in-out
-        infinite;
-}
-
-@keyframes titleAura{
-
-    0%,100%{
-        opacity:.45;
-        transform:
-            translate(-50%,-50%)
-            scale(.85);
-    }
-
-    50%{
-        opacity:1;
-        transform:
-            translate(-50%,-50%)
-            scale(1.12);
-    }
-
-}
-
-
-/* =========================================================
-   POWER LINES BEHIND TITLE
-========================================================= */
-
-.loader-power-line{
-
-    position:absolute;
-
-    left:50%;
-
-    width:100vw;
-
-    height:1px;
-
-    transform:
-        translateX(-50%);
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(0,255,255,.05),
-            #00ffff,
-            #ffffff,
-            #00ffff,
-            rgba(0,255,255,.05),
-            transparent
-        );
-
-    box-shadow:
-        0 0 15px #00ffff;
-
-    opacity:.35;
-
-    pointer-events:none;
-}
-
-.power-line-1{
-    top:34%;
-}
-
-.power-line-2{
-    top:66%;
-}
-
-
-/* =========================================================
-   ⚡ NEW: VERTICAL SCIENCE CUT
-   ผ่าตรงกลางจากบนลงล่าง
-========================================================= */
-
-.loader-cut{
-
-    position:absolute;
-
-    z-index:30;
-
-    left:50%;
-    top:-28%;
-
-    width:150px;
-    height:156%;
-
-    transform:
-        translateX(-50%);
-
-    opacity:0;
-
-    pointer-events:none;
-
-    overflow:visible;
-}
-
-
-/* =========================================================
-   LIGHTNING SVG
-========================================================= */
-
-.lightning-svg{
-
-    position:absolute;
-
-    left:0;
-    top:0;
-
-    width:100%;
-    height:100%;
-
-    overflow:visible;
-
-    filter:
-        drop-shadow(0 0 4px #ffffff)
-        drop-shadow(0 0 10px #00ffff)
-        drop-shadow(0 0 25px #00ffff)
-        drop-shadow(0 0 45px rgba(0,255,180,.8));
-}
-
-
-/* สายฟ้าหลัก */
-
-.bolt-path{
-
-    fill:none;
-
-    stroke:
-        url(#boltGradient);
-
-    stroke-linecap:round;
-    stroke-linejoin:round;
-
-    stroke-dasharray:1000;
-    stroke-dashoffset:1000;
-}
-
-
-/* สายฟ้าตรงกลาง */
-
-.bolt-main{
-
-    stroke-width:5;
-}
-
-
-/* สายฟ้าแขนซ้าย */
-
-.bolt-left{
-
-    stroke-width:2.8;
-}
-
-
-/* สายฟ้าแขนขวา */
-
-.bolt-right{
-
-    stroke-width:2.8;
-}
-
-
-/* สายฟ้าขนาดเล็ก */
-
-.bolt-small{
-
-    stroke-width:2;
-
-    opacity:.85;
-}
-
-
-/* เริ่มวาดสายฟ้า */
-
-.loader-cut.cut{
-
-    animation:
-        cutContainer
-        1.15s
-        cubic-bezier(.16,1,.3,1)
-        forwards;
-}
-
-.loader-cut.cut .bolt-path{
-
-    animation:
-        drawLightning
-        .7s
-        cubic-bezier(.16,1,.3,1)
-        forwards;
-}
-
-.loader-cut.cut .bolt-left{
-    animation-delay:.04s;
-}
-
-.loader-cut.cut .bolt-right{
-    animation-delay:.08s;
-}
-
-.loader-cut.cut .bolt-small{
-    animation-delay:.12s;
-}
-
-
-/* =========================================================
-   MAIN ENERGY BLADE
-========================================================= */
-
-.cut-flash{
-
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    width:8px;
-    height:118%;
-
-    transform:
-        translate(-50%,-50%)
-        scaleY(.05);
-
-    background:
-        linear-gradient(
-            to bottom,
-            transparent,
-            #ffffff 12%,
-            #00ffff 32%,
-            #ffffff 50%,
-            #00ff9d 68%,
-            #ffffff 88%,
-            transparent
-        );
-
-    box-shadow:
-        0 0 8px #ffffff,
-        0 0 18px #00ffff,
-        0 0 35px #00ffff,
-        0 0 70px #00ff9d,
-        0 0 130px rgba(0,255,255,.9);
-
-    opacity:0;
-
-    mix-blend-mode:screen;
-}
-
-.loader-cut.cut .cut-flash{
-
-    animation:
-        flashCut
-        .45s
-        cubic-bezier(.16,1,.3,1)
-        .25s
-        forwards;
-}
-
-
-/* =========================================================
-   EXTRA CENTRAL ENERGY CORE
-========================================================= */
-
-.cut-core{
-
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    width:22px;
-    height:22px;
-
-    transform:
-        translate(-50%,-50%)
-        scale(.1);
-
-    border-radius:50%;
-
-    background:#ffffff;
-
-    box-shadow:
-        0 0 8px #ffffff,
-        0 0 20px #00ffff,
-        0 0 45px #00ffff,
-        0 0 90px #00ff9d,
-        0 0 150px rgba(0,255,255,.8);
-
-    opacity:0;
-}
-
-.loader-cut.cut .cut-core{
-
-    animation:
-        coreExplosion
-        .6s
-        cubic-bezier(.16,1,.3,1)
-        .22s
-        forwards;
-}
-
-
-/* =========================================================
-   ELECTRIC SHOCK RING
-========================================================= */
-
-.cut-ring{
-
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    width:25px;
-    height:25px;
-
-    border:
-        2px solid #ffffff;
-
-    border-radius:50%;
-
-    transform:
-        translate(-50%,-50%)
-        scale(.1);
-
-    opacity:0;
-
-    box-shadow:
-        0 0 10px #ffffff,
-        0 0 25px #00ffff,
-        0 0 50px #00ff9d;
-}
-
-.loader-cut.cut .cut-ring{
-
-    animation:
-        electricRing
-        .8s
-        cubic-bezier(.16,1,.3,1)
-        .28s
-        forwards;
-}
-
-
-/* =========================================================
-   LIGHTNING ANIMATION
-========================================================= */
-
-@keyframes drawLightning{
-
-    0%{
-        stroke-dashoffset:1000;
-        opacity:0;
-    }
-
-    15%{
-        opacity:1;
-    }
-
-    100%{
-        stroke-dashoffset:0;
-        opacity:1;
-    }
-}
-
-
-@keyframes cutContainer{
-
-    0%{
-
-        opacity:0;
-
-        transform:
-            translateX(-50%)
-            scaleY(.05);
-    }
-
-    12%{
-
-        opacity:1;
-
-        transform:
-            translateX(-50%)
-            scaleY(.18);
-    }
-
-    38%{
-
-        opacity:1;
-
-        transform:
-            translateX(-50%)
-            scaleY(.55);
-    }
-
-    68%{
-
-        opacity:1;
-
-        transform:
-            translateX(-50%)
-            scaleY(1);
-    }
-
-    84%{
-
-        opacity:1;
-
-        transform:
-            translateX(-50%)
-            scaleY(1.08);
-    }
-
-    100%{
-
-        opacity:0;
-
-        transform:
-            translateX(-50%)
-            scaleY(1.15);
-    }
-}
-
-
-@keyframes flashCut{
-
-    0%{
-
-        opacity:0;
-
-        transform:
-            translate(-50%,-50%)
-            scaleY(.02);
-    }
-
-    20%{
-
-        opacity:1;
-
-        transform:
-            translate(-50%,-50%)
-            scaleY(.55);
-    }
-
-    45%{
-
-        opacity:1;
-
-        transform:
-            translate(-50%,-50%)
-            scaleY(1);
-    }
-
-    100%{
-
-        opacity:0;
-
-        transform:
-            translate(-50%,-50%)
-            scaleY(1.2);
-    }
-}
-
-
-@keyframes coreExplosion{
-
-    0%{
-
-        opacity:0;
-
-        transform:
-            translate(-50%,-50%)
-            scale(.1);
-    }
-
-    25%{
-
-        opacity:1;
-
-        transform:
-            translate(-50%,-50%)
-            scale(1.5);
-    }
-
-    55%{
-
-        opacity:1;
-
-        transform:
-            translate(-50%,-50%)
-            scale(3);
-    }
-
-    100%{
-
-        opacity:0;
-
-        transform:
-            translate(-50%,-50%)
-            scale(7);
-    }
-}
-
-
-@keyframes electricRing{
-
-    0%{
-
-        opacity:0;
-
-        transform:
-            translate(-50%,-50%)
-            scale(.1);
-    }
-
-    20%{
-
-        opacity:1;
-    }
-
-    100%{
-
-        opacity:0;
-
-        transform:
-            translate(-50%,-50%)
-            scale(13);
-    }
-}
-
-
-/* =========================================================
-   TITLE CUT IMPACT
-========================================================= */
-
-.loader-title.cut-hit{
-
-    animation:
-        titleCutImpact
-        1s
-        cubic-bezier(.16,1,.3,1)
-        forwards;
-}
-
-@keyframes titleCutImpact{
-
-    0%{
-
-        transform:
-            scale(1);
-
-        filter:
-            brightness(1);
-    }
-
-    25%{
-
-        transform:
-            scale(1.12);
-
-        filter:
-            brightness(2.7)
-            saturate(1.8);
-    }
-
-    38%{
-
-        transform:
-            translateX(-4px)
-            scale(1.07);
-
-        filter:
-            brightness(2);
-    }
-
-    48%{
-
-        transform:
-            translateX(4px)
-            scale(1.05);
-
-        filter:
-            brightness(1.8);
-    }
-
-    58%{
-
-        transform:
-            translateX(-3px)
-            scale(1.03);
-    }
-
-    70%{
-
-        transform:
-            translateX(2px)
-            scale(1.01);
-    }
-
-    100%{
-
-        transform:
-            translateX(0)
-            scale(1);
-
-        filter:
-            brightness(1);
-    }
-}
-
-
-/* =========================================================
-   CUT PARTICLES
-========================================================= */
-
-.slash-particle{
-
-    position:absolute;
-
-    z-index:35;
-
-    width:5px;
-    height:5px;
-
-    border-radius:50%;
-
-    background:#ffffff;
-
-    box-shadow:
-        0 0 8px #ffffff,
-        0 0 18px #00ffff,
-        0 0 35px #00ff9d;
-
-    opacity:0;
-}
-
-.slash-particle.cut{
-
-    animation:
-        slashParticleFly
-        1s
-        ease-out
-        forwards;
-}
-
-@keyframes slashParticleFly{
-
-    0%{
-
-        opacity:0;
-
-        transform:
-            translate(0,0)
-            scale(.2);
-    }
-
-    15%{
-        opacity:1;
-    }
-
-    100%{
-
-        opacity:0;
-
-        transform:
-            translate(
-                var(--px),
-                var(--py)
-            )
-            scale(
-                var(--ps)
-            );
-    }
-}
-
-
-/* =========================================================
-   SUBTITLE
-========================================================= */
-
-.loader-subtitle{
-
-    margin-top:15px;
-
-    color:#72ffe0;
-
-    font:
-        12px
-        "Courier New",
-        monospace;
-
-    letter-spacing:5px;
-
-    text-shadow:
-        0 0 10px #00ffff,
-        0 0 25px rgba(0,255,180,.7);
-
-    animation:
-        subtitlePulse
-        2.5s
-        ease-in-out
-        infinite;
-}
-
-@keyframes subtitlePulse{
-
-    0%,100%{
-        opacity:.55;
-    }
-
-    50%{
-        opacity:1;
-    }
-}
-
-
-/* =========================================================
-   LOADING BAR
-========================================================= */
-
-.loader-progress{
-
-    width:min(550px,82%);
-
-    height:6px;
-
-    margin:
-        34px auto 14px;
-
-    border:
-        1px solid
-        rgba(0,255,255,.45);
-
-    background:
-        rgba(0,255,255,.025);
-
-    overflow:hidden;
-
-    box-shadow:
-        0 0 15px rgba(0,255,255,.15),
-        inset 0 0 10px rgba(0,255,255,.08);
-
-    position:relative;
-}
-
-#loaderProgressBar{
-
-    display:block;
-
-    width:0%;
-
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #00ffff,
-            #00ff9d,
-            #ffffff,
-            #00ffff
-        );
-
-    box-shadow:
-        0 0 12px #00ffff,
-        0 0 30px #00ff9d;
-
-    transition:
-        width .12s linear;
-
-    position:relative;
-}
-
-#loaderProgressBar::after{
-
-    content:"";
-
-    position:absolute;
-
-    right:0;
-
-    top:-5px;
-
-    width:20px;
-
-    height:16px;
-
-    background:#ffffff;
-
-    filter:blur(7px);
-
-    box-shadow:
-        0 0 20px #00ffff,
-        0 0 40px #00ff9d;
-}
-
-
-/* =========================================================
-   STATUS
-========================================================= */
-
-.loader-status{
-
-    color:
-        rgba(170,255,245,.7);
-
-    font:
-        10px
-        "Courier New",
-        monospace;
-
-    letter-spacing:3px;
-
-    text-shadow:
-        0 0 8px
-        rgba(0,255,255,.5);
-}
-
-
-/* =========================================================
-   PERCENT
-========================================================= */
-
-.loader-percent{
-
-    margin-top:8px;
-
-    color:
-        rgba(110,255,235,.4);
-
-    font:
-        9px
-        "Courier New",
-        monospace;
-
-    letter-spacing:2px;
-}
-
-
-/* =========================================================
-   SCIENCE FLOATING OBJECTS
-========================================================= */
-
-.loader-particle{
-
-    position:absolute;
-
-    z-index:4;
-
-    font-size:28px;
-
-    opacity:.65;
-
-    filter:
-        drop-shadow(0 0 8px #00ffff)
-        drop-shadow(0 0 18px rgba(0,255,180,.8));
-
-    animation:
-        loaderParticleFloat
-        4s
-        ease-in-out
-        infinite;
-}
-
-.lp1{
-    left:8%;
-    top:17%;
-    animation-delay:-1s;
-}
-
-.lp2{
-    left:19%;
-    bottom:16%;
-    animation-delay:-2s;
-}
-
-.lp3{
-    right:12%;
-    top:17%;
-    animation-delay:-3s;
-}
-
-.lp4{
-    right:21%;
-    bottom:18%;
-    animation-delay:-1.5s;
-}
-
-.lp5{
-    left:5%;
-    top:55%;
-    animation-delay:-2.5s;
-}
-
-.lp6{
-    right:6%;
-    top:54%;
-    animation-delay:-3.5s;
-}
-
-@keyframes loaderParticleFloat{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(0deg)
-            scale(.75);
-
-        opacity:.4;
-    }
-
-    50%{
-        transform:
-            translateY(-30px)
-            rotate(25deg)
-            scale(1.2);
-
-        opacity:.9;
-    }
-}
-
-
-/* =========================================================
-   SCIENCE PARTICLE FIELD
-========================================================= */
-
-.loader-star{
-
-    position:absolute;
-
-    width:3px;
-    height:3px;
-
-    border-radius:50%;
-
-    background:#ffffff;
-
-    box-shadow:
-        0 0 7px #ffffff,
-        0 0 16px #00ffff,
-        0 0 30px #00ff9d;
-
-    animation:
-        loaderStarPulse
-        var(--star-speed)
-        ease-in-out
-        infinite;
-}
-
-@keyframes loaderStarPulse{
-
-    0%,100%{
-        opacity:.15;
-        transform:scale(.5);
-    }
-
-    50%{
-        opacity:1;
-        transform:scale(1.8);
-    }
-}
-
-
-/* =========================================================
-   CHARACTER NAME MOVING STRIPS
-========================================================= */
-
-.character-strip{
-
-    position:fixed;
-
-    left:0;
-
-    width:100%;
-
-    height:34px;
-
-    z-index:9000;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    border-top:
-        1px solid
-        rgba(0,255,255,.25);
-
-    border-bottom:
-        1px solid
-        rgba(0,255,255,.25);
-
-    background:
-        rgba(2,8,18,.88);
-
-    backdrop-filter:
-        blur(8px);
-
-    box-shadow:
-        0 0 18px
-        rgba(0,255,255,.08);
-}
-
-.character-strip-top{
-    top:0;
-}
-
-.character-strip-bottom{
-    bottom:0;
-}
-
-.strip-track{
-
-    width:max-content;
-
-    min-width:100%;
-
-    height:100%;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:28px;
-
-    padding:
-        0 20px;
-
-    color:#70fff0;
-
-    font:
-        700 12px
-        "Courier New",
-        monospace;
-
-    letter-spacing:4px;
-
-    white-space:nowrap;
-
-    text-shadow:
-        0 0 8px
-        rgba(0,255,180,.8);
-
-    animation:
-        stripLeftToRight
-        18s
-        linear
-        infinite;
-}
-
-.strip-track b{
-
-    color:#00ffff;
-
-    text-shadow:
-        0 0 10px #00ffff;
-}
-
-.strip-track.reverse{
-
-    animation:
-        stripRightToLeft
-        18s
-        linear
-        infinite;
-}
-
-@keyframes stripLeftToRight{
-
-    from{
-        transform:
-            translateX(-45%);
-    }
-
-    to{
-        transform:
-            translateX(0);
-    }
-}
-
-@keyframes stripRightToLeft{
-
-    from{
-        transform:
-            translateX(0);
-    }
-
-    to{
-        transform:
-            translateX(-45%);
-    }
-}
-
-
-/* =========================================================
-   STAR BACKGROUND
+   STAR FIELD
 ========================================================= */
 
 body::before{
     content:"";
-
     position:fixed;
-
     inset:0;
-
     pointer-events:none;
-
     z-index:-10;
 
     background-image:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.9)
-            1px,
-            transparent 1px
-        ),
-
-        radial-gradient(
-            circle,
-            rgba(0,240,255,.65)
-            1px,
-            transparent 1px
-        ),
-
-        radial-gradient(
-            circle,
-            rgba(150,100,255,.5)
-            1px,
-            transparent 1px
-        );
+        radial-gradient(circle,rgba(255,255,255,.95) 1px,transparent 1px),
+        radial-gradient(circle,rgba(0,240,255,.7) 1px,transparent 1px),
+        radial-gradient(circle,rgba(170,100,255,.7) 1px,transparent 1px);
 
     background-size:
-        90px 90px,
-        150px 150px,
-        220px 220px;
+        70px 70px,
+        120px 120px,
+        190px 190px;
 
     background-position:
         10px 20px,
         40px 80px,
         100px 30px;
 
-    animation:
-        starsMove
-        30s
-        linear
-        infinite;
+    animation:starsMove 35s linear infinite;
 }
 
 @keyframes starsMove{
-
-    from{
-        transform:
-            translateY(0);
-    }
-
-    to{
-        transform:
-            translateY(90px);
-    }
+    from{transform:translateY(0)}
+    to{transform:translateY(180px)}
 }
 
-
 /* =========================================================
-   SCIENCE GRID
+   LOADING SCREEN
 ========================================================= */
 
-body::after{
-
-    content:"";
-
+#loader{
     position:fixed;
-
     inset:0;
-
-    pointer-events:none;
-
-    z-index:-9;
-
-    background-image:
-
-        linear-gradient(
-            rgba(0,255,255,.035)
-            1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(0,255,255,.035)
-            1px,
-            transparent 1px
-        );
-
-    background-size:
-        55px 55px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,.8),
-            transparent 90%
-        );
-}
-
-
-/* =========================================================
-   MOUSE GLOW
-========================================================= */
-
-#mouseGlow{
-
-    position:fixed;
-
-    width:420px;
-
-    height:420px;
-
-    left:0;
-
-    top:0;
-
-    transform:
-        translate(-50%,-50%);
-
-    pointer-events:none;
-
-    z-index:9999;
-
-    border-radius:50%;
+    z-index:99999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    overflow:hidden;
 
     background:
-        radial-gradient(
-            circle,
-            rgba(0,255,255,.18) 0%,
-            rgba(0,255,200,.08) 22%,
-            rgba(90,100,255,.045) 42%,
-            transparent 70%
-        );
+        radial-gradient(circle at center,rgba(0,255,255,.12),transparent 35%),
+        linear-gradient(135deg,#01030a,#030a1d,#010207);
 
-    filter:blur(5px);
-
-    mix-blend-mode:screen;
+    transition:opacity 1s,visibility 1s;
 }
 
-
-/* =========================================================
-   GLOW ORBS
-========================================================= */
-
-.orb{
-
-    position:fixed;
-
-    border-radius:50%;
-
-    filter:blur(35px);
-
-    pointer-events:none;
-
-    z-index:-7;
-
-    opacity:.45;
+#loader.hide{
+    opacity:0;
+    visibility:hidden;
 }
 
-.orb1{
-
-    width:260px;
-    height:260px;
-
-    background:#00eaff;
-
-    top:10%;
-    left:-100px;
-
-    animation:
-        orbFloat
-        9s
-        ease-in-out
-        infinite;
-}
-
-.orb2{
-
-    width:300px;
-    height:300px;
-
-    background:#754cff;
-
-    right:-120px;
-    top:40%;
-
-    animation:
-        orbFloat
-        12s
-        ease-in-out
-        infinite reverse;
-}
-
-.orb3{
-
-    width:220px;
-    height:220px;
-
-    background:#00ffa6;
-
-    bottom:-80px;
-    left:35%;
-
-    animation:
-        orbFloat
-        10s
-        ease-in-out
-        infinite;
-}
-
-@keyframes orbFloat{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
-    50%{
-        transform:
-            translateY(-40px)
-            scale(1.08);
-    }
-}
-
-
-/* =========================================================
-   SCIENCE PARTICLES
-========================================================= */
-
-.science-particle{
-
-    position:fixed;
-
-    width:4px;
-    height:4px;
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    z-index:-1;
-
-    background:#8cffff;
-
-    box-shadow:
-        0 0 7px #00ffff,
-        0 0 18px rgba(0,255,255,.8);
-
-    animation:
-        particleDrift
-        8s
-        ease-in-out
-        infinite;
-}
-
-.p1{left:8%;top:30%;animation-delay:-1s;}
-.p2{left:19%;top:82%;animation-delay:-4s;}
-.p3{left:34%;top:24%;animation-delay:-6s;}
-.p4{left:51%;top:70%;animation-delay:-2s;}
-.p5{left:68%;top:31%;animation-delay:-7s;}
-.p6{left:82%;top:88%;animation-delay:-3s;}
-.p7{left:91%;top:48%;animation-delay:-5s;}
-.p8{left:44%;top:7%;animation-delay:-1.5s;}
-.p9{left:75%;top:12%;animation-delay:-6.5s;}
-.p10{left:27%;top:53%;animation-delay:-3.5s;}
-
-@keyframes particleDrift{
-
-    0%,100%{
-        transform:
-            translate3d(0,0,0)
-            scale(.7);
-
-        opacity:.2;
-    }
-
-    50%{
-        transform:
-            translate3d(24px,-38px,0)
-            scale(1.7);
-
-        opacity:1;
-    }
-}
-
-
-/* =========================================================
-   MOLECULE
-========================================================= */
-
-.molecule{
-
-    position:fixed;
-
-    width:62px;
-    height:62px;
-
-    border:
-        1px solid
-        rgba(92,255,255,.22);
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    z-index:-3;
-
-    opacity:.28;
-
-    box-shadow:
-        inset 0 0 18px rgba(0,255,255,.08),
-        0 0 22px rgba(0,255,255,.06);
-
-    animation:
-        moleculeFloat
-        11s
-        ease-in-out
-        infinite;
-}
-
-.molecule::before,
-.molecule::after{
-
-    content:"";
-
+.loader-grid{
     position:absolute;
-
-    width:10px;
-    height:10px;
-
-    border-radius:50%;
-
-    background:#70ffff;
-
-    box-shadow:
-        0 0 14px #00ffff;
+    inset:0;
+    opacity:.25;
+    background-image:
+        linear-gradient(rgba(0,255,255,.12) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,255,255,.12) 1px,transparent 1px);
+    background-size:50px 50px;
+    transform:perspective(500px) rotateX(60deg) scale(1.5);
+    transform-origin:center bottom;
+    animation:gridMove 5s linear infinite;
 }
 
-.molecule::before{
-    left:5px;
-    top:22px;
+@keyframes gridMove{
+    from{background-position:0 0}
+    to{background-position:0 50px}
 }
 
-.molecule::after{
-    right:5px;
-    bottom:12px;
+.loader-core{
+    position:relative;
+    z-index:3;
+    text-align:center;
 }
 
-.molecule span{
-
-    position:absolute;
-
-    width:9px;
-    height:9px;
-
-    border-radius:50%;
-
-    left:25px;
-    top:7px;
-
-    background:#a88cff;
-
-    box-shadow:
-        0 0 14px #8e6cff;
+.loader-small{
+    letter-spacing:8px;
+    font-size:13px;
+    color:#00ffff;
+    text-shadow:0 0 10px #00ffff;
+    margin-bottom:20px;
+    animation:blink 1s infinite alternate;
 }
 
-.molecule1{
-    left:2%;
-    top:9%;
+@keyframes blink{
+    from{opacity:.35}
+    to{opacity:1}
 }
 
-.molecule2{
-    right:3%;
-    top:55%;
-    animation-delay:-4s;
-    transform:scale(.8);
-}
+.loader-title{
+    position:relative;
+    font-size:clamp(60px,12vw,150px);
+    font-weight:1000;
+    letter-spacing:8px;
 
-.molecule3{
-    left:47%;
-    bottom:5%;
-    animation-delay:-7s;
-    transform:scale(.65);
-}
+    background:linear-gradient(
+        180deg,
+        #ffffff,
+        #8fffff 30%,
+        #00eaff 55%,
+        #7a65ff 100%
+    );
 
-@keyframes moleculeFloat{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(0deg);
-    }
-
-    50%{
-        transform:
-            translateY(-28px)
-            rotate(20deg);
-    }
-}
-
-
-/* =========================================================
-   FLOATING SCIENCE SYMBOLS
-========================================================= */
-
-.science{
-
-    position:fixed;
-
-    z-index:-3;
-
-    pointer-events:none;
-
-    user-select:none;
-
-    font-size:28px;
-
-    opacity:.22;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
 
     filter:
-        drop-shadow(
-            0 0 12px
-            rgba(0,255,255,.8)
-        );
+        drop-shadow(0 0 8px #00ffff)
+        drop-shadow(0 0 30px #0077ff);
 
     animation:
-        floatScience
-        9s
-        ease-in-out
-        infinite,
-
-        rotateScience
-        12s
-        linear
-        infinite;
+        titlePulse 2s ease-in-out infinite alternate,
+        titleEnter 1.5s cubic-bezier(.17,.84,.44,1);
 }
 
-.s1{left:5%;top:18%;animation-delay:0s;}
-.s2{left:14%;top:65%;animation-delay:2s;}
-.s3{left:28%;top:10%;animation-delay:4s;}
-.s4{left:43%;top:80%;animation-delay:1s;}
-.s5{left:58%;top:15%;animation-delay:3s;}
-.s6{left:73%;top:68%;animation-delay:5s;}
-.s7{left:88%;top:23%;animation-delay:2.5s;}
-.s8{left:93%;top:78%;animation-delay:4.5s;}
-.s9{left:35%;top:45%;animation-delay:1.5s;}
-.s10{left:65%;top:42%;animation-delay:3.5s;}
+@keyframes titlePulse{
+    from{filter:drop-shadow(0 0 8px #00ffff) drop-shadow(0 0 15px #0077ff)}
+    to{filter:drop-shadow(0 0 20px #00ffff) drop-shadow(0 0 60px #7a55ff)}
+}
 
-@keyframes floatScience{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            translateX(0);
+@keyframes titleEnter{
+    from{
+        opacity:0;
+        transform:scale(.3) rotateX(80deg);
     }
-
-    50%{
-        transform:
-            translateY(-30px)
-            translateX(18px);
+    to{
+        opacity:1;
+        transform:scale(1) rotateX(0);
     }
 }
 
-@keyframes rotateScience{
+/* =========================================================
+   ELECTRIC LIGHTNING
+========================================================= */
 
-    0%{
-        rotate:0deg;
+.lightning{
+    position:absolute;
+    top:50%;
+    left:-20%;
+    width:140%;
+    height:5px;
+    z-index:5;
+    transform:rotate(-8deg);
+    opacity:0;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #00ffff,
+        #ffffff,
+        #00ffff,
+        transparent
+    );
+
+    box-shadow:
+        0 0 8px #fff,
+        0 0 25px #00ffff,
+        0 0 60px #008cff;
+
+    animation:lightningStrike 3.2s infinite;
+}
+
+@keyframes lightningStrike{
+    0%,55%{
+        opacity:0;
+        transform:translateX(-80%) rotate(-8deg);
+    }
+
+    58%{
+        opacity:1;
+    }
+
+    61%{
+        opacity:0;
+    }
+
+    64%{
+        opacity:1;
+    }
+
+    68%{
+        opacity:0;
+        transform:translateX(80%) rotate(-8deg);
     }
 
     100%{
-        rotate:360deg;
+        opacity:0;
     }
 }
 
+.lightning::before,
+.lightning::after{
+    content:"";
+    position:absolute;
+    width:45px;
+    height:120px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #00ffff,
+        transparent
+    );
+    filter:blur(2px);
+}
+
+.lightning::before{
+    left:25%;
+    top:-50px;
+    transform:rotate(35deg);
+}
+
+.lightning::after{
+    left:70%;
+    top:-70px;
+    transform:rotate(-30deg);
+}
 
 /* =========================================================
-   FLOATING FORMULAS
+   LOADER PROGRESS
+========================================================= */
+
+.loader-status{
+    margin-top:30px;
+    width:min(500px,75vw);
+    height:5px;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(0,255,255,.3);
+    box-shadow:0 0 20px rgba(0,255,255,.2);
+    overflow:hidden;
+}
+
+.loader-bar{
+    width:0;
+    height:100%;
+    background:linear-gradient(90deg,#00ffff,#765cff,#00ffcc);
+    box-shadow:0 0 20px #00ffff;
+    animation:loading 3.5s forwards;
+}
+
+@keyframes loading{
+    to{width:100%}
+}
+
+.loader-text{
+    margin-top:14px;
+    font-size:11px;
+    letter-spacing:4px;
+    color:#72ffff;
+}
+
+/* =========================================================
+   TOP / BOTTOM SCIENCE MARQUEE
+========================================================= */
+
+.science-marquee{
+    position:fixed;
+    left:0;
+    width:100%;
+    height:42px;
+    z-index:1000;
+    overflow:hidden;
+    background:rgba(0,8,20,.65);
+    border-top:1px solid rgba(0,255,255,.25);
+    border-bottom:1px solid rgba(0,255,255,.25);
+    backdrop-filter:blur(8px);
+}
+
+.science-marquee.top{
+    top:0;
+}
+
+.science-marquee.bottom{
+    bottom:0;
+}
+
+.marquee-track{
+    display:flex;
+    width:max-content;
+    height:100%;
+    align-items:center;
+    gap:70px;
+    white-space:nowrap;
+}
+
+.top .marquee-track{
+    animation:marqueeLeft 18s linear infinite;
+}
+
+.bottom .marquee-track{
+    animation:marqueeRight 18s linear infinite;
+}
+
+@keyframes marqueeLeft{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+}
+
+@keyframes marqueeRight{
+    from{transform:translateX(-50%)}
+    to{transform:translateX(0)}
+}
+
+.marquee-item{
+    font-weight:900;
+    font-size:13px;
+    letter-spacing:5px;
+    color:#8fffff;
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 15px #00ffff,
+        0 0 30px #0088ff;
+}
+
+.marquee-item span{
+    color:#a995ff;
+    text-shadow:
+        0 0 5px #9d6cff,
+        0 0 20px #713cff;
+}
+
+/* =========================================================
+   FALLING METEORS
+========================================================= */
+
+.meteor{
+    position:fixed;
+    width:3px;
+    height:130px;
+    z-index:-2;
+    pointer-events:none;
+    border-radius:50%;
+    transform:rotate(35deg);
+
+    background:linear-gradient(
+        to bottom,
+        transparent,
+        #ffffff,
+        #00ffff
+    );
+
+    box-shadow:
+        0 0 8px #fff,
+        0 0 20px #00ffff,
+        0 0 40px #008cff;
+
+    animation:meteorFall linear infinite;
+}
+
+.meteor:nth-child(1){left:8%;animation-duration:2.8s;animation-delay:1s}
+.meteor:nth-child(2){left:20%;animation-duration:4s;animation-delay:4s}
+.meteor:nth-child(3){left:34%;animation-duration:3s;animation-delay:2s}
+.meteor:nth-child(4){left:49%;animation-duration:5s;animation-delay:0s}
+.meteor:nth-child(5){left:62%;animation-duration:3.5s;animation-delay:3s}
+.meteor:nth-child(6){left:75%;animation-duration:4.5s;animation-delay:1s}
+.meteor:nth-child(7){left:88%;animation-duration:3.2s;animation-delay:5s}
+.meteor:nth-child(8){left:95%;animation-duration:5.5s;animation-delay:2s}
+
+@keyframes meteorFall{
+    0%{
+        top:-180px;
+        opacity:0;
+        transform:translate(0,0) rotate(35deg);
+    }
+
+    10%{opacity:1}
+
+    80%{opacity:1}
+
+    100%{
+        top:120vh;
+        opacity:0;
+        transform:translate(-300px,300px) rotate(35deg);
+    }
+}
+
+/* =========================================================
+   SMALL COLORED STARS
+========================================================= */
+
+.color-star{
+    position:fixed;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    z-index:-3;
+    pointer-events:none;
+    box-shadow:0 0 10px currentColor;
+    animation:starDrop linear infinite;
+}
+
+.color-star:nth-child(9){
+    left:5%;color:#00ffff;animation-duration:7s;
+}
+.color-star:nth-child(10){
+    left:15%;color:#ff4dff;animation-duration:9s;
+}
+.color-star:nth-child(11){
+    left:27%;color:#7dff6a;animation-duration:6s;
+}
+.color-star:nth-child(12){
+    left:39%;color:#ffe066;animation-duration:8s;
+}
+.color-star:nth-child(13){
+    left:53%;color:#55aaff;animation-duration:10s;
+}
+.color-star:nth-child(14){
+    left:67%;color:#ff66aa;animation-duration:7s;
+}
+.color-star:nth-child(15){
+    left:79%;color:#9d7aff;animation-duration:11s;
+}
+.color-star:nth-child(16){
+    left:91%;color:#00ffaa;animation-duration:6.5s;
+}
+
+@keyframes starDrop{
+    from{
+        top:-20px;
+        opacity:0;
+        transform:translateY(0) scale(.4);
+    }
+    15%{opacity:1}
+    to{
+        top:110vh;
+        opacity:0;
+        transform:translateY(150px) scale(1.4);
+    }
+}
+
+/* =========================================================
+   FLOATING SCIENCE FORMULAS
 ========================================================= */
 
 .formula{
-
     position:fixed;
-
-    z-index:-2;
-
-    color:#65f8ff;
-
-    opacity:.13;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-weight:bold;
-
-    letter-spacing:2px;
-
+    z-index:-1;
     pointer-events:none;
-
-    text-shadow:
-        0 0 10px #00ffff,
-        0 0 25px rgba(0,255,255,.5);
-
-    animation:
-        formulaFloat
-        10s
-        ease-in-out
-        infinite;
+    color:rgba(100,255,255,.22);
+    font-family:Georgia,serif;
+    font-size:22px;
+    text-shadow:0 0 12px rgba(0,255,255,.5);
+    animation:formulaFloat 8s ease-in-out infinite alternate;
 }
 
-.f1{top:13%;left:3%;font-size:20px;}
-.f2{top:32%;right:4%;font-size:18px;animation-delay:2s;}
-.f3{top:58%;left:4%;font-size:16px;animation-delay:4s;}
-.f4{bottom:15%;right:6%;font-size:20px;animation-delay:1s;}
-.f5{top:75%;left:46%;font-size:15px;animation-delay:3s;}
+.f1{top:15%;left:5%}
+.f2{top:30%;right:7%;animation-delay:2s}
+.f3{top:55%;left:4%;animation-delay:1s}
+.f4{top:72%;right:5%;animation-delay:3s}
+.f5{top:43%;left:47%;animation-delay:4s}
+.f6{top:82%;left:25%;animation-delay:2s}
 
 @keyframes formulaFloat{
-
-    0%,100%{
-        transform:translateY(0);
-        opacity:.10;
-    }
-
-    50%{
-        transform:translateY(-22px);
+    from{
+        transform:translateY(0) rotate(-3deg);
         opacity:.25;
     }
-}
-
-
-/* =========================================================
-   ATOMIC DECORATION
-========================================================= */
-
-.atom{
-
-    position:fixed;
-
-    width:110px;
-    height:110px;
-
-    border:
-        1px solid
-        rgba(0,255,255,.13);
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    z-index:-4;
-}
-
-.atom::before,
-.atom::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:15px;
-
-    border:
-        1px solid
-        rgba(115,140,255,.14);
-
-    border-radius:50%;
-}
-
-.atom::after{
-    transform:rotate(60deg);
-}
-
-.atom1{
-    left:-25px;
-    top:42%;
-    transform:rotate(25deg);
-
-    animation:
-        atomSpin
-        18s
-        linear
-        infinite;
-}
-
-.atom2{
-    right:-25px;
-    top:70%;
-    transform:rotate(-25deg);
-
-    animation:
-        atomSpin
-        22s
-        linear
-        infinite reverse;
-}
-
-@keyframes atomSpin{
-
-    from{
-        rotate:0deg;
-    }
-
     to{
-        rotate:360deg;
+        transform:translateY(-25px) rotate(3deg);
+        opacity:.65;
     }
 }
 
-
 /* =========================================================
-   HEADER
+   SCIENCE OBJECTS
 ========================================================= */
 
-header{
-
-    text-align:center;
-
-    padding:
-        80px 20px 45px;
-
-    position:relative;
+.science-object{
+    position:fixed;
+    z-index:-1;
+    pointer-events:none;
+    font-size:40px;
+    filter:
+        drop-shadow(0 0 8px #00ffff)
+        drop-shadow(0 0 20px rgba(0,150,255,.6));
+    animation:objectFloat 6s ease-in-out infinite alternate;
 }
 
-header::before{
+.beaker{top:17%;left:12%}
+.atom{top:23%;right:13%}
+.dna{top:65%;left:10%}
+.microscope{top:72%;right:12%}
+.flask{top:48%;right:22%}
+.telescope{top:40%;left:18%}
 
-    content:
-        "SCIENTIFIC DATABASE // ACTIVE";
+@keyframes objectFloat{
+    from{
+        transform:translateY(0) rotate(-8deg);
+    }
+    to{
+        transform:translateY(-30px) rotate(8deg);
+    }
+}
 
-    display:block;
+/* =========================================================
+   MOUSE SCIENCE TRAIL
+========================================================= */
 
-    color:
-        rgba(102,248,255,.45);
+.mouse-object{
+    position:fixed;
+    pointer-events:none;
+    z-index:9998;
+    font-size:25px;
+    opacity:0;
+    transform:translate(-50%,-50%) scale(.4);
+    animation:mousePop 1.5s forwards;
+    filter:drop-shadow(0 0 10px #00ffff);
+}
 
-    font-family:
-        "Courier New",
-        monospace;
+@keyframes mousePop{
+    0%{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(.3) rotate(0);
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+        transform:
+            translate(
+                calc(-50% + var(--mx)),
+                calc(-50% + var(--my))
+            )
+            scale(1.1)
+            rotate(180deg);
+    }
+}
 
-    font-size:10px;
+/* =========================================================
+   CLICK BURST
+========================================================= */
 
-    letter-spacing:4px;
+.click-particle{
+    position:fixed;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:10000;
+    background:#00ffff;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 25px #008cff;
 
-    margin-bottom:18px;
+    animation:clickBurst .9s ease-out forwards;
+}
+
+@keyframes clickBurst{
+    from{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(1);
+    }
+    to{
+        opacity:0;
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(.1);
+    }
+}
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+main{
+    min-height:100vh;
+    padding-top:90px;
+    padding-bottom:90px;
+}
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    padding:40px 20px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:5;
+    max-width:1100px;
 }
 
 .badge{
-
     display:inline-block;
-
-    padding:
-        9px 20px;
-
-    border:
-        1px solid
-        rgba(0,255,255,.5);
-
-    border-radius:999px;
-
-    background:
-        rgba(0,255,255,.06);
-
-    color:#7ffcff;
-
-    font-size:14px;
-
-    letter-spacing:2px;
-
+    padding:9px 20px;
+    border:1px solid rgba(0,255,255,.6);
+    border-radius:50px;
+    color:#00ffff;
+    background:rgba(0,255,255,.05);
     box-shadow:
-        0 0 20px
-        rgba(0,255,255,.12),
-
-        inset 0 0 20px
-        rgba(0,255,255,.04);
-
-    margin-bottom:20px;
+        0 0 15px rgba(0,255,255,.3),
+        inset 0 0 15px rgba(0,255,255,.05);
+    letter-spacing:4px;
+    font-size:12px;
+    margin-bottom:25px;
 }
 
-header h1{
+h1{
+    font-size:clamp(50px,10vw,120px);
+    line-height:.9;
+    font-weight:1000;
+    letter-spacing:5px;
 
-    position:relative;
+    background:linear-gradient(
+        90deg,
+        #00ffff,
+        #ffffff,
+        #9a7cff,
+        #00ffaa
+    );
 
-    font-size:
-        clamp(38px,6vw,76px);
-
-    font-weight:900;
-
-    letter-spacing:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ffffff,
-            #73f8ff,
-            #a68cff,
-            #ffffff
-        );
-
+    background-size:300% auto;
     -webkit-background-clip:text;
-
     background-clip:text;
-
     color:transparent;
 
-    text-shadow:
-        0 0 12px
-        rgba(0,255,180,.55),
+    animation:gradientText 5s linear infinite;
 
-        0 0 25px
-        rgba(0,255,180,.45),
-
-        0 0 50px
-        rgba(0,255,100,.25);
-
-    animation:
-        titleGlow 4s ease-in-out infinite,
-
-        greenTitlePulse
-        5s ease-in-out infinite;
+    filter:
+        drop-shadow(0 0 15px rgba(0,255,255,.8))
+        drop-shadow(0 0 45px rgba(90,70,255,.5));
 }
 
-header h1::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    width:80%;
-    height:100%;
-
-    transform:
-        translate(-50%,-50%);
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(0,255,150,.18),
-            transparent 65%
-        );
-
-    filter:blur(20px);
-
-    z-index:-1;
-
-    pointer-events:none;
-}
-
-@keyframes titleGlow{
-
-    0%,100%{
-        filter:brightness(1);
-    }
-
-    50%{
-        filter:brightness(1.25);
-    }
-}
-
-@keyframes greenTitlePulse{
-
-    0%,100%{
-        filter:
-            brightness(1)
-            drop-shadow(
-                0 0 0
-                rgba(0,255,150,0)
-            );
-    }
-
-    45%{
-        filter:
-            brightness(1.08)
-            drop-shadow(
-                0 0 12px
-                rgba(0,255,150,.25)
-            );
-    }
-
-    55%{
-        filter:
-            brightness(1.22)
-            drop-shadow(
-                0 0 28px
-                rgba(0,255,150,.65)
-            );
-    }
-
-    65%{
-        filter:
-            brightness(1.08)
-            drop-shadow(
-                0 0 12px
-                rgba(0,255,150,.25)
-            );
-    }
-}
-
-header p{
-
-    margin-top:16px;
-
-    color:#a9c8d7;
-
-    font-size:18px;
+@keyframes gradientText{
+    to{background-position:300% center}
 }
 
 .subtitle{
-
-    margin-top:9px;
-
-    color:#62f4ff;
-
-    font-size:14px;
-
-    letter-spacing:3px;
-
-    text-shadow:
-        0 0 8px
-        rgba(0,255,170,.5),
-
-        0 0 20px
-        rgba(0,255,150,.25);
-
-    animation:
-        subtitleGreenGlow
-        4.5s
-        ease-in-out
-        infinite;
+    margin-top:25px;
+    color:#8defff;
+    font-size:clamp(14px,2vw,21px);
+    letter-spacing:5px;
 }
 
-@keyframes subtitleGreenGlow{
-
-    0%,100%{
-        opacity:.75;
-
-        text-shadow:
-            0 0 6px
-            rgba(0,255,170,.3);
-    }
-
-    50%{
-        opacity:1;
-
-        text-shadow:
-            0 0 10px
-            rgba(0,255,170,.8),
-
-            0 0 28px
-            rgba(0,255,120,.5);
-    }
-}
-
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-.gallery{
-
-    width:min(1500px,96%);
-
-    margin:0 auto;
-
-    display:grid;
-
-    grid-template-columns:
-        minmax(0,1fr)
-        minmax(90px,150px)
-        minmax(0,1fr)
-        minmax(90px,150px)
-        minmax(0,1fr);
-
-    gap:18px;
-
-    align-items:start;
-
-    justify-content:center;
-}
-
-
-/* =========================================================
-   CHARACTER CARD
-========================================================= */
-
-.card{
-
-    position:relative;
-
-    width:100%;
-
-    min-width:0;
-
-    border-radius:28px;
-
-    padding:2px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,255,255,.8),
-            rgba(80,90,255,.45),
-            rgba(0,255,180,.65)
-        );
-
-    box-shadow:
-        0 0 25px
-        rgba(0,238,255,.15),
-
-        0 25px 70px
-        rgba(0,0,0,.45);
-
-    animation:
-        cardFloat
-        6s
-        ease-in-out
-        infinite;
-
-    transition:
-        transform .5s ease,
-        box-shadow .5s ease;
-}
-
-.card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-2px;
-
-    border-radius:30px;
-
-    padding:2px;
-
-    background:
-        conic-gradient(
-            from var(--card-angle,0deg),
-            transparent 0deg,
-            rgba(0,255,255,.95) 55deg,
-            rgba(155,90,255,.9) 120deg,
-            transparent 180deg,
-            rgba(0,255,190,.9) 245deg,
-            transparent 310deg
-        );
-
-    -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-
-    -webkit-mask-composite:xor;
-
-    mask-composite:exclude;
-
-    opacity:.8;
-
-    animation:
-        borderOrbit
-        5s
-        linear
-        infinite;
-
-    pointer-events:none;
-
-    z-index:4;
-}
-
-@keyframes borderOrbit{
-
-    to{
-        --card-angle:360deg;
-    }
-}
-
-.card::after{
-
-    content:
-        "✦ SCIENCE ✦ DATA ✦ DISCOVERY ✦";
-
-    position:absolute;
-
-    left:50%;
-
-    bottom:-11px;
-
-    transform:
-        translateX(-50%);
-
-    padding:
-        4px 12px;
-
-    border:
-        1px solid
-        rgba(0,255,255,.25);
-
-    border-radius:999px;
-
-    background:
-        rgba(2,7,18,.92);
-
-    color:
-        rgba(111,248,255,.55);
-
-    font:
-        8px
-        "Courier New",
-        monospace;
-
-    letter-spacing:2px;
-
-    white-space:nowrap;
-
-    box-shadow:
-        0 0 18px
-        rgba(0,255,255,.12);
-
-    z-index:6;
-}
-
-@keyframes cardFloat{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-13px);
-    }
-}
-
-.card:hover{
-
-    animation-play-state:paused;
-
-    transform:
-        translateY(-18px)
-        scale(1.025);
-
-    box-shadow:
-        0 0 45px
-        rgba(0,255,255,.35),
-
-        0 0 80px
-        rgba(100,70,255,.16),
-
-        0 30px 90px
-        rgba(0,0,0,.6);
-}
-
-
-/* =========================================================
-   CARD INNER
-========================================================= */
-
-.card-inner{
-
-    height:100%;
-
-    border-radius:26px;
-
-    overflow:hidden;
-
-    background:
-        linear-gradient(
-            160deg,
-            rgba(8,22,42,.96),
-            rgba(3,8,20,.98)
-        );
-
-    backdrop-filter:blur(14px);
-
-    position:relative;
-
-    transition:
-        transform .18s ease,
-        box-shadow .4s ease;
-}
-
-.card.is-hovered .card-inner{
-
-    box-shadow:
-        inset 0 0 35px
-        rgba(0,255,255,.06);
-}
-
-
-/* =========================================================
-   CARD SCIENCE CORNERS
-========================================================= */
-
-.card-inner::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:10px;
-
-    border-top:
-        1px solid
-        rgba(0,255,255,.08);
-
-    border-bottom:
-        1px solid
-        rgba(0,255,255,.04);
-
-    pointer-events:none;
-}
-
-.card-inner::after{
-
-    content:"SCIENCE ARCHIVE";
-
-    position:absolute;
-
-    right:18px;
-
-    top:10px;
-
-    color:
-        rgba(107,248,255,.22);
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size:8px;
-
-    letter-spacing:2px;
-
-    pointer-events:none;
-}
-
-
-/* =========================================================
-   IMAGE FRAME
-========================================================= */
-
-.image-frame{
-
-    position:relative;
-
-    margin:16px;
-
-    height:390px;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    border:
-        1px solid
-        rgba(116,248,255,.6);
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(0,255,255,.12),
-            rgba(2,5,15,.98)
-        );
-
-    box-shadow:
-        inset 0 0 35px
-        rgba(0,255,255,.12),
-
-        0 0 25px
-        rgba(0,255,255,.12);
-
-    animation:
-        imageGlow
-        4s
-        ease-in-out
-        infinite;
-}
-
-@keyframes imageGlow{
-
-    0%,100%{
-
-        box-shadow:
-            inset 0 0 35px
-            rgba(0,255,255,.10),
-
-            0 0 20px
-            rgba(0,255,255,.10);
-    }
-
-    50%{
-
-        box-shadow:
-            inset 0 0 55px
-            rgba(0,255,255,.22),
-
-            0 0 35px
-            rgba(0,255,255,.20);
-    }
-}
-
-
-/* =========================================================
-   IMAGE
-========================================================= */
-
-.character-image{
-
-    width:100%;
-    height:100%;
-
-    display:block;
-
-    object-fit:cover;
-
-    object-position:center;
-
-    transition:
-        transform .7s ease,
-        filter .7s ease;
-}
-
-.image-frame:hover .character-image{
-
-    transform:
-        scale(1.06);
-
-    filter:
-        brightness(1.08)
-        saturate(1.08);
-}
-
-
-/* =========================================================
-   SCAN LINE
-========================================================= */
-
-.image-frame::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    right:0;
-
+.hero-line{
+    width:min(700px,80%);
     height:2px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #00ffff,
-            #ffffff,
-            #00ffff,
-            transparent
-        );
-
-    box-shadow:
-        0 0 15px #00ffff;
-
-    opacity:.55;
-
-    animation:
-        scan
-        5s
-        linear
-        infinite;
-
-    pointer-events:none;
-}
-
-@keyframes scan{
-
-    0%{
-        top:-5%;
-    }
-
-    100%{
-        top:105%;
-    }
-}
-
-
-/* =========================================================
-   IMAGE HUD
-========================================================= */
-
-.image-hud{
-
-    position:absolute;
-
-    inset:12px;
-
-    pointer-events:none;
-
-    z-index:3;
-}
-
-.image-hud::before,
-.image-hud::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:25px;
-    height:25px;
-
-    border-color:#63f8ff;
-
-    opacity:.7;
-}
-
-.image-hud::before{
-
-    top:0;
-    left:0;
-
-    border-top:2px solid;
-    border-left:2px solid;
-}
-
-.image-hud::after{
-
-    right:0;
-    bottom:0;
-
-    border-right:2px solid;
-    border-bottom:2px solid;
-}
-
-.hud-text{
-
-    position:absolute;
-
-    left:8px;
-    bottom:6px;
-
-    color:
-        rgba(123,250,255,.7);
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size:8px;
-
-    letter-spacing:2px;
-}
-
-
-/* =========================================================
-   CONTENT
-========================================================= */
-
-.content{
-
-    padding:
-        8px 24px 28px;
-}
-
-.content::before{
-
-    content:
-        "◈ ANALYSIS COMPLETE ◈";
-
-    display:block;
-
-    width:max-content;
-
-    max-width:100%;
-
-    margin:
-        0 0 9px auto;
-
-    padding:
-        3px 7px;
-
-    border-left:
-        2px solid
-        rgba(0,255,255,.55);
-
-    color:
-        rgba(105,247,255,.38);
-
-    font:
-        7px
-        "Courier New",
-        monospace;
-
-    letter-spacing:1.5px;
-}
-
-.character-number{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:7px;
-
-    padding:
-        5px 12px;
-
-    border-radius:999px;
-
-    font-size:12px;
-
-    color:#74f8ff;
-
-    background:
-        rgba(0,255,255,.07);
-
-    border:
-        1px solid
-        rgba(0,255,255,.25);
-
-    margin-bottom:12px;
-}
-
-.content h2{
-
-    font-size:27px;
-
-    line-height:1.25;
-
-    color:#ffffff;
-
-    text-shadow:
-        0 0 10px
-        rgba(0,255,180,.35),
-
-        0 0 24px
-        rgba(0,255,150,.18);
-
-    margin-bottom:16px;
-
-    animation:
-        characterTitleGlow
-        5.5s
-        ease-in-out
-        infinite;
-}
-
-.content h2 span{
-
-    color:#6df7ff;
-
-    font-size:17px;
-
-    display:block;
-
-    margin-top:5px;
-
-    font-weight:500;
+    margin:35px auto;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #00ffff,
+        #8b5cff,
+        #00ffff,
+        transparent
+    );
+    box-shadow:0 0 20px #00ffff;
 }
 
 .description{
-
-    color:#bfd1dc;
-
-    font-size:15px;
-
-    line-height:1.9;
-}
-
-.description strong{
-
-    color:#6ff7ff;
-}
-
-@keyframes characterTitleGlow{
-
-    0%,100%{
-
-        text-shadow:
-            0 0 8px
-            rgba(0,255,180,.25),
-
-            0 0 18px
-            rgba(0,255,150,.12);
-    }
-
-    50%{
-
-        text-shadow:
-            0 0 12px
-            rgba(0,255,180,.65),
-
-            0 0 30px
-            rgba(0,255,150,.35),
-
-            0 0 50px
-            rgba(0,255,100,.15);
-    }
-}
-
-
-/* =========================================================
-   INFO BOX
-========================================================= */
-
-.info-box{
-
-    margin-top:18px;
-
-    padding:16px;
-
-    border-radius:16px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,255,255,.06),
-            rgba(100,80,255,.07)
-        );
-
-    border:
-        1px solid
-        rgba(120,220,255,.14);
-
-    box-shadow:
-        inset 0 0 20px
-        rgba(0,255,255,.025),
-
-        0 0 10px
-        rgba(0,255,255,.04);
-
-    position:relative;
-
-    overflow:hidden;
-
-    isolation:isolate;
-
-    transition:
-        transform .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
-
-    animation:
-        infoGreenPulse
-        6s
-        ease-in-out
-        infinite;
-}
-
-.info-box::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:180px;
-    height:180px;
-
-    left:-120px;
-    top:-120px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(0,255,255,.22),
-            transparent 68%
-        );
-
-    filter:blur(8px);
-
-    animation:
-        dataGlow
-        5s
-        ease-in-out
-        infinite;
-
-    pointer-events:none;
-
-    z-index:-1;
-}
-
-@keyframes dataGlow{
-
-    0%,100%{
-        transform:translate(0,0);
-        opacity:.35;
-    }
-
-    50%{
-        transform:translate(280px,180px);
-        opacity:.8;
-    }
-}
-
-.info-box:hover{
-
-    transform:
-        translateY(-4px);
-
-    border-color:
-        rgba(91,255,255,.55);
-
-    box-shadow:
-        inset 0 0 28px
-        rgba(0,255,255,.07),
-
-        0 0 18px
-        rgba(0,255,255,.18),
-
-        0 0 45px
-        rgba(90,80,255,.08);
-}
-
-.info-box p{
-
-    margin:7px 0;
-
-    color:#c6dbe4;
-
-    font-size:14px;
-
+    max-width:750px;
+    margin:auto;
     line-height:1.8;
-
-    position:relative;
-
-    transition:
-        transform .25s ease,
-        text-shadow .25s ease;
+    color:#b6dce7;
 }
 
-.info-box p:hover{
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-    transform:
-        translateX(5px);
+@media(max-width:700px){
 
-    text-shadow:
-        0 0 12px
-        rgba(106,250,255,.35);
-}
-
-.info-box b{
-
-    color:#8cfbff;
-}
-
-.info-box::before{
-
-    content:
-        "DATA // VERIFIED";
-
-    position:absolute;
-
-    right:12px;
-    top:8px;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    color:
-        rgba(100,255,255,.28);
-
-    font-size:7px;
-
-    letter-spacing:1px;
-}
-
-@keyframes infoGreenPulse{
-
-    0%,100%{
-
-        border-color:
-            rgba(120,220,255,.14);
+    .science-object{
+        font-size:27px;
     }
 
-    50%{
+    .formula{
+        font-size:16px;
+    }
 
-        border-color:
-            rgba(0,255,180,.38);
+    .marquee-item{
+        font-size:10px;
+        letter-spacing:3px;
+    }
 
-        box-shadow:
-            inset 0 0 25px
-            rgba(0,255,150,.035),
-
-            0 0 18px
-            rgba(0,255,150,.10);
+    .loader-title{
+        letter-spacing:3px;
     }
 }
+</style>
+</head>
+
+<body>
+
+<!-- =======================================================
+     LOADING SCREEN
+======================================================= -->
+
+<div id="loader">
+
+    <div class="loader-grid"></div>
+
+    <div class="loader-core">
+
+        <div class="loader-small">
+            SCIENTIFIC DATABASE // INITIALIZING
+        </div>
+
+        <div class="loader-title">
+            DR.STONE
+        </div>
+
+        <div class="lightning"></div>
+
+        <div class="loader-status">
+            <div class="loader-bar"></div>
+        </div>
+
+        <div class="loader-text">
+            REVIVING HUMANITY • 3,700 YEARS LATER
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =======================================================
+     TOP MARQUEE
+======================================================= -->
+
+<div class="science-marquee top">
+    <div class="marquee-track">
+
+        <div class="marquee-item">
+            SENKU <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>⚛</span>
+        </div>
+
+        <div class="marquee-item">
+            STANLY <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            SENKU <span>⚗</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            STANLY <span>⚛</span>
+        </div>
+
+        <div class="marquee-item">
+            SENKU <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>⚗</span>
+        </div>
+
+        <div class="marquee-item">
+            STANLY <span>✦</span>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =======================================================
+     BOTTOM MARQUEE
+======================================================= -->
+
+<div class="science-marquee bottom">
+    <div class="marquee-track">
+
+        <div class="marquee-item">
+            STANLY <span>⚡</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>⚛</span>
+        </div>
+
+        <div class="marquee-item">
+            SENKU <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            STANLY <span>⚗</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            SENKU <span>⚛</span>
+        </div>
+
+        <div class="marquee-item">
+            STANLY <span>⚡</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>⚗</span>
+        </div>
+
+        <div class="marquee-item">
+            SENKU <span>✦</span>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =======================================================
+     METEORS
+======================================================= -->
+
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+
+<!-- colored stars -->
+
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+
+
+<!-- =======================================================
+     SCIENCE FORMULAS
+======================================================= -->
+
+<div class="formula f1">E = mc²</div>
+<div class="formula f2">F = ma</div>
+<div class="formula f3">H₂O + CO₂</div>
+<div class="formula f4">∫ x² dx</div>
+<div class="formula f5">λ = h / p</div>
+<div class="formula f6">PV = nRT</div>
+
+
+<!-- =======================================================
+     SCIENCE OBJECTS
+======================================================= -->
+
+<div class="science-object beaker">⚗️</div>
+<div class="science-object atom">⚛️</div>
+<div class="science-object dna">🧬</div>
+<div class="science-object microscope">🔬</div>
+<div class="science-object flask">⚗️</div>
+<div class="science-object telescope">🔭</div>
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ✦ SCIENTIFIC DATABASE // ACTIVE ✦
+        </div>
+
+        <h1>
+            DR. STONE
+        </h1>
+
+        <div class="subtitle">
+            SCIENCE • DISCOVERY • REVIVAL • HUMANITY
+        </div>
+
+        <div class="hero-line"></div>
+
+        <p class="description">
+            โลกที่ถูกทำให้กลายเป็นหินกำลังรอการฟื้นคืน
+            วิทยาศาสตร์คือพลังที่จะสร้างอารยธรรมขึ้นมาใหม่
+            จากศูนย์สู่อนาคต
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("loader")
+            .classList.add("hide");
+
+    },3800);
+
+});
 
 
 /* =========================================================
-   DATA STARS
+   MOUSE SCIENCE OBJECT TRAIL
 ========================================================= */
 
-.data-star{
+const scienceItems=[
+    "⚗️",
+    "🔬",
+    "🧬",
+    "⚛️",
+    "🔭",
+    "🧪",
+    "📐",
+    "🧫",
+    "∑",
+    "π",
+    "E=mc²"
+];
 
-    position:absolute;
+let mouseTimer=0;
 
-    width:3px;
-    height:3px;
+document.addEventListener("mousemove",(e)=>{
 
-    border-radius:50%;
+    const now=Date.now();
 
-    background:#ffffff;
+    if(now-mouseTimer<100)return;
 
-    pointer-events:none;
+    mouseTimer=now;
 
-    box-shadow:
-        0 0 5px #ffffff,
-        0 0 10px #00ffff,
-        0 0 18px rgba(0,255,180,.9);
+    const obj=document.createElement("div");
 
-    animation:
-        dataStarFloat
-        var(--star-time)
-        ease-in-out
-        infinite;
+    obj.className="mouse-object";
 
-    opacity:0;
-}
+    obj.textContent=
+        scienceItems[
+            Math.floor(Math.random()*scienceItems.length)
+        ];
 
-@keyframes dataStarFloat{
+    obj.style.left=e.clientX+"px";
+    obj.style.top=e.clientY+"px";
 
-    0%{
-        transform:
-            translate3d(0,0,0)
-            scale(.4);
+    obj.style.setProperty(
+        "--mx",
+        (Math.random()*100-50)+"px"
+    );
 
-        opacity:0;
-    }
+    obj.style.setProperty(
+        "--my",
+        (Math.random()*100-80)+"px"
+    );
 
-    25%{
-        opacity:.9;
-    }
+    document.body.appendChild(obj);
 
-    50%{
+    setTimeout(()=>{
+        obj.remove();
+    },1500);
 
-        transform:
-            translate3d(
-                var(--move-x),
-                var(--move-y),
-                0
-            )
-            scale(1.2);
-
-        opacity:1;
-    }
-
-    75%{
-        opacity:.6;
-    }
-
-    100%{
-
-        transform:
-            translate3d(
-                calc(var(--move-x) * -1),
-                calc(var(--move-y) * -1),
-                0
-            )
-            scale(.3);
-
-        opacity:0;
-    }
-}
-
-
-/* =========================================================
-   RELATIONSHIP
-========================================================= */
-
-.relationship{
-
-    position:relative;
-
-    grid-column:auto;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    min-width:0;
-
-    margin:0;
-
-    z-index:5;
-}
-
-.relationship-line{
-
-    position:absolute;
-
-    width:100%;
-
-    height:2px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #00ffff,
-            #8e6cff,
-            #00ffff,
-            transparent
-        );
-
-    box-shadow:
-        0 0 15px
-        rgba(0,255,255,.7);
-
-    animation:
-        linePulse
-        3s
-        ease-in-out
-        infinite;
-}
-
-@keyframes linePulse{
-
-    0%,100%{
-        opacity:.45;
-    }
-
-    50%{
-        opacity:1;
-    }
-}
-
-.relationship-label{
-
-    position:relative;
-
-    padding:
-        11px 24px;
-
-    border-radius:999px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(4,15,30,.98),
-            rgba(12,20,50,.98)
-        );
-
-    border:
-        1px solid
-        rgba(0,255,255,.6);
-
-    color:#ecffff;
-
-    font-size:15px;
-
-    font-weight:700;
-
-    box-shadow:
-        0 0 20px
-        rgba(0,255,255,.25);
-
-    backdrop-filter:
-        blur(10px);
-
-    white-space:nowrap;
-}
-
-.heart{
-
-    color:#ff5f9e;
-
-    margin-left:8px;
-
-    filter:
-        drop-shadow(
-            0 0 8px #ff3d88
-        );
-
-    animation:
-        heartBeat
-        1.3s
-        infinite;
-}
-
-@keyframes heartBeat{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.25);
-    }
-}
-
-
-/* =========================================================
-   SCIENCE DIVIDER
-========================================================= */
-
-.science-divider{
-
-    width:min(900px,90%);
-
-    margin:
-        75px auto 55px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    color:#72f8ff;
-
-    opacity:.7;
-
-    font-family:
-        "Courier New",
-        monospace;
-}
-
-.science-divider::before,
-.science-divider::after{
-
-    content:"";
-
-    flex:1;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(0,255,255,.7)
-        );
-}
-
-.science-divider::after{
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,255,255,.7),
-            transparent
-        );
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-
-    margin-top:60px;
-
-    padding:
-        50px 20px;
-
-    text-align:center;
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent,
-            rgba(0,255,255,.05)
-        );
-
-    border-top:
-        1px solid
-        rgba(0,255,255,.12);
-}
-
-footer .logo{
-
-    font-size:30px;
-
-    margin-bottom:10px;
-
-    filter:
-        drop-shadow(
-            0 0 12px
-            rgba(0,255,255,.7)
-        );
-}
-
-footer p{
-
-    color:#7f9aa7;
-
-    margin:6px;
-
-    font-size:14px;
-}
-
-footer .copyright{
-
-    color:#63f4ff;
-}
-
-
-/* =========================================================
-   CURSOR TRAIL
-========================================================= */
-
-.cursor-dot{
-
-    position:fixed;
-
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    z-index:10000;
-
-    background:#fff;
-
-    box-shadow:
-        0 0 8px #00ffff,
-        0 0 20px #00ffff;
-
-    animation:
-        cursorFade
-        .55s
-        ease-out
-        forwards;
-}
-
-@keyframes cursorFade{
-
-    to{
-
-        transform:
-            scale(0);
-
-        opacity:0;
-    }
-}
-
-
-/* =========================================================
-   SCIENCE MOUSE TRAIL
-========================================================= */
-
-.science-mouse-item{
-
-    position:fixed;
-
-    left:0;
-    top:0;
-
-    width:32px;
-    height:32px;
-
-    pointer-events:none;
-
-    z-index:10001;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:25px;
-
-    filter:
-        drop-shadow(
-            0 0 7px #00ffff
-        )
-
-        drop-shadow(
-            0 0 16px
-            rgba(0,255,180,.8)
-        );
-
-    transform:
-        translate(-50%,-50%);
-
-    animation:
-        scienceItemFloat
-        1.8s
-        ease-in-out
-        infinite,
-
-        scienceItemFade
-        2.8s
-        ease-out
-        forwards;
-}
-
-@keyframes scienceItemFloat{
-
-    0%,100%{
-        margin-top:0;
-        rotate:-8deg;
-    }
-
-    50%{
-        margin-top:-10px;
-        rotate:8deg;
-    }
-}
-
-@keyframes scienceItemFade{
-
-    0%{
-        opacity:0;
-        scale:.3;
-    }
-
-    15%{
-        opacity:1;
-        scale:1;
-    }
-
-    70%{
-        opacity:.9;
-    }
-
-    100%{
-        opacity:0;
-        scale:.65;
-    }
-}
+});
 
 
 /* =========================================================
    CLICK SCIENCE EXPLOSION
 ========================================================= */
 
-.science-click-item{
+document.addEventListener("click",(e)=>{
 
-    position:fixed;
+    const symbols=[
+        "⚛",
+        "⚗",
+        "🧬",
+        "🔬",
+        "🧪",
+        "π",
+        "Σ",
+        "E=mc²"
+    ];
 
-    left:0;
-    top:0;
+    /* particle explosion */
 
-    width:35px;
-    height:35px;
+    for(let i=0;i<18;i++){
 
-    pointer-events:none;
+        const particle=document.createElement("div");
 
-    z-index:10002;
+        particle.className="click-particle";
 
-    display:flex;
+        particle.style.left=e.clientX+"px";
+        particle.style.top=e.clientY+"px";
 
-    justify-content:center;
-    align-items:center;
-
-    font-size:28px;
-
-    transform:
-        translate(-50%,-50%)
-        scale(.3);
-
-    filter:
-        drop-shadow(
-            0 0 8px #00ffff
-        )
-
-        drop-shadow(
-            0 0 20px
-            rgba(0,255,180,.8)
-        );
-}
-
-
-/* =========================================================
-   FALLING STARS
-========================================================= */
-
-.shooting-star{
-
-    position:fixed;
-
-    width:4px;
-    height:4px;
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    z-index:9998;
-
-    background:#ffffff;
-
-    box-shadow:
-        0 0 7px #ffffff,
-        0 0 15px #00ffff,
-        0 0 30px rgba(0,255,200,.9);
-
-    transform:
-        rotate(-25deg);
-
-    animation:
-        shootingStarMove
-        var(--star-duration)
-        linear
-        forwards;
-}
-
-.shooting-star::after{
-
-    content:"";
-
-    position:absolute;
-
-    right:3px;
-    top:50%;
-
-    width:var(--star-tail);
-
-    height:2px;
-
-    transform:
-        translateY(-50%);
-
-    transform-origin:
-        right center;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(0,255,255,.15),
-            #00ffff,
-            #ffffff
-        );
-
-    box-shadow:
-        0 0 10px #00ffff;
-}
-
-@keyframes shootingStarMove{
-
-    0%{
-
-        transform:
-            translate3d(0,0,0)
-            rotate(-25deg)
-            scale(.5);
-
-        opacity:0;
-    }
-
-    8%{
-        opacity:1;
-    }
-
-    85%{
-        opacity:1;
-    }
-
-    100%{
-
-        transform:
-            translate3d(
-                calc(-100vw - 300px),
-                calc(100vh + 300px),
-                0
-            )
-            rotate(-25deg)
-            scale(1.15);
-
-        opacity:0;
-    }
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:1050px){
-
-    .gallery{
-
-        grid-template-columns:1fr;
-
-        width:min(760px,94%);
-
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .relationship{
-
-        grid-column:auto;
-
-        margin:5px 0;
-    }
-
-    .relationship-line{
-
-        width:3px;
-        height:75px;
-
-        left:50%;
-        top:-40px;
-
-        background:
-            linear-gradient(
-                180deg,
-                transparent,
-                #00ffff,
-                #8e6cff,
-                transparent
-            );
-    }
-
-    .relationship-label{
-
-        white-space:normal;
-
-        text-align:center;
-    }
-
-    .image-frame{
-        height:500px;
-    }
-}
-
-
-@media(max-width:600px){
-
-    body{
-
-        padding-top:28px;
-        padding-bottom:28px;
-    }
-
-    header{
-
-        padding:
-            55px 18px 30px;
-    }
-
-    header h1{
-        font-size:38px;
-    }
-
-    header p{
-        font-size:15px;
-    }
-
-    .gallery{
-
-        width:94%;
-
-        gap:22px;
-    }
-
-    .card{
-        border-radius:22px;
-    }
-
-    .card-inner{
-        border-radius:20px;
-    }
-
-    .image-frame{
-
-        height:420px;
-
-        margin:12px;
-
-        border-radius:17px;
-    }
-
-    .content{
-        padding:
-            8px 18px 24px;
-    }
-
-    .content h2{
-        font-size:23px;
-    }
-
-    .description{
-
-        font-size:14px;
-
-        line-height:1.85;
-    }
-
-    .relationship-label{
-
-        font-size:13px;
-
-        padding:
-            10px 16px;
-    }
-
-    .formula{
-        display:none;
-    }
-
-    .atom{
-        opacity:.5;
-    }
-
-    #mouseGlow{
-        display:none;
-    }
-
-    .cursor-dot{
-        display:none;
-    }
-
-    .molecule{
-        opacity:.14;
-    }
-
-    .card::after{
-
-        font-size:6px;
-
-        letter-spacing:1px;
-    }
-
-
-    /* แถบชื่อบนมือถือ */
-
-    .character-strip{
-        height:28px;
-    }
-
-    .strip-track{
-
-        font-size:9px;
-
-        gap:18px;
-
-        letter-spacing:2px;
-    }
-
-
-    /* =====================================================
-       LOADER MOBILE
-    ===================================================== */
-
-    .loader-title{
-
-        font-size:52px;
-
-        letter-spacing:3px;
-    }
-
-    .loader-subtitle{
-
-        font-size:8px;
-
-        letter-spacing:2px;
-    }
-
-    .loader-particle{
-
-        font-size:21px;
-    }
-
-    .loader-hud{
-
-        display:none;
-    }
-
-    .ring1{
-        width:170px;
-        height:170px;
-    }
-
-    .ring2{
-        width:240px;
-        height:240px;
-    }
-
-    .ring3{
-        width:320px;
-        height:320px;
-    }
-
-    .ring4{
-        width:410px;
-        height:410px;
-    }
-
-    .ring5{
-        width:500px;
-        height:500px;
-    }
-
-
-    /* สายฟ้าตรงกลางบนมือถือ */
-
-    .loader-cut{
-
-        width:105px;
-
-        top:-25%;
-
-        height:150%;
-    }
-
-    .bolt-main{
-        stroke-width:4;
-    }
-
-    .bolt-left,
-    .bolt-right{
-        stroke-width:2;
-    }
-
-    .cut-flash{
-
-        width:6px;
-
-        box-shadow:
-            0 0 7px #ffffff,
-            0 0 15px #00ffff,
-            0 0 30px #00ffff,
-            0 0 60px #00ff9d;
-    }
-
-    .loader-progress{
-
-        height:5px;
-
-        margin-top:28px;
-    }
-}
-
-
-/* =========================================================
-   REDUCE MOTION
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-    .shooting-star,
-    .science-mouse-item,
-    .science-click-item,
-    .data-star{
-
-        animation:none !important;
-    }
-
-}
-
-</style>
-</head>
-
-
-<body>
-
-
-<!-- =========================================================
-     EPIC SCIENCE LOADING SCREEN
-========================================================= -->
-
-<div id="scienceLoader">
-
-    <div class="loader-grid"></div>
-
-    <div class="loader-energy"></div>
-
-
-    <!-- SCIENCE OBJECTS -->
-
-    <div class="loader-particle lp1">⚛️</div>
-    <div class="loader-particle lp2">🧪</div>
-    <div class="loader-particle lp3">🔬</div>
-    <div class="loader-particle lp4">🧬</div>
-    <div class="loader-particle lp5">⚗️</div>
-    <div class="loader-particle lp6">⚙️</div>
-
-
-    <!-- RINGS -->
-
-    <div class="loader-ring ring1"></div>
-    <div class="loader-ring ring2"></div>
-    <div class="loader-ring ring3"></div>
-    <div class="loader-ring ring4"></div>
-    <div class="loader-ring ring5"></div>
-
-
-    <!-- RANDOM ENERGY STARS -->
-
-    <div class="loader-star" style="left:8%;top:12%;--star-speed:2s;"></div>
-    <div class="loader-star" style="left:18%;top:30%;--star-speed:3s;"></div>
-    <div class="loader-star" style="left:28%;top:18%;--star-speed:2.5s;"></div>
-    <div class="loader-star" style="left:37%;top:76%;--star-speed:3.2s;"></div>
-    <div class="loader-star" style="left:47%;top:11%;--star-speed:1.8s;"></div>
-    <div class="loader-star" style="left:58%;top:84%;--star-speed:2.7s;"></div>
-    <div class="loader-star" style="left:69%;top:23%;--star-speed:2.2s;"></div>
-    <div class="loader-star" style="left:77%;top:68%;--star-speed:3.5s;"></div>
-    <div class="loader-star" style="left:88%;top:35%;--star-speed:2.4s;"></div>
-    <div class="loader-star" style="left:94%;top:82%;--star-speed:3s;"></div>
-
-
-    <!-- POWER LINES -->
-
-    <div class="loader-power-line power-line-1"></div>
-    <div class="loader-power-line power-line-2"></div>
-
-
-    <div class="loader-core">
-
-
-        <!-- HUD -->
-
-        <div class="loader-hud">
-
-            <div class="loader-hud-left">
-
-                <span>SCIENCE SYSTEM // ONLINE</span>
-                <span>CORE: ISHIGAMI</span>
-                <span>ENERGY: STABLE</span>
-
-            </div>
-
-
-            <div class="loader-hud-right">
-
-                <span>PROJECT: STONE WORLD</span>
-                <span>DATABASE: 3700+ YEARS</span>
-                <span>STATUS: REBUILDING</span>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             TITLE + NEW VERTICAL CUT
-        ================================================== -->
-
-        <div class="loader-title-wrap">
-
-            <div class="loader-title" id="loaderTitle">
-                DR.STONE
-            </div>
-
-
-            <!-- ⚡ VERTICAL LIGHTNING CUT -->
-
-            <div
-                class="loader-cut"
-                id="loaderCut"
-            >
-
-                <svg
-                    class="lightning-svg"
-                    viewBox="0 0 100 700"
-                    preserveAspectRatio="none"
-                >
-
-                    <defs>
-
-                        <linearGradient
-                            id="boltGradient"
-                            x1="0"
-                            y1="0"
-                            x2="0"
-                            y2="1"
-                        >
-
-                            <stop
-                                offset="0%"
-                                stop-color="#ffffff"
-                            />
-
-                            <stop
-                                offset="30%"
-                                stop-color="#00ffff"
-                            />
-
-                            <stop
-                                offset="52%"
-                                stop-color="#ffffff"
-                            />
-
-                            <stop
-                                offset="72%"
-                                stop-color="#00ff9d"
-                            />
-
-                            <stop
-                                offset="100%"
-                                stop-color="#ffffff"
-                            />
-
-                        </linearGradient>
-
-                    </defs>
-
-
-                    <!-- สายฟ้าหลักผ่ากลาง -->
-
-                    <path
-                        class="bolt-path bolt-main"
-                        d="
-                            M50 0
-                            L45 42
-                            L56 78
-                            L43 116
-                            L58 158
-                            L39 205
-                            L55 248
-                            L42 296
-                            L60 338
-                            L40 382
-                            L57 425
-                            L42 470
-                            L59 515
-                            L41 562
-                            L54 610
-                            L47 700
-                        "
-                    />
-
-
-                    <!-- แขนสายฟ้าซ้าย -->
-
-                    <path
-                        class="bolt-path bolt-left"
-                        d="
-                            M47 78
-                            L28 112
-                            L39 137
-                            L18 178
-                            L36 202
-                            L15 246
-                        "
-                    />
-
-
-                    <path
-                        class="bolt-path bolt-small"
-                        d="
-                            M42 292
-                            L25 320
-                            L34 344
-                            L12 379
-                        "
-                    />
-
-
-                    <!-- แขนสายฟ้าขวา -->
-
-                    <path
-                        class="bolt-path bolt-right"
-                        d="
-                            M55 190
-                            L75 222
-                            L61 250
-                            L84 286
-                            L65 315
-                            L88 350
-                        "
-                    />
-
-
-                    <path
-                        class="bolt-path bolt-small"
-                        d="
-                            M43 470
-                            L23 498
-                            L35 523
-                            L10 558
-                        "
-                    />
-
-
-                    <!-- แขนขวาล่าง -->
-
-                    <path
-                        class="bolt-path bolt-right"
-                        d="
-                            M56 505
-                            L77 535
-                            L63 560
-                            L87 600
-                        "
-                    />
-
-                </svg>
-
-
-                <!-- แสงคมกลาง -->
-
-                <div class="cut-flash"></div>
-
-
-                <!-- จุดระเบิดพลังงาน -->
-
-                <div class="cut-core"></div>
-
-
-                <!-- คลื่นไฟฟ้า -->
-
-                <div class="cut-ring"></div>
-
-
-                <!-- ประกาย -->
-
-                <div class="cut-sparks">
-
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="loader-subtitle">
-
-            SCIENCE IS THE POWER OF HUMANITY
-
-        </div>
-
-
-        <!-- PROGRESS -->
-
-        <div class="loader-progress">
-
-            <span
-                id="loaderProgressBar"
-            ></span>
-
-        </div>
-
-
-        <div
-            class="loader-status"
-            id="loaderStatus"
-        >
-
-            INITIALIZING SCIENCE SYSTEM...
-
-        </div>
-
-
-        <div
-            class="loader-percent"
-            id="loaderPercent"
-        >
-
-            SYSTEM LOAD 0%
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================================
-     TOP CHARACTER STRIP
-========================================================= -->
-
-<div
-    class="character-strip character-strip-top"
->
-
-    <div class="strip-track">
-
-        <span>SENKU</span>
-        <b>✦</b>
-
-        <span>XENO</span>
-        <b>✦</b>
-
-        <span>STANLEY</span>
-        <b>✦</b>
-
-        <span>SENKU</span>
-        <b>✦</b>
-
-        <span>XENO</span>
-        <b>✦</b>
-
-        <span>STANLEY</span>
-        <b>✦</b>
-
-        <span>SENKU</span>
-        <b>✦</b>
-
-        <span>XENO</span>
-        <b>✦</b>
-
-        <span>STANLEY</span>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================================
-     BOTTOM CHARACTER STRIP
-========================================================= -->
-
-<div
-    class="character-strip character-strip-bottom"
->
-
-    <div
-        class="strip-track reverse"
-    >
-
-        <span>SENKU</span>
-        <b>✦</b>
-
-        <span>XENO</span>
-        <b>✦</b>
-
-        <span>STANLEY</span>
-        <b>✦</b>
-
-        <span>SENKU</span>
-        <b>✦</b>
-
-        <span>XENO</span>
-        <b>✦</b>
-
-        <span>STANLEY</span>
-        <b>✦</b>
-
-        <span>SENKU</span>
-        <b>✦</b>
-
-        <span>XENO</span>
-        <b>✦</b>
-
-        <span>STANLEY</span>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================================
-     MOUSE EFFECT
-========================================================= -->
-
-<div id="mouseGlow"></div>
-
-
-
-<!-- =========================================================
-     EXTRA SCIENCE PARTICLES
-========================================================= -->
-
-<div class="science-particle p1"></div>
-<div class="science-particle p2"></div>
-<div class="science-particle p3"></div>
-<div class="science-particle p4"></div>
-<div class="science-particle p5"></div>
-<div class="science-particle p6"></div>
-<div class="science-particle p7"></div>
-<div class="science-particle p8"></div>
-<div class="science-particle p9"></div>
-<div class="science-particle p10"></div>
-
-
-
-<!-- =========================================================
-     MOLECULES
-========================================================= -->
-
-<div class="molecule molecule1">
-    <span></span>
-</div>
-
-<div class="molecule molecule2">
-    <span></span>
-</div>
-
-<div class="molecule molecule3">
-    <span></span>
-</div>
-
-
-
-<!-- =========================================================
-     SCIENCE DECORATION
-========================================================= -->
-
-<div class="science s1">⚗️</div>
-<div class="science s2">🧪</div>
-<div class="science s3">🔬</div>
-<div class="science s4">🧬</div>
-<div class="science s5">⚛️</div>
-<div class="science s6">🧫</div>
-<div class="science s7">🧠</div>
-<div class="science s8">💡</div>
-<div class="science s9">⚙️</div>
-<div class="science s10">🚀</div>
-
-
-<div class="formula f1">
-    H₂O // NaCl
-</div>
-
-<div class="formula f2">
-    E = mc²
-</div>
-
-<div class="formula f3">
-    C₆H₁₂O₆
-</div>
-
-<div class="formula f4">
-    DNA // RNA
-</div>
-
-<div class="formula f5">
-    CO₂ + H₂O
-</div>
-
-
-<div class="atom atom1"></div>
-<div class="atom atom2"></div>
-
-
-
-<!-- =========================================================
-     GLOW ORBS
-========================================================= -->
-
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
-
-
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
-
-<header>
-
-    <div class="badge">
-
-        ⚛️ SCIENCE • KNOWLEDGE • DISCOVERY ⚛️
-
-    </div>
-
-
-    <h1>
-
-        🧪 DR. STONE
-
-    </h1>
-
-
-    <p>
-
-        แกลเลอรีตัวละครแห่งโลกวิทยาศาสตร์
-
-    </p>
-
-
-    <div class="subtitle">
-
-        SCIENCE IS THE POWER OF HUMANITY
-
-    </div>
-
-</header>
-
-
-
-<!-- =========================================================
-     GALLERY
-========================================================= -->
-
-<section class="gallery">
-
-
-<!-- =========================================================
-     CHARACTER 1
-========================================================= -->
-
-<article class="card">
-
-    <div class="card-inner">
-
-
-        <div class="image-frame">
-
-            <img
-                class="character-image"
-                alt="อิชิกามิ เซ็นคู"
-                src="https://i.pinimg.com/736x/a7/09/bd/a709bde710c33ff8ce20f79aa475f945.jpg"
-            >
-
-            <div class="image-hud">
-
-                <div class="hud-text">
-
-                    SUBJECT 01 // SCIENCE KINGDOM
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="content">
-
-            <div class="character-number">
-
-                🧪 CHARACTER 01
-
-            </div>
-
-
-            <h2>
-
-                อิชิกามิ เซ็นคู
-
-                <span>
-
-                    Ishigami Senku
-
-                </span>
-
-            </h2>
-
-
-            <p class="description">
-
-                <strong>
-                    อิชิกามิ เซ็นคู (Ishigami Senku)
-                </strong>
-
-                เป็นตัวเอกหลักจากมังงะและอนิเมะเรื่อง
-
-                <strong>
-                    Dr. Stone
-                </strong>
-
-                เขาเป็นเด็กหนุ่มอัจฉริยะผู้มีความรู้รอบด้านทางวิทยาศาสตร์
-                ที่ฟื้นคืนชีพขึ้นมาในโลกยุคหินหลังจากมนุษย์ทั่วโลกกลายเป็นหินนานกว่า
-                3,700 ปี และตั้งเป้าหมายสร้างอารยธรรมขึ้นมาใหม่ด้วยพลังของวิทยาศาสตร์
-
-            </p>
-
-
-            <div class="info-box">
-
-                <p>
-
-                    🧠 <b>ความสามารถ:</b>
-
-                    เชี่ยวชาญเคมี ฟิสิกส์ ชีววิทยา คณิตศาสตร์ และวิศวกรรม
-
-                </p>
-
-
-                <p>
-
-                    🎯 <b>เป้าหมาย:</b>
-
-                    ก่อตั้ง "อาณาจักรวิทยาศาสตร์"
-                    เพื่อช่วยเหลือผู้คนและคืนความเจริญให้อารยธรรมมนุษย์
-
-                </p>
-
-
-                <p>
-
-                    🧪 <b>บุคลิก:</b>
-
-                    มั่นใจในตัวเองสูง มีเหตุผล ฉลาดเป็นกรด
-                    และยึดมั่นในความจริงตามหลักวิทยาศาสตร์
-
-                </p>
-
-
-                <p>
-
-                    ⚠️ <b>จุดอ่อน:</b>
-
-                    มีพละกำลังและการต่อสู้ด้อยกว่าคนอื่นอย่างเห็นได้ชัด
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</article>
-
-
-
-<!-- =========================================================
-     RELATIONSHIP 1
-========================================================= -->
-
-<div class="relationship">
-
-    <div class="relationship-line"></div>
-
-    <div class="relationship-label">
-
-        🧑‍🏫
-
-        ศิษย์อาจารย์
-
-        <span class="heart">
-            ♥️
-        </span>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================================
-     CHARACTER 2
-========================================================= -->
-
-<article class="card">
-
-    <div class="card-inner">
-
-
-        <div class="image-frame">
-
-            <img
-                class="character-image"
-                alt="ดร. เซโน ฮูสตัน วิงฟิลด์"
-                src="https://i.pinimg.com/1200x/d3/b3/95/d3b395d2148f3202850d0ba4e34d31c5.jpg"
-            >
-
-            <div class="image-hud">
-
-                <div class="hud-text">
-
-                    SUBJECT 02 // AMERICAN SCIENCE FORCE
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="content">
-
-            <div class="character-number">
-
-                ⚛️ CHARACTER 02
-
-            </div>
-
-
-            <h2>
-
-                ดร. เซโน ฮูสตัน วิงฟิลด์
-
-                <span>
-
-                    Dr. Xeno Houston Wingfield
-
-                </span>
-
-            </h2>
-
-
-            <p class="description">
-
-                <strong>
-                    ดร. เซโน ฮูสตัน วิงฟิลด์
-                    (Dr. Xeno Houston Wingfield)
-                </strong>
-
-                คืออัจฉริยะทางวิทยาศาสตร์สายดาร์ก
-                และเป็นคู่ปรับคนสำคัญของเซ็นคูใน
-                <strong>Dr. Stone</strong>
-
-                เขาคืออดีตนักวิทยาศาสตร์มืออาชีพของ NASA
-                และเป็นผู้นำของกลุ่มคนในฝั่งอเมริกาหลังจากตื่นขึ้นจากการเป็นหิน
-
-            </p>
-
-
-            <div class="info-box">
-
-                <p>
-
-                    ✨ <b>คำพูดติดปาก:</b>
-
-                    มักใช้คำว่า "Elegant" (สง่างาม)
-                    เพื่อชื่นชมสิ่งที่มีประสิทธิภาพและสมบูรณ์แบบ
-
-                </p>
-
-
-                <p>
-
-                    🔬 <b>ความสามารถ:</b>
-
-                    เชี่ยวชาญวิทยาศาสตร์ระดับสูง
-                    โดยเฉพาะฟิสิกส์ วิศวกรรมศาสตร์ และการสร้างอาวุธสงคราม
-
-                </p>
-
-
-                <p>
-
-                    👑 <b>แนวคิดและเป้าหมาย:</b>
-
-                    เชื่อว่า "วิทยาศาสตร์คือพลัง"
-                    และคนฉลาดควรปกครองคนโง่
-                    เขาตั้งใจจะเป็นเผด็จการผู้ปกครองโลกยุคหิน
-
-                </p>
-
-
-                <p>
-
-                    🔫 <b>อาวุธในครอบครอง:</b>
-
-                    ต่างจากเซ็นคูที่เน้นสร้างของใช้
-                    เซโนสร้างปืนกล ไรเฟิลซุ่มยิง
-                    และเครื่องบินรบขึ้นมาครอบครอง
-
-                </p>
-
-
-                <p>
-
-                    🤝 <b>ความสัมพันธ์:</b>
-
-                    เป็นเพื่อนสมัยเด็กและคู่หูที่ไว้ใจที่สุดของ
-                    สแตนลีย์ สไนเดอร์ ทหารฝีมือฉกาจ
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</article>
-
-
-
-<!-- =========================================================
-     RELATIONSHIP 2
-========================================================= -->
-
-<div class="relationship">
-
-    <div class="relationship-line"></div>
-
-    <div class="relationship-label">
-
-        🤝
-
-        คู่หูที่เชื่อใจที่สุด
-
-        <span class="heart">
-            ♥️
-        </span>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================================
-     CHARACTER 3
-========================================================= -->
-
-<article class="card">
-
-    <div class="card-inner">
-
-
-        <div class="image-frame">
-
-            <img
-                class="character-image"
-                alt="สแตนลีย์ สไนเดอร์"
-                src="https://i.pinimg.com/1200x/57/ba/9f/57ba9f43f8d8970fcc6b8c7f16a704d2.jpg"
-            >
-
-            <div class="image-hud">
-
-                <div class="hud-text">
-
-                    SUBJECT 03 // SPECIAL OPERATIONS
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="content">
-
-            <div class="character-number">
-
-                🎯 CHARACTER 03
-
-            </div>
-
-
-            <h2>
-
-                สแตนลีย์ สไนเดอร์
-
-                <span>
-
-                    Stanley Snyder
-
-                </span>
-
-            </h2>
-
-
-            <p class="description">
-
-                <strong>
-                    สแตนลีย์ สไนเดอร์ (Stanley Snyder)
-                </strong>
-
-                คือทหารรับจ้างฝีมือฉกาจระดับพระกาฬ
-                และเป็น <strong>"มือขวา"</strong>
-                ที่ซื่อสัตย์ที่สุดของ ดร. เซโน ใน
-                <strong>Dr. Stone</strong>
-
-                เขาทำหน้าที่เป็นผู้นำกองกำลังทหารของฝั่งอเมริกา
-                และเป็นหนึ่งในตัวร้ายที่อันตรายที่สุดในเรื่องด้วยทักษะการรบและการใช้อาวุธที่ไร้เทียมทาน
-
-            </p>
-
-
-            <div class="info-box">
-
-                <p>
-
-                    🚬 <b>เอกลักษณ์:</b>
-
-                    มักจะคาบบุหรี่อยู่ในปากตลอดเวลา
-                    (แม้ในโลกยุคหินเซโน่ก็สร้างยาสูบขึ้นให้)
-                    และมีรูปร่างหน้าตาสะสวยจนบางครั้งคนเข้าใจผิดว่าเป็นผู้หญิง
-
-                </p>
-
-
-                <p>
-
-                    🎯 <b>ทักษะการต่อสู้:</b>
-
-                    เป็นนักแม่นปืนขั้นเทพ
-                    สามารถยิงเป้าหมายระยะไกลได้อย่างแม่นยำ
-                    และเชี่ยวชาญการขับเครื่องบินรบ
-
-                </p>
-
-
-                <p>
-
-                    🥶 <b>บุคลิก:</b>
-
-                    เงียบขรึม เลือดเย็น มีไหวพริบ
-                    และสัญชาตญาณการต่อสู้ที่เฉียบคมมาก
-
-                </p>
-
-
-                <p>
-
-                    ❤️ <b>ความสัมพันธ์:</b>
-
-                    เซโน่กับสแตนลีย์เป็นเพื่อนสนิทกันมาตั้งแต่เด็กก่อนโลกจะกลายเป็นหิน
-                    เขาสัญญาว่าจะปกป้องและทำตามเป้าหมายของเซโนให้เป็นจริง
-                    ไม่ว่าเซโนจะเลือกทางไหนก็ตาม
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</article>
-
-
-</section>
-
-
-
-<!-- =========================================================
-     DIVIDER
-========================================================= -->
-
-<div class="science-divider">
-
-    ⚛️ ─── 🧬 ─── 🔬 ─── 🧪 ─── ⚗️ ─── 🧠 ─── ⚙️
-
-</div>
-
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-
-    <div class="logo">
-
-        🧪 ⚛️ 🔬
-
-    </div>
-
-
-    <p class="copyright">
-
-        © 2026 DR. STONE • SCIENCE GALAXY
-
-    </p>
-
-
-    <p>
-
-        วิทยาศาสตร์คือพลังที่จะสร้างอนาคตของมนุษยชาติ
-
-    </p>
-
-</footer>
-
-
-
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
-<script>
-
-
-/* =========================================================
-   EPIC SCIENCE LOADING ENGINE
-========================================================= */
-
-window.addEventListener(
-    "load",
-    () => {
-
-        const loader =
-            document.getElementById(
-                "scienceLoader"
-            );
-
-        const title =
-            document.getElementById(
-                "loaderTitle"
-            );
-
-        const cut =
-            document.getElementById(
-                "loaderCut"
-            );
-
-        const progress =
-            document.getElementById(
-                "loaderProgressBar"
-            );
-
-        const status =
-            document.getElementById(
-                "loaderStatus"
-            );
-
-        const percent =
-            document.getElementById(
-                "loaderPercent"
-            );
-
-
-        if(!loader){
-            return;
-        }
-
-
-        const messages = [
-
-            "INITIALIZING SCIENCE SYSTEM...",
-
-            "CALIBRATING CHEMISTRY...",
-
-            "LOADING DNA DATABASE...",
-
-            "ANALYZING STONE WORLD...",
-
-            "ACTIVATING SCIENCE KINGDOM...",
-
-            "SYSTEM READY"
-
-        ];
-
-
-        let value = 0;
-
-
-        const progressTimer =
-            setInterval(
-                () => {
-
-                    if(value < 70){
-
-                        value +=
-                            Math.random() * 7 + 2;
-
-                    }else{
-
-                        value +=
-                            Math.random() * 4 + 1;
-
-                    }
-
-
-                    if(value >= 100){
-
-                        value = 100;
-
-                        clearInterval(
-                            progressTimer
-                        );
-
-
-                        progress.style.width =
-                            "100%";
-
-
-                        if(percent){
-
-                            percent.textContent =
-                                "SYSTEM LOAD 100%";
-
-                        }
-
-
-                        status.textContent =
-                            "SCIENCE SYSTEM READY";
-
-
-                        /*
-                         * รอ 100% แล้วเริ่มการผ่ากลาง
-                         */
-
-                        setTimeout(
-                            () => {
-
-
-                                /*
-                                 * สร้างประกายพลังงาน
-                                 */
-
-                                createSlashParticles();
-
-
-                                /*
-                                 * เปิดเอฟเฟกต์สายฟ้า
-                                 */
-
-                                cut.classList.add(
-                                    "cut"
-                                );
-
-
-                                /*
-                                 * ทำให้ชื่อ DR.STONE
-                                 * กระแทกด้วยพลังงาน
-                                 */
-
-                                if(title){
-
-                                    title.classList.add(
-                                        "cut-hit"
-                                    );
-
-                                }
-
-
-                                /*
-                                 * Flash หน้าจอ
-                                 */
-
-                                const flash =
-                                    document.createElement(
-                                        "div"
-                                    );
-
-
-                                flash.style.position =
-                                    "fixed";
-
-                                flash.style.inset =
-                                    "0";
-
-                                flash.style.zIndex =
-                                    "19999";
-
-                                flash.style.pointerEvents =
-                                    "none";
-
-                                flash.style.background =
-                                    "radial-gradient(circle at 50% 50%, rgba(255,255,255,1), rgba(0,255,255,.5) 12%, rgba(0,255,180,.18) 30%, transparent 68%)";
-
-                                flash.style.opacity =
-                                    "0";
-
-
-                                document.body.appendChild(
-                                    flash
-                                );
-
-
-                                flash.animate(
-
-                                    [
-
-                                        {
-                                            opacity:0
-                                        },
-
-                                        {
-                                            opacity:1
-                                        },
-
-                                        {
-                                            opacity:.25
-                                        },
-
-                                        {
-                                            opacity:0
-                                        }
-
-                                    ],
-
-                                    {
-
-                                        duration:750,
-
-                                        easing:
-                                            "cubic-bezier(.16,1,.3,1)"
-
-                                    }
-
-                                );
-
-
-                                /*
-                                 * สั่นหน้าจอเล็กน้อย
-                                 * ตอนสายฟ้าผ่า
-                                 */
-
-                                loader.animate(
-
-                                    [
-
-                                        {
-                                            transform:"translateX(0)"
-                                        },
-
-                                        {
-                                            transform:"translateX(-8px)"
-                                        },
-
-                                        {
-                                            transform:"translateX(8px)"
-                                        },
-
-                                        {
-                                            transform:"translateX(-5px)"
-                                        },
-
-                                        {
-                                            transform:"translateX(4px)"
-                                        },
-
-                                        {
-                                            transform:"translateX(0)"
-                                        }
-
-                                    ],
-
-                                    {
-
-                                        duration:500,
-
-                                        easing:
-                                            "cubic-bezier(.16,1,.3,1)"
-
-                                    }
-
-                                );
-
-
-                                /*
-                                 * เปิดหน้าเว็บหลังเอฟเฟกต์จบ
-                                 */
-
-                                setTimeout(
-                                    () => {
-
-                                        loader.classList.add(
-                                            "loader-hidden"
-                                        );
-
-
-                                        setTimeout(
-                                            () => {
-
-                                                loader.remove();
-
-                                                flash.remove();
-
-                                            },
-
-                                            1200
-                                        );
-
-                                    },
-
-                                    1050
-                                );
-
-
-                            },
-
-                            500
-                        );
-
-
-                        return;
-
-                    }
-
-
-                    progress.style.width =
-                        value + "%";
-
-
-                    if(percent){
-
-                        percent.textContent =
-                            "SYSTEM LOAD " +
-                            Math.floor(value) +
-                            "%";
-
-                    }
-
-
-                    const messageIndex =
-                        Math.min(
-
-                            messages.length - 2,
-
-                            Math.floor(
-                                value / 20
-                            )
-
-                        );
-
-
-                    status.textContent =
-                        messages[
-                            messageIndex
-                        ];
-
-
-                },
-
-                110
-            );
-
-    }
-);
-
-
-/* =========================================================
-   CREATE LIGHTNING CUT PARTICLES
-========================================================= */
-
-function createSlashParticles(){
-
-    const loader =
-        document.getElementById(
-            "scienceLoader"
-        );
-
-    if(!loader){
-        return;
-    }
-
-
-    /*
-     * สร้างประกายจำนวนมาก
-     * เริ่มจากแนวกลางของหน้าจอ
-     */
-
-    for(
-        let i = 0;
-        i < 70;
-        i++
-    ){
-
-        const particle =
-            document.createElement(
-                "span"
-            );
-
-
-        particle.className =
-            "slash-particle";
-
-
-        /*
-         * จุดเริ่มต้นใกล้เส้นผ่ากลาง
-         */
-
-        particle.style.left =
-            (
-                48 +
-                (Math.random() - .5) * 5
-            ) + "%";
-
-
-        particle.style.top =
-            (
-                25 +
-                Math.random() * 50
-            ) + "%";
-
-
-        /*
-         * กระจายซ้ายขวาและบนล่าง
-         */
+        const angle=Math.random()*Math.PI*2;
+        const distance=60+Math.random()*140;
 
         particle.style.setProperty(
-            "--px",
-            (
-                (Math.random() - .5) *
-                650
-            ) + "px"
+            "--x",
+            Math.cos(angle)*distance+"px"
         );
-
 
         particle.style.setProperty(
-            "--py",
-            (
-                (Math.random() - .5) *
-                600
-            ) + "px"
+            "--y",
+            Math.sin(angle)*distance+"px"
         );
 
+        document.body.appendChild(particle);
 
-        particle.style.setProperty(
-            "--ps",
-            (
-                .4 +
-                Math.random() * 2.4
-            )
-        );
-
-
-        particle.style.animationDelay =
-            (
-                Math.random() * .3
-            ) + "s";
-
-
-        loader.appendChild(
-            particle
-        );
-
-
-        requestAnimationFrame(
-            () => {
-
-                particle.classList.add(
-                    "cut"
-                );
-
-            }
-        );
-
-
-        setTimeout(
-            () => {
-
-                particle.remove();
-
-            },
-
-            1500
-        );
-
+        setTimeout(()=>{
+            particle.remove();
+        },900);
     }
 
-}
+    /* science symbols */
 
+    for(let i=0;i<6;i++){
 
-/* =========================================================
-   MOUSE ENGINE
-========================================================= */
+        const symbol=document.createElement("div");
 
-const mouseGlow =
-    document.getElementById(
-        "mouseGlow"
-    );
+        symbol.className="mouse-object";
 
-const cards =
-    document.querySelectorAll(
-        ".card"
-    );
-
-
-let mouseX =
-    window.innerWidth / 2;
-
-let mouseY =
-    window.innerHeight / 2;
-
-let glowX =
-    mouseX;
-
-let glowY =
-    mouseY;
-
-let lastTrail = 0;
-
-
-/* =========================================================
-   MOUSE MOVE
-========================================================= */
-
-document.addEventListener(
-    "mousemove",
-    (e) => {
-
-        mouseX =
-            e.clientX;
-
-        mouseY =
-            e.clientY;
-
-
-        if(mouseGlow){
-
-            mouseGlow.style.left =
-                mouseX + "px";
-
-            mouseGlow.style.top =
-                mouseY + "px";
-
-        }
-
-
-        const now =
-            performance.now();
-
-
-        if(
-            now - lastTrail > 45 &&
-            window.innerWidth > 600
-        ){
-
-            lastTrail = now;
-
-
-            const dot =
-                document.createElement(
-                    "span"
-                );
-
-
-            dot.className =
-                "cursor-dot";
-
-
-            dot.style.left =
-                mouseX + "px";
-
-            dot.style.top =
-                mouseY + "px";
-
-
-            document.body.appendChild(
-                dot
-            );
-
-
-            setTimeout(
-                () => dot.remove(),
-                600
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   SMOOTH MOUSE GLOW
-========================================================= */
-
-function animateGlow(){
-
-    glowX +=
-        (mouseX - glowX) * .16;
-
-    glowY +=
-        (mouseY - glowY) * .16;
-
-
-    if(mouseGlow){
-
-        mouseGlow.style.left =
-            glowX + "px";
-
-        mouseGlow.style.top =
-            glowY + "px";
-
-    }
-
-
-    requestAnimationFrame(
-        animateGlow
-    );
-
-}
-
-animateGlow();
-
-
-/* =========================================================
-   CARD 3D TILT
-========================================================= */
-
-cards.forEach(
-    (card) => {
-
-        const inner =
-            card.querySelector(
-                ".card-inner"
-            );
-
-
-        card.addEventListener(
-            "mouseenter",
-            () => {
-
-                card.classList.add(
-                    "is-hovered"
-                );
-
-            }
-        );
-
-
-        card.addEventListener(
-            "mousemove",
-            (e) => {
-
-                if(
-                    window.innerWidth <= 600
-                ){
-                    return;
-                }
-
-
-                const rect =
-                    card.getBoundingClientRect();
-
-
-                const x =
-                    e.clientX -
-                    rect.left;
-
-                const y =
-                    e.clientY -
-                    rect.top;
-
-
-                const rotateY =
-                    ((x / rect.width) - .5) * 7;
-
-                const rotateX =
-                    ((y / rect.height) - .5) * -7;
-
-
-                inner.style.transform =
-                    `perspective(1100px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     translateZ(8px)`;
-
-
-                const angle =
-                    Math.atan2(
-
-                        e.clientY -
-                        (
-                            rect.top +
-                            rect.height / 2
-                        ),
-
-                        e.clientX -
-                        (
-                            rect.left +
-                            rect.width / 2
-                        )
-
-                    ) *
-                    180 / Math.PI
-                    + 180;
-
-
-                card.style.setProperty(
-                    "--card-angle",
-                    angle + "deg"
-                );
-
-            }
-        );
-
-
-        card.addEventListener(
-            "mouseleave",
-            () => {
-
-                card.classList.remove(
-                    "is-hovered"
-                );
-
-
-                inner.style.transform =
-                    "perspective(1100px) rotateX(0deg) rotateY(0deg) translateZ(0)";
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   CLICK ENERGY RIPPLE
-========================================================= */
-
-document.addEventListener(
-    "click",
-    (e) => {
-
-        if(
-            window.innerWidth <= 600
-        ){
-            return;
-        }
-
-
-        const pulse =
-            document.createElement(
-                "span"
-            );
-
-
-        pulse.style.position =
-            "fixed";
-
-        pulse.style.left =
-            e.clientX + "px";
-
-        pulse.style.top =
-            e.clientY + "px";
-
-        pulse.style.width =
-            "12px";
-
-        pulse.style.height =
-            "12px";
-
-        pulse.style.border =
-            "1px solid rgba(0,255,255,.9)";
-
-        pulse.style.borderRadius =
-            "50%";
-
-        pulse.style.pointerEvents =
-            "none";
-
-        pulse.style.zIndex =
-            "10000";
-
-        pulse.style.transform =
-            "translate(-50%,-50%)";
-
-        pulse.style.boxShadow =
-            "0 0 15px #00ffff," +
-            "0 0 35px rgba(0,255,255,.65)";
-
-
-        document.body.appendChild(
-            pulse
-        );
-
-
-        pulse.animate(
-
-            [
-
-                {
-                    transform:
-                        "translate(-50%,-50%) scale(.5)",
-
-                    opacity:1
-                },
-
-                {
-                    transform:
-                        "translate(-50%,-50%) scale(8)",
-
-                    opacity:0
-                }
-
-            ],
-
-            {
-
-                duration:650,
-
-                easing:
-                    "cubic-bezier(.16,1,.3,1)"
-
-            }
-
-        );
-
-
-        setTimeout(
-            () => pulse.remove(),
-            700
-        );
-
-    }
-);
-
-
-/* =========================================================
-   SCIENCE EQUIPMENT MOUSE TRAIL
-========================================================= */
-
-const scienceEquipment = [
-
-    "🧪",
-    "⚗️",
-    "🔬",
-    "🧬",
-    "⚛️",
-    "🧫",
-    "🧠",
-    "⚙️",
-    "💡"
-
-];
-
-
-let lastScienceItem = 0;
-
-
-document.addEventListener(
-    "mousemove",
-    (e) => {
-
-        if(
-            window.innerWidth <= 600
-        ){
-            return;
-        }
-
-
-        const now =
-            performance.now();
-
-
-        if(
-            now - lastScienceItem < 120
-        ){
-            return;
-        }
-
-
-        lastScienceItem =
-            now;
-
-
-        const item =
-            document.createElement(
-                "span"
-            );
-
-
-        item.className =
-            "science-mouse-item";
-
-
-        item.textContent =
-            scienceEquipment[
-                Math.floor(
-                    Math.random() *
-                    scienceEquipment.length
-                )
+        symbol.textContent=
+            symbols[
+                Math.floor(Math.random()*symbols.length)
             ];
 
+        symbol.style.left=e.clientX+"px";
+        symbol.style.top=e.clientY+"px";
 
-        const offsetX =
-            (Math.random() - .5) * 30;
-
-        const offsetY =
-            (Math.random() - .5) * 30;
-
-
-        item.style.left =
-            (
-                e.clientX +
-                offsetX
-            ) + "px";
-
-        item.style.top =
-            (
-                e.clientY +
-                offsetY
-            ) + "px";
-
-
-        item.style.fontSize =
-            (
-                18 +
-                Math.random() * 12
-            ) + "px";
-
-
-        document.body.appendChild(
-            item
+        symbol.style.setProperty(
+            "--mx",
+            (Math.random()*240-120)+"px"
         );
 
-
-        setTimeout(
-            () => {
-                item.remove();
-            },
-            2800
+        symbol.style.setProperty(
+            "--my",
+            (Math.random()*240-160)+"px"
         );
 
+        document.body.appendChild(symbol);
+
+        setTimeout(()=>{
+            symbol.remove();
+        },1500);
     }
-);
+
+});
 
 
 /* =========================================================
-   CLICK — SCIENCE EQUIPMENT EXPLOSION
+   RANDOM EXTRA STARS
 ========================================================= */
 
-document.addEventListener(
-    "click",
-    (e) => {
+function createRandomStar(){
 
-        if(
-            window.innerWidth <= 600
-        ){
-            return;
-        }
+    const star=document.createElement("div");
 
+    star.className="color-star";
 
-        const amount = 8;
+    star.style.left=
+        Math.random()*100+"vw";
 
+    star.style.animationDuration=
+        (4+Math.random()*9)+"s";
 
-        for(
-            let i = 0;
-            i < amount;
-            i++
-        ){
+    star.style.animationDelay=
+        Math.random()*3+"s";
 
-            const item =
-                document.createElement(
-                    "span"
-                );
+    const colors=[
+        "#00ffff",
+        "#ff4dff",
+        "#7dff6a",
+        "#ffe066",
+        "#6aa9ff",
+        "#ff77aa",
+        "#a477ff",
+        "#00ffaa"
+    ];
 
+    star.style.color=
+        colors[
+            Math.floor(Math.random()*colors.length)
+        ];
 
-            item.className =
-                "science-click-item";
+    const size=2+Math.random()*4;
 
+    star.style.width=size+"px";
+    star.style.height=size+"px";
 
-            item.textContent =
-                scienceEquipment[
-                    Math.floor(
-                        Math.random() *
-                        scienceEquipment.length
-                    )
-                ];
+    document.body.appendChild(star);
 
-
-            item.style.left =
-                e.clientX + "px";
-
-            item.style.top =
-                e.clientY + "px";
-
-
-            const angle =
-                (
-                    Math.PI * 2 / amount
-                ) * i
-                +
-                (
-                    Math.random() - .5
-                ) * .4;
-
-
-            const distance =
-                80 +
-                Math.random() * 150;
-
-
-            const endX =
-                Math.cos(angle) *
-                distance;
-
-            const endY =
-                Math.sin(angle) *
-                distance;
-
-
-            const rotation =
-                (
-                    Math.random() - .5
-                ) * 360;
-
-
-            item.animate(
-
-                [
-
-                    {
-
-                        transform:
-                            "translate(-50%,-50%) scale(.25) rotate(0deg)",
-
-                        opacity:0
-
-                    },
-
-                    {
-
-                        transform:
-                            "translate(-50%,-50%) scale(1.15) rotate(" +
-                            rotation / 2 +
-                            "deg)",
-
-                        opacity:1
-
-                    },
-
-                    {
-
-                        transform:
-                            "translate(calc(-50% + " +
-                            endX +
-                            "px), calc(-50% + " +
-                            endY +
-                            "px)) scale(.5) rotate(" +
-                            rotation +
-                            "deg)",
-
-                        opacity:0
-
-                    }
-
-                ],
-
-                {
-
-                    duration:
-                        900 +
-                        Math.random() * 500,
-
-                    easing:
-                        "cubic-bezier(.16,1,.3,1)",
-
-                    fill:"forwards"
-
-                }
-
-            );
-
-
-            document.body.appendChild(
-                item
-            );
-
-
-            setTimeout(
-                () => {
-                    item.remove();
-                },
-                1500
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   SHOOTING STARS
-========================================================= */
-
-function createShootingStar(){
-
-    if(
-        window.innerWidth <= 600
-    ){
-        return;
-    }
-
-
-    const star =
-        document.createElement(
-            "div"
-        );
-
-
-    star.className =
-        "shooting-star";
-
-
-    const startX =
-        window.innerWidth +
-        50 +
-        Math.random() * 250;
-
-
-    const startY =
-        Math.random() *
-        window.innerHeight *
-        .85;
-
-
-    star.style.left =
-        startX + "px";
-
-    star.style.top =
-        startY + "px";
-
-
-    const duration =
-        1800 +
-        Math.random() * 2600;
-
-
-    star.style.setProperty(
-        "--star-duration",
-        duration + "ms"
-    );
-
-
-    star.style.setProperty(
-        "--star-tail",
-        (
-            70 +
-            Math.random() * 140
-        ) + "px"
-    );
-
-
-    const size =
-        2 +
-        Math.random() * 3;
-
-
-    star.style.width =
-        size + "px";
-
-    star.style.height =
-        size + "px";
-
-
-    document.body.appendChild(
-        star
-    );
-
-
-    setTimeout(
-        () => {
-            star.remove();
-        },
-        duration + 200
-    );
-
+    setTimeout(()=>{
+        star.remove();
+    },15000);
 }
 
 
-function randomShootingStar(){
+/* create many stars */
 
-    createShootingStar();
-
-
-    const nextTime =
-        1800 +
-        Math.random() * 4500;
+setInterval(createRandomStar,250);
 
 
-    setTimeout(
-        randomShootingStar,
-        nextTime
-    );
+/* =========================================================
+   RANDOM METEORS
+========================================================= */
 
+function createMeteor(){
+
+    const meteor=document.createElement("div");
+
+    meteor.className="meteor";
+
+    meteor.style.left=
+        Math.random()*100+"%";
+
+    meteor.style.animationDuration=
+        (2+Math.random()*4)+"s";
+
+    meteor.style.animationDelay="0s";
+
+    document.body.appendChild(meteor);
+
+    setTimeout(()=>{
+        meteor.remove();
+    },7000);
 }
 
-
-setTimeout(
-    randomShootingStar,
-    1200
-);
-
-
-/* =========================================================
-   FLOATING STARS AROUND INFO BOXES
-========================================================= */
-
-const infoBoxes =
-    document.querySelectorAll(
-        ".info-box"
-    );
-
-
-infoBoxes.forEach(
-    (box) => {
-
-        const starCount = 16;
-
-
-        for(
-            let i = 0;
-            i < starCount;
-            i++
-        ){
-
-            const star =
-                document.createElement(
-                    "span"
-                );
-
-
-            star.className =
-                "data-star";
-
-
-            const x =
-                Math.random() * 100;
-
-            const y =
-                Math.random() * 100;
-
-
-            star.style.left =
-                x + "%";
-
-            star.style.top =
-                y + "%";
-
-
-            star.style.setProperty(
-                "--move-x",
-                (
-                    -20 +
-                    Math.random() * 40
-                ) + "px"
-            );
-
-
-            star.style.setProperty(
-                "--move-y",
-                (
-                    -25 +
-                    Math.random() * 50
-                ) + "px"
-            );
-
-
-            star.style.setProperty(
-                "--star-time",
-                (
-                    3 +
-                    Math.random() * 5
-                ) + "s"
-            );
-
-
-            star.style.animationDelay =
-                (
-                    -Math.random() * 6
-                ) + "s";
-
-
-            star.style.opacity =
-                .3 +
-                Math.random() * .7;
-
-
-            box.appendChild(
-                star
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   EXTRA SCIENCE HUD TEXT
-========================================================= */
-
-infoBoxes.forEach(
-    (box,index) => {
-
-        box.dataset.system =
-            "DATA NODE " +
-            String(index + 1)
-                .padStart(2,"0");
-
-    }
-);
+setInterval(createMeteor,900);
 
 </script>
 
-
 </body>
-</html>
+    </html>
