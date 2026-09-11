@@ -1187,4 +1187,2063 @@ setInterval(createMeteor,900);
 </script>
 
 </body>
-    </html>
+    </<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dr. Stone • Science Galaxy</title>
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+        "Segoe UI",
+        "Noto Sans Thai",
+        Tahoma,
+        sans-serif;
+
+    color:#eefcff;
+    min-height:100vh;
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(0,255,255,.13), transparent 25%),
+        radial-gradient(circle at 85% 15%, rgba(90,80,255,.16), transparent 28%),
+        radial-gradient(circle at 50% 90%, rgba(0,255,170,.10), transparent 30%),
+        linear-gradient(135deg,#02040d 0%,#061126 45%,#02030a 100%);
+}
+
+
+/* =========================================================
+   STAR BACKGROUND
+========================================================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-20;
+
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.9) 1px,transparent 1px),
+        radial-gradient(circle,rgba(0,240,255,.65) 1px,transparent 1px),
+        radial-gradient(circle,rgba(150,100,255,.5) 1px,transparent 1px);
+
+    background-size:
+        90px 90px,
+        150px 150px,
+        220px 220px;
+
+    background-position:
+        10px 20px,
+        40px 80px,
+        100px 30px;
+
+    animation:starsMove 30s linear infinite;
+}
+
+@keyframes starsMove{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(180px);
+    }
+}
+
+
+/* =========================================================
+   SCIENCE GRID
+========================================================= */
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-19;
+
+    background:
+        linear-gradient(
+            rgba(0,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:55px 55px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        transparent,
+        black 15%,
+        black 85%,
+        transparent
+    );
+}
+
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+#loader{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+
+    z-index:99999;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,255,255,.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(110,60,255,.12),
+            transparent 30%
+        ),
+        #01030a;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+#loader.hide{
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+
+/* LOADER GRID */
+
+.loader-grid{
+
+    position:absolute;
+    inset:-30%;
+
+    opacity:.3;
+
+    background-image:
+        linear-gradient(
+            rgba(0,255,255,.12) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,255,255,.12) 1px,
+            transparent 1px
+        );
+
+    background-size:50px 50px;
+
+    transform:
+        perspective(600px)
+        rotateX(62deg)
+        scale(1.5);
+
+    transform-origin:center bottom;
+
+    animation:gridMove 5s linear infinite;
+}
+
+@keyframes gridMove{
+
+    from{
+        background-position:0 0;
+    }
+
+    to{
+        background-position:0 50px;
+    }
+}
+
+
+/* LOADER RINGS */
+
+.loader-ring{
+
+    position:absolute;
+
+    width:480px;
+    height:480px;
+
+    border-radius:50%;
+
+    border:
+        1px solid rgba(0,255,255,.15);
+
+    box-shadow:
+        0 0 40px rgba(0,255,255,.08),
+        inset 0 0 40px rgba(0,255,255,.05);
+
+    animation:ringSpin 12s linear infinite;
+}
+
+.loader-ring::before{
+
+    content:"";
+
+    position:absolute;
+    inset:35px;
+
+    border-radius:50%;
+
+    border:
+        1px dashed rgba(130,90,255,.35);
+}
+
+.loader-ring::after{
+
+    content:"";
+
+    position:absolute;
+    inset:80px;
+
+    border-radius:50%;
+
+    border:
+        1px solid rgba(0,255,200,.2);
+}
+
+@keyframes ringSpin{
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+/* LOADER CORE */
+
+.loader-core{
+
+    position:relative;
+
+    z-index:10;
+
+    text-align:center;
+
+    perspective:800px;
+}
+
+
+/* SMALL TITLE */
+
+.loader-small{
+
+    color:#00ffff;
+
+    font-size:12px;
+
+    letter-spacing:8px;
+
+    margin-bottom:22px;
+
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 15px #00ffff;
+
+    animation:
+        loaderBlink 1s infinite alternate;
+}
+
+@keyframes loaderBlink{
+
+    from{
+        opacity:.3;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+
+/* MAIN LOADER TITLE */
+
+.loader-title{
+
+    position:relative;
+
+    font-size:
+        clamp(58px,12vw,155px);
+
+    font-weight:1000;
+
+    letter-spacing:7px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #bfffff 22%,
+            #00ffff 48%,
+            #5e7cff 72%,
+            #9c54ff 100%
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    filter:
+        drop-shadow(0 0 7px #00ffff)
+        drop-shadow(0 0 25px #00bfff)
+        drop-shadow(0 0 55px #5d42ff);
+
+    animation:
+        titleEnter 1.6s cubic-bezier(.16,.85,.35,1),
+        titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleEnter{
+
+    0%{
+        opacity:0;
+        transform:
+            scale(.25)
+            rotateX(70deg);
+    }
+
+    70%{
+        opacity:1;
+        transform:
+            scale(1.08)
+            rotateX(-5deg);
+    }
+
+    100%{
+        transform:
+            scale(1)
+            rotateX(0);
+    }
+}
+
+@keyframes titleGlow{
+
+    from{
+        filter:
+            drop-shadow(0 0 7px #00ffff)
+            drop-shadow(0 0 20px #00bfff);
+    }
+
+    to{
+        filter:
+            drop-shadow(0 0 20px #00ffff)
+            drop-shadow(0 0 65px #684cff);
+    }
+}
+
+
+/* =========================================================
+   ELECTRIC LIGHTNING
+========================================================= */
+
+.lightning{
+
+    position:absolute;
+
+    top:52%;
+    left:-30%;
+
+    width:160%;
+    height:5px;
+
+    z-index:20;
+
+    transform:rotate(-8deg);
+
+    opacity:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            transparent 10%,
+            #00ffff 25%,
+            #ffffff 45%,
+            #00ffff 60%,
+            #805cff 78%,
+            transparent 95%
+        );
+
+    box-shadow:
+        0 0 5px #ffffff,
+        0 0 15px #00ffff,
+        0 0 35px #008cff,
+        0 0 70px #614cff;
+
+    animation:
+        lightningStrike 3.4s infinite;
+}
+
+@keyframes lightningStrike{
+
+    0%,52%{
+        opacity:0;
+        transform:
+            translateX(-90%)
+            rotate(-8deg);
+    }
+
+    55%{
+        opacity:1;
+    }
+
+    57%{
+        opacity:.1;
+    }
+
+    59%{
+        opacity:1;
+    }
+
+    63%{
+        opacity:.2;
+    }
+
+    66%{
+        opacity:0;
+        transform:
+            translateX(90%)
+            rotate(-8deg);
+    }
+
+    100%{
+        opacity:0;
+    }
+}
+
+
+/* LIGHTNING BRANCHES */
+
+.lightning::before,
+.lightning::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:50px;
+    height:130px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00ffff,
+            #ffffff,
+            transparent
+        );
+
+    filter:blur(2px);
+}
+
+.lightning::before{
+
+    left:27%;
+    top:-60px;
+
+    transform:rotate(35deg);
+}
+
+.lightning::after{
+
+    left:70%;
+    top:-75px;
+
+    transform:rotate(-35deg);
+}
+
+
+/* LOADING BAR */
+
+.loader-status{
+
+    position:relative;
+
+    width:min(520px,75vw);
+
+    height:5px;
+
+    margin:35px auto 0;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(0,255,255,.3);
+
+    box-shadow:
+        0 0 20px rgba(0,255,255,.2);
+}
+
+.loader-bar{
+
+    width:0;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00ffff,
+            #765cff,
+            #00ffcc
+        );
+
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 25px #008cff;
+
+    animation:
+        loading 3.8s forwards;
+}
+
+@keyframes loading{
+
+    to{
+        width:100%;
+    }
+}
+
+.loader-text{
+
+    margin-top:15px;
+
+    color:#7affff;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+}
+
+
+/* =========================================================
+   TOP / BOTTOM MARQUEE
+========================================================= */
+
+.science-marquee{
+
+    position:fixed;
+
+    left:0;
+
+    width:100%;
+
+    height:44px;
+
+    z-index:5000;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,10,25,.85),
+            rgba(5,20,45,.65),
+            rgba(0,10,25,.85)
+        );
+
+    border:
+        1px solid rgba(0,255,255,.22);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+        0 0 25px rgba(0,255,255,.08);
+}
+
+.science-marquee.top{
+    top:0;
+}
+
+.science-marquee.bottom{
+    bottom:0;
+}
+
+.marquee-track{
+
+    display:flex;
+
+    width:max-content;
+
+    height:100%;
+
+    align-items:center;
+
+    gap:80px;
+
+    white-space:nowrap;
+}
+
+.top .marquee-track{
+
+    animation:
+        marqueeLeft 18s linear infinite;
+}
+
+.bottom .marquee-track{
+
+    animation:
+        marqueeRight 18s linear infinite;
+}
+
+@keyframes marqueeLeft{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+@keyframes marqueeRight{
+
+    from{
+        transform:translateX(-50%);
+    }
+
+    to{
+        transform:translateX(0);
+    }
+}
+
+.marquee-item{
+
+    font-size:13px;
+
+    font-weight:1000;
+
+    letter-spacing:6px;
+
+    color:#9fffff;
+
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 15px #00ffff,
+        0 0 30px #008cff,
+        0 0 50px rgba(0,255,255,.5);
+}
+
+.marquee-item span{
+
+    color:#a778ff;
+
+    text-shadow:
+        0 0 7px #9d63ff,
+        0 0 20px #713cff;
+}
+
+
+/* =========================================================
+   METEORS
+========================================================= */
+
+.meteor{
+
+    position:fixed;
+
+    top:-200px;
+
+    width:3px;
+
+    height:150px;
+
+    pointer-events:none;
+
+    z-index:-5;
+
+    border-radius:50%;
+
+    transform:rotate(38deg);
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            #ffffff 20%,
+            #00ffff 65%,
+            transparent
+        );
+
+    box-shadow:
+        0 0 6px #fff,
+        0 0 18px #00ffff,
+        0 0 40px #008cff;
+
+    animation:
+        meteorFall 3s linear infinite;
+}
+
+@keyframes meteorFall{
+
+    0%{
+        top:-200px;
+        opacity:0;
+        transform:
+            translate(0,0)
+            rotate(38deg);
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:1;
+    }
+
+    100%{
+        top:120vh;
+        opacity:0;
+        transform:
+            translate(-350px,350px)
+            rotate(38deg);
+    }
+}
+
+
+/* =========================================================
+   COLORFUL FALLING STARS
+========================================================= */
+
+.color-star{
+
+    position:fixed;
+
+    top:-20px;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    z-index:-6;
+
+    pointer-events:none;
+
+    box-shadow:
+        0 0 8px currentColor,
+        0 0 18px currentColor;
+
+    animation:
+        starFall linear infinite;
+}
+
+@keyframes starFall{
+
+    0%{
+        transform:
+            translateY(0)
+            translateX(0)
+            scale(.4);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translateY(115vh)
+            translateX(-70px)
+            scale(1.5);
+
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   SCIENCE FORMULAS
+========================================================= */
+
+.formula{
+
+    position:fixed;
+
+    z-index:-3;
+
+    pointer-events:none;
+
+    color:rgba(105,255,255,.24);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    text-shadow:
+        0 0 10px rgba(0,255,255,.6);
+
+    animation:
+        formulaFloat 7s ease-in-out infinite alternate;
+}
+
+.f1{
+    top:14%;
+    left:4%;
+}
+
+.f2{
+    top:28%;
+    right:6%;
+    animation-delay:1s;
+}
+
+.f3{
+    top:52%;
+    left:5%;
+    animation-delay:2s;
+}
+
+.f4{
+    top:69%;
+    right:6%;
+    animation-delay:3s;
+}
+
+.f5{
+    top:43%;
+    left:46%;
+    animation-delay:1.5s;
+}
+
+.f6{
+    top:82%;
+    left:25%;
+    animation-delay:4s;
+}
+
+.f7{
+    top:35%;
+    left:28%;
+    animation-delay:2.5s;
+}
+
+.f8{
+    top:88%;
+    right:30%;
+    animation-delay:3.5s;
+}
+
+@keyframes formulaFloat{
+
+    from{
+        transform:
+            translateY(0)
+            rotate(-4deg);
+
+        opacity:.18;
+    }
+
+    to{
+        transform:
+            translateY(-25px)
+            rotate(4deg);
+
+        opacity:.65;
+    }
+}
+
+
+/* =========================================================
+   SCIENCE EQUIPMENT
+========================================================= */
+
+.science-object{
+
+    position:fixed;
+
+    z-index:-2;
+
+    pointer-events:none;
+
+    font-size:42px;
+
+    filter:
+        drop-shadow(0 0 7px #00ffff)
+        drop-shadow(0 0 20px rgba(0,160,255,.7));
+
+    animation:
+        objectFloat 6s ease-in-out infinite alternate;
+}
+
+.beaker{
+    top:17%;
+    left:12%;
+}
+
+.atom{
+    top:21%;
+    right:12%;
+    animation-delay:1s;
+}
+
+.dna{
+    top:61%;
+    left:10%;
+    animation-delay:2s;
+}
+
+.microscope{
+    top:70%;
+    right:11%;
+    animation-delay:3s;
+}
+
+.flask{
+    top:46%;
+    right:22%;
+    animation-delay:1.5s;
+}
+
+.telescope{
+    top:40%;
+    left:17%;
+    animation-delay:2.5s;
+}
+
+.testtube{
+    top:78%;
+    left:48%;
+    animation-delay:3.5s;
+}
+
+@keyframes objectFloat{
+
+    from{
+        transform:
+            translateY(0)
+            rotate(-8deg);
+    }
+
+    to{
+        transform:
+            translateY(-28px)
+            rotate(8deg);
+    }
+}
+
+
+/* =========================================================
+   MAIN HERO
+========================================================= */
+
+main{
+
+    min-height:100vh;
+
+    padding-top:100px;
+    padding-bottom:100px;
+}
+
+.hero{
+
+    min-height:90vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    padding:50px 20px;
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:10;
+
+    max-width:1100px;
+}
+
+
+/* BADGE */
+
+.badge{
+
+    display:inline-block;
+
+    padding:10px 22px;
+
+    border:
+        1px solid rgba(0,255,255,.6);
+
+    border-radius:50px;
+
+    color:#00ffff;
+
+    background:
+        rgba(0,255,255,.04);
+
+    box-shadow:
+        0 0 15px rgba(0,255,255,.25),
+        inset 0 0 15px rgba(0,255,255,.04);
+
+    letter-spacing:4px;
+
+    font-size:12px;
+
+    margin-bottom:25px;
+
+    animation:
+        badgePulse 2s infinite alternate;
+}
+
+@keyframes badgePulse{
+
+    from{
+        box-shadow:
+            0 0 10px rgba(0,255,255,.2);
+    }
+
+    to{
+        box-shadow:
+            0 0 30px rgba(0,255,255,.55),
+            inset 0 0 20px rgba(0,255,255,.08);
+    }
+}
+
+
+/* HERO TITLE */
+
+h1{
+
+    font-size:
+        clamp(52px,10vw,125px);
+
+    line-height:.9;
+
+    font-weight:1000;
+
+    letter-spacing:6px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00ffff,
+            #ffffff,
+            #8f74ff,
+            #00ffaa,
+            #00ffff
+        );
+
+    background-size:300% auto;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    animation:
+        gradientText 5s linear infinite;
+
+    filter:
+        drop-shadow(0 0 15px rgba(0,255,255,.8))
+        drop-shadow(0 0 45px rgba(90,70,255,.5));
+}
+
+@keyframes gradientText{
+
+    to{
+        background-position:
+            300% center;
+    }
+}
+
+
+/* SUBTITLE */
+
+.subtitle{
+
+    margin-top:28px;
+
+    color:#8defff;
+
+    font-size:
+        clamp(13px,2vw,21px);
+
+    letter-spacing:5px;
+
+    text-shadow:
+        0 0 10px rgba(0,255,255,.5);
+}
+
+
+/* HERO LINE */
+
+.hero-line{
+
+    width:min(750px,80%);
+
+    height:2px;
+
+    margin:35px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00ffff,
+            #8b5cff,
+            #00ffff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 30px #008cff;
+}
+
+
+/* DESCRIPTION */
+
+.description{
+
+    max-width:750px;
+
+    margin:auto;
+
+    line-height:1.9;
+
+    color:#b6dce7;
+
+    font-size:16px;
+}
+
+
+/* =========================================================
+   MOUSE TRAIL
+========================================================= */
+
+.mouse-object{
+
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:9998;
+
+    font-size:27px;
+
+    opacity:0;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.3);
+
+    animation:
+        mousePop 1.4s forwards;
+
+    filter:
+        drop-shadow(0 0 8px #00ffff)
+        drop-shadow(0 0 20px #008cff);
+}
+
+@keyframes mousePop{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.2)
+            rotate(0deg);
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translate(
+                calc(-50% + var(--mx)),
+                calc(-50% + var(--my))
+            )
+            scale(1.2)
+            rotate(180deg);
+    }
+}
+
+
+/* =========================================================
+   CLICK EXPLOSION
+========================================================= */
+
+.click-particle{
+
+    position:fixed;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:10000;
+
+    background:#00ffff;
+
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 25px #008cff,
+        0 0 45px #7b5cff;
+
+    animation:
+        clickBurst .9s ease-out forwards;
+}
+
+@keyframes clickBurst{
+
+    from{
+
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+    }
+
+    to{
+
+        opacity:0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(.1);
+    }
+}
+
+
+/* CLICK SCIENCE RING */
+
+.click-ring{
+
+    position:fixed;
+
+    width:30px;
+    height:30px;
+
+    border:
+        2px solid #00ffff;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    transform:
+        translate(-50%,-50%);
+
+    animation:
+        clickRing .8s ease-out forwards;
+
+    box-shadow:
+        0 0 15px #00ffff,
+        inset 0 0 10px #00ffff;
+}
+
+@keyframes clickRing{
+
+    to{
+
+        width:170px;
+        height:170px;
+
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    .science-object{
+        font-size:27px;
+    }
+
+    .formula{
+        font-size:15px;
+    }
+
+    .marquee-item{
+        font-size:10px;
+        letter-spacing:3px;
+    }
+
+    .loader-title{
+        letter-spacing:3px;
+    }
+
+    .loader-ring{
+        width:300px;
+        height:300px;
+    }
+
+    .description{
+        font-size:14px;
+    }
+
+    .subtitle{
+        letter-spacing:2px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     LOADING SCREEN
+======================================================= -->
+
+<div id="loader">
+
+    <div class="loader-grid"></div>
+
+    <div class="loader-ring"></div>
+
+    <div class="loader-core">
+
+        <div class="loader-small">
+            SCIENTIFIC DATABASE // INITIALIZING
+        </div>
+
+        <div class="loader-title">
+            DR.STONE
+        </div>
+
+        <div class="lightning"></div>
+
+        <div class="loader-status">
+            <div class="loader-bar"></div>
+        </div>
+
+        <div class="loader-text">
+            REVIVING HUMANITY • 3,700 YEARS LATER
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     TOP BAR
+======================================================= -->
+
+<div class="science-marquee top">
+
+    <div class="marquee-track">
+
+        <div class="marquee-item">
+            SENKU <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>⚛</span>
+        </div>
+
+        <div class="marquee-item">
+            STANLY <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            SENKU <span>⚗</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            STANLY <span>⚛</span>
+        </div>
+
+        <div class="marquee-item">
+            SENKU <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>⚗</span>
+        </div>
+
+        <div class="marquee-item">
+            STANLY <span>✦</span>
+        </div>
+
+        <!-- LOOP -->
+
+        <div class="marquee-item">
+            SENKU <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>⚛</span>
+        </div>
+
+        <div class="marquee-item">
+            STANLY <span>✦</span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     BOTTOM BAR
+======================================================= -->
+
+<div class="science-marquee bottom">
+
+    <div class="marquee-track">
+
+        <div class="marquee-item">
+            STANLY <span>⚡</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>⚛</span>
+        </div>
+
+        <div class="marquee-item">
+            SENKU <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            STANLY <span>⚗</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            SENKU <span>⚛</span>
+        </div>
+
+        <div class="marquee-item">
+            STANLY <span>⚡</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>⚗</span>
+        </div>
+
+        <div class="marquee-item">
+            SENKU <span>✦</span>
+        </div>
+
+        <!-- LOOP -->
+
+        <div class="marquee-item">
+            STANLY <span>⚡</span>
+        </div>
+
+        <div class="marquee-item">
+            XENO <span>⚛</span>
+        </div>
+
+        <div class="marquee-item">
+            SENKU <span>✦</span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     METEORS
+======================================================= -->
+
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+<div class="meteor"></div>
+
+
+<!-- =======================================================
+     COLOR STARS
+======================================================= -->
+
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+<div class="color-star"></div>
+
+
+<!-- =======================================================
+     FORMULAS
+======================================================= -->
+
+<div class="formula f1">E = mc²</div>
+<div class="formula f2">F = ma</div>
+<div class="formula f3">H₂O + CO₂ → H₂CO₃</div>
+<div class="formula f4">∫ x² dx</div>
+<div class="formula f5">λ = h / p</div>
+<div class="formula f6">PV = nRT</div>
+<div class="formula f7">a² + b² = c²</div>
+<div class="formula f8">Σ F = ma</div>
+
+
+<!-- =======================================================
+     SCIENCE EQUIPMENT
+======================================================= -->
+
+<div class="science-object beaker">
+    ⚗️
+</div>
+
+<div class="science-object atom">
+    ⚛️
+</div>
+
+<div class="science-object dna">
+    🧬
+</div>
+
+<div class="science-object microscope">
+    🔬
+</div>
+
+<div class="science-object flask">
+    🧪
+</div>
+
+<div class="science-object telescope">
+    🔭
+</div>
+
+<div class="science-object testtube">
+    🧫
+</div>
+
+
+<!-- =======================================================
+     MAIN CONTENT
+======================================================= -->
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ✦ SCIENTIFIC DATABASE // ACTIVE ✦
+        </div>
+
+        <h1>
+            DR. STONE
+        </h1>
+
+        <div class="subtitle">
+            SCIENCE • DISCOVERY • REVIVAL • HUMANITY
+        </div>
+
+        <div class="hero-line"></div>
+
+        <p class="description">
+            วิทยาศาสตร์คือพลังที่จะสร้างอารยธรรมขึ้นมาใหม่
+            จากศูนย์สู่อนาคต
+            <br>
+            <b style="color:#00ffff;">
+                THIS IS THE AGE OF SCIENCE.
+            </b>
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        const loader =
+            document.getElementById("loader");
+
+        loader.classList.add("hide");
+
+    },4000);
+
+});
+
+
+/* =========================================================
+   MOUSE SCIENCE TRAIL
+========================================================= */
+
+const scienceItems=[
+
+    "⚗️",
+    "🔬",
+    "🧬",
+    "⚛️",
+    "🔭",
+    "🧪",
+    "🧫",
+    "📐",
+    "∑",
+    "π",
+    "E=mc²",
+    "H₂O",
+    "λ"
+
+];
+
+let mouseTimer=0;
+
+document.addEventListener("mousemove",(e)=>{
+
+    const now=Date.now();
+
+    if(now-mouseTimer<90){
+        return;
+    }
+
+    mouseTimer=now;
+
+    const object=
+        document.createElement("div");
+
+    object.className="mouse-object";
+
+    object.textContent=
+        scienceItems[
+            Math.floor(
+                Math.random()*
+                scienceItems.length
+            )
+        ];
+
+    object.style.left=
+        e.clientX+"px";
+
+    object.style.top=
+        e.clientY+"px";
+
+    object.style.setProperty(
+        "--mx",
+        (Math.random()*120-60)+"px"
+    );
+
+    object.style.setProperty(
+        "--my",
+        (Math.random()*120-100)+"px"
+    );
+
+    document.body.appendChild(object);
+
+    setTimeout(()=>{
+
+        object.remove();
+
+    },1400);
+
+});
+
+
+/* =========================================================
+   CLICK SCIENCE EXPLOSION
+========================================================= */
+
+document.addEventListener("click",(e)=>{
+
+    /* ring */
+
+    const ring=
+        document.createElement("div");
+
+    ring.className="click-ring";
+
+    ring.style.left=
+        e.clientX+"px";
+
+    ring.style.top=
+        e.clientY+"px";
+
+    document.body.appendChild(ring);
+
+    setTimeout(()=>{
+        ring.remove();
+    },800);
+
+
+    /* particles */
+
+    for(let i=0;i<24;i++){
+
+        const particle=
+            document.createElement("div");
+
+        particle.className=
+            "click-particle";
+
+        particle.style.left=
+            e.clientX+"px";
+
+        particle.style.top=
+            e.clientY+"px";
+
+        const angle=
+            Math.random()*
+            Math.PI*2;
+
+        const distance=
+            70+
+            Math.random()*170;
+
+        particle.style.setProperty(
+            "--x",
+            Math.cos(angle)*distance+"px"
+        );
+
+        particle.style.setProperty(
+            "--y",
+            Math.sin(angle)*distance+"px"
+        );
+
+        document.body.appendChild(particle);
+
+        setTimeout(()=>{
+
+            particle.remove();
+
+        },900);
+    }
+
+
+    /* science symbols */
+
+    const symbols=[
+
+        "⚛",
+        "⚗",
+        "🧬",
+        "🔬",
+        "🧪",
+        "🧫",
+        "π",
+        "Σ",
+        "E=mc²",
+        "H₂O"
+
+    ];
+
+    for(let i=0;i<8;i++){
+
+        const symbol=
+            document.createElement("div");
+
+        symbol.className=
+            "mouse-object";
+
+        symbol.textContent=
+            symbols[
+                Math.floor(
+                    Math.random()*
+                    symbols.length
+                )
+            ];
+
+        symbol.style.left=
+            e.clientX+"px";
+
+        symbol.style.top=
+            e.clientY+"px";
+
+        symbol.style.setProperty(
+            "--mx",
+            (Math.random()*300-150)+"px"
+        );
+
+        symbol.style.setProperty(
+            "--my",
+            (Math.random()*280-190)+"px"
+        );
+
+        document.body.appendChild(symbol);
+
+        setTimeout(()=>{
+
+            symbol.remove();
+
+        },1400);
+    }
+
+});
+
+
+/* =========================================================
+   RANDOM COLOR STARS
+========================================================= */
+
+const starColors=[
+
+    "#00ffff",
+    "#ff4dff",
+    "#7dff6a",
+    "#ffe066",
+    "#6aa9ff",
+    "#ff77aa",
+    "#a477ff",
+    "#00ffaa"
+
+];
+
+function createRandomStar(){
+
+    const star=
+        document.createElement("div");
+
+    star.className=
+        "color-star";
+
+    star.style.left=
+        Math.random()*100+"vw";
+
+    star.style.color=
+        starColors[
+            Math.floor(
+                Math.random()*
+                starColors.length
+            )
+        ];
+
+    star.style.animationDuration=
+        (4+
+        Math.random()*8)+"s";
+
+    star.style.animationDelay=
+        "0s";
+
+    const size=
+        2+
+        Math.random()*4;
+
+    star.style.width=
+        size+"px";
+
+    star.style.height=
+        size+"px";
+
+    document.body.appendChild(star);
+
+    setTimeout(()=>{
+
+        star.remove();
+
+    },14000);
+
+}
+
+
+/* LOTS OF STARS */
+
+setInterval(
+    createRandomStar,
+    180
+);
+
+
+/* =========================================================
+   RANDOM METEORS
+========================================================= */
+
+function createMeteor(){
+
+    const meteor=
+        document.createElement("div");
+
+    meteor.className=
+        "meteor";
+
+    meteor.style.left=
+        Math.random()*110+"%";
+
+    meteor.style.animationDuration=
+        (2+
+        Math.random()*3.5)+"s";
+
+    document.body.appendChild(meteor);
+
+    setTimeout(()=>{
+
+        meteor.remove();
+
+    },6500);
+
+}
+
+
+/* MORE METEORS */
+
+setInterval(
+    createMeteor,
+    700
+);
+
+
+/* =========================================================
+   RANDOM SCIENCE FORMULAS
+========================================================= */
+
+const formulas=[
+
+    "E = mc²",
+    "F = ma",
+    "PV = nRT",
+    "a² + b² = c²",
+    "H₂O",
+    "CO₂",
+    "λ = h/p",
+    "ΣF = ma",
+    "∫x²dx",
+    "ΔE = hf",
+    "NaCl",
+    "C₆H₁₂O₆",
+    "v = u + at",
+    "s = ut + ½at²"
+
+];
+
+function createFormula(){
+
+    const formula=
+        document.createElement("div");
+
+    formula.className=
+        "formula";
+
+    formula.textContent=
+        formulas[
+            Math.floor(
+                Math.random()*
+                formulas.length
+            )
+        ];
+
+    formula.style.left=
+        Math.random()*90+"vw";
+
+    formula.style.top=
+        Math.random()*90+"vh";
+
+    formula.style.fontSize=
+        (13+
+        Math.random()*18)+"px";
+
+    document.body.appendChild(formula);
+
+    setTimeout(()=>{
+
+        formula.remove();
+
+    },9000);
+
+}
+
+setInterval(
+    createFormula,
+    2500
+);
+
+</script>
+
+</body>
+            </html>>
