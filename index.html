@@ -2663,13 +2663,317 @@ footer .copyright{
         animation:none !important;
     }
 }
+/* =========================================================
+   MUSIC PLAYER — DR.STONE SCIENCE
+========================================================= */
 
+.music-player{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:180000;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:10px 12px 10px 16px;
+
+    min-width:285px;
+
+    border:1px solid rgba(0,255,220,.65);
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(2,15,28,.96),
+            rgba(4,24,42,.94)
+        );
+
+    box-shadow:
+        0 0 12px rgba(0,255,220,.22),
+        0 0 35px rgba(0,150,255,.12),
+        inset 0 0 18px rgba(0,255,220,.06);
+
+    backdrop-filter:blur(14px);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+.music-player:hover{
+    transform:translateY(-4px);
+
+    border-color:rgba(0,255,220,.95);
+
+    box-shadow:
+        0 0 18px rgba(0,255,220,.35),
+        0 0 45px rgba(0,180,255,.18),
+        inset 0 0 25px rgba(0,255,220,.08);
+}
+
+
+/* แสงวิ่งรอบกรอบ */
+
+.music-player::before{
+    content:"";
+
+    position:absolute;
+    inset:-1px;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,255,210,.8),
+            transparent
+        );
+
+    background-size:200% 100%;
+
+    animation:musicBorderFlow 3s linear infinite;
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+@keyframes musicBorderFlow{
+    0%{
+        background-position:200% 0;
+    }
+
+    100%{
+        background-position:-200% 0;
+    }
+}
+
+
+/* ไอคอนเพลง */
+
+.music-icon{
+    width:34px;
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    color:#7ffff0;
+
+    background:rgba(0,255,210,.08);
+
+    border:1px solid rgba(0,255,210,.25);
+
+    font-size:18px;
+
+    flex-shrink:0;
+
+    box-shadow:
+        0 0 12px rgba(0,255,210,.15);
+}
+
+
+/* ชื่อเพลง */
+
+.music-info{
+    flex:1;
+    min-width:0;
+}
+
+.music-label{
+    color:#61ffe4;
+
+    font:700 8px "Courier New",monospace;
+
+    letter-spacing:2px;
+
+    margin-bottom:3px;
+}
+
+.music-title{
+    color:#eaffff;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    text-shadow:
+        0 0 8px rgba(0,255,220,.25);
+}
+
+
+/* ปุ่มเดียว เปิด/ปิด */
+
+.music-toggle{
+    width:43px;
+    height:43px;
+
+    border:none;
+
+    border-radius:11px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+    color:#eaffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,180,255,.25),
+            rgba(0,255,190,.18)
+        );
+
+    border:1px solid rgba(0,255,220,.55);
+
+    box-shadow:
+        0 0 12px rgba(0,255,220,.2),
+        inset 0 0 12px rgba(0,255,220,.06);
+
+    font-size:18px;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+.music-toggle:hover{
+    transform:scale(1.08);
+
+    box-shadow:
+        0 0 18px rgba(0,255,220,.45),
+        0 0 30px rgba(0,180,255,.2);
+}
+
+.music-toggle:active{
+    transform:scale(.94);
+}
+
+
+/* ตอนเพลงกำลังเล่น */
+
+.music-player.playing{
+    border-color:rgba(0,255,180,.9);
+
+    box-shadow:
+        0 0 18px rgba(0,255,180,.35),
+        0 0 45px rgba(0,180,255,.18),
+        inset 0 0 20px rgba(0,255,180,.08);
+}
+
+.music-player.playing .music-icon{
+    animation:musicIconPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes musicIconPulse{
+    0%,100%{
+        transform:scale(1);
+        filter:brightness(1);
+    }
+
+    50%{
+        transform:scale(1.12);
+        filter:brightness(1.35);
+    }
+}
+
+
+/* มือถือ */
+
+@media(max-width:600px){
+
+    .music-player{
+        right:12px;
+        bottom:38px;
+
+        min-width:0;
+
+        width:calc(100% - 24px);
+
+        padding:8px 9px 8px 12px;
+
+        border-radius:12px;
+    }
+
+    .music-title{
+        font-size:11px;
+    }
+
+    .music-toggle{
+        width:40px;
+        height:40px;
+    }
+
+}
 </style>
 </head>
 
 
 <body>
+<!-- =========================================================
+     DR.STONE MUSIC PLAYER
+========================================================= -->
 
+<div class="music-player" id="musicPlayer">
+
+    <div class="music-icon">
+        🎵
+    </div>
+
+    <div class="music-info">
+        <div class="music-label">
+            NOW PLAYING // DR.STONE
+        </div>
+
+        <div class="music-title">
+            Dr. STONE SCIENCE FUTURE - Opening • ALI
+        </div>
+    </div>
+
+    <button
+        class="music-toggle"
+        id="musicToggle"
+        type="button"
+        aria-label="เปิดหรือปิดเพลง"
+    >
+        ▶
+    </button>
+
+</div>
+
+
+<audio
+    id="bgMusic"
+    preload="auto"
+    loop
+>
+    <source
+        src="Dr. STONE SCIENCE FUTURE - Opening FULL CASANOVA POSSE by ALI (Lyrics) - Jamong (youtube).mp3"
+        type="audio/mpeg"
+    >
+</audio>
 <!-- =========================================================
      LOADER
 ========================================================= -->
@@ -4071,7 +4375,142 @@ infoBoxes.forEach(
     );
 
 })();
+/* =========================================================
+   DR.STONE MUSIC PLAYER
+========================================================= */
 
+(function(){
+
+    const music =
+        document.getElementById("bgMusic");
+
+    const button =
+        document.getElementById("musicToggle");
+
+    const player =
+        document.getElementById("musicPlayer");
+
+
+    if(!music || !button || !player){
+        return;
+    }
+
+
+    let isPlaying = false;
+
+
+    /* ---------------------------------------------------------
+       ปุ่มเปิด / ปิดเพลง
+    --------------------------------------------------------- */
+
+    button.addEventListener("click", function(e){
+
+        /*
+         * ป้องกันปุ่มทำให้หน้าเว็บกระโดด
+         */
+
+        e.preventDefault();
+        e.stopPropagation();
+
+
+        if(isPlaying){
+
+            music.pause();
+
+            isPlaying = false;
+
+            button.textContent = "▶";
+
+            player.classList.remove("playing");
+
+        }else{
+
+            music.volume = 0.35;
+
+            const playPromise =
+                music.play();
+
+
+            if(playPromise !== undefined){
+
+                playPromise
+                    .then(() => {
+
+                        isPlaying = true;
+
+                        button.textContent = "Ⅱ";
+
+                        player.classList.add(
+                            "playing"
+                        );
+
+                    })
+                    .catch(() => {
+
+                        isPlaying = false;
+
+                        button.textContent = "▶";
+
+                        player.classList.remove(
+                            "playing"
+                        );
+
+                    });
+
+            }
+
+        }
+
+    });
+
+
+    /* ---------------------------------------------------------
+       ตรวจสอบสถานะเพลง
+    --------------------------------------------------------- */
+
+    music.addEventListener(
+        "play",
+        function(){
+
+            isPlaying = true;
+
+            button.textContent = "Ⅱ";
+
+            player.classList.add("playing");
+
+        }
+    );
+
+
+    music.addEventListener(
+        "pause",
+        function(){
+
+            isPlaying = false;
+
+            button.textContent = "▶";
+
+            player.classList.remove("playing");
+
+        }
+    );
+
+
+    music.addEventListener(
+        "ended",
+        function(){
+
+            isPlaying = false;
+
+            button.textContent = "▶";
+
+            player.classList.remove("playing");
+
+        }
+    );
+
+
+})();
 </script>
 
 </body>
